@@ -5,7 +5,7 @@ date: 2016-10-3
 title:  http 状态代码表
 tags: linux
 
-category: webnet
+category: 网络
 status: publish
 summary: 所有 HTTP 状态代码及其定义 
 ---

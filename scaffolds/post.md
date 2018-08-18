@@ -1,7 +1,3 @@
----
-author: QwerSe
-avatar: /images/favicon.png
-head: {{head}}
 date: {{data}}
 title: {{title}}
 tags: {{tags}}

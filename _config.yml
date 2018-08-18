@@ -8,29 +8,9 @@ timezone:
 title: QwerSe
 subtitle: 一个方向，来回走动
 enableCache: true
-mathjax: false
-katex: false
-youyan:
-baiduAnalytics:
 keywords: Markdown,linux,网络,构架
 description: >
     QwerSe-一击致命，一点就透
-version: 2.2
-author:
-    name: qwerse
-    email: qwerse@139.com
-    github: No
-    weibo: No
-    avatar:
-blog:
-    recentSize: 5
-    pageSize: 6
-    pageBarSize: 5
-    allBlogsForPage: false
-text:
-    title: 介绍
-    intro: >
-          团结就是力量
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -62,33 +42,19 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
-  
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
-index_generator:
-  path: ''
-  per_page: 10
-  order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
-    安全: security
-    生活: lifetime
-    Linux: linux
-    Windows: windows
-    mysql: storage
-    coding: python
-    网络: webnet
-    算法: compute
+    技术: profile
+    生活: life
+    
 
 tag_map:
     安全: security
-    生活: lifetime
+    生活: lifeTime
     Linux: linux
     Windows: windows
     mysql: mysql
@@ -110,17 +76,24 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: jsimple
+
+
+theme: aath
+
+# Comment
+## disqus
+## livere
+disqus_shortname: QwerseBlog
+
+search: true
+avatar: http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg
+aside-description: Qwerse
+links:
+  百度: https://www.baidu.com/
+  谷歌: https://www.google.com/
+  知乎: https://www.zhihu.com/
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: rsync
-  host: 172.105.223.22
-  user: root
-  root: /var/www/www.qwerse.com/public
-  port: 22
-  delete: false
-  verbose: true
-  ignore_errors: false
+
 

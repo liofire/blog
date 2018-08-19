@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>http 状态代码表 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>http 状态代码表</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/10/03</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络/">网络</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+            
+          </div>
+          <p>　  </p>
+<h4 id="2xx-成功"><a href="#2xx-成功" class="headerlink" title="2xx  成功"></a>2xx  成功</h4><p>200  正常；请求已完成。<br>201  正常；紧接 POST 命令。<br>202  正常；已接受用于处理，但处理尚未完成。<br>203  正常；部分信息 — 返回的信息只是一部分。<br>204  正常；无响应 — 已接收请求，但不存在要回送的信息。  </p>
+<h4 id="3xx-重定向"><a href="#3xx-重定向" class="headerlink" title="3xx  重定向"></a>3xx  重定向</h4><p>301  已移动 — 请求的数据具有新的位置且更改是永久的。<br>302  已找到 — 请求的数据临时具有不同 URI。<br>303  请参阅其它 — 可在另一 URI 下找到对请求的响应，且应使用 GET 方法检索此响应。<br>304  未修改 — 未按预期修改文档。<br>305  使用代理 — 必须通过位置字段中提供的代理来访问请求的资源。<br>306  未使用 — 不再使用；保留此代码以便将来使用。  </p>
+<h4 id="4xx-客户机中出现的错误"><a href="#4xx-客户机中出现的错误" class="headerlink" title="4xx  客户机中出现的错误"></a>4xx  客户机中出现的错误</h4><p>400  错误请求 — 请求中有语法问题，或不能满足请求。<br>401  未授权 — 未授权客户机访问数据。<br>402  需要付款 — 表示计费系统已有效。<br>403  禁止 — 即使有授权也不需要访问。<br>404  找不到 — 服务器找不到给定的资源；文档不存在。<br>407  代理认证请求 — 客户机首先必须使用代理认证自身。<br>415  介质类型不受支持 — 服务器拒绝服务请求，因为不支持请求实体的格式。  </p>
+<h4 id="5xx-服务器中出现的错误"><a href="#5xx-服务器中出现的错误" class="headerlink" title="5xx  服务器中出现的错误"></a>5xx  服务器中出现的错误</h4><p>500  内部错误 — 因为意外情况，服务器不能完成请求。<br>501  未执行 — 服务器不支持请求的工具。<br>502  错误网关 — 服务器接收到来自上游服务器的无效响应。<br>503  无法获得服务 — 由于临时过载或维护，服务器无法处理请求。</p>
+<p>HTTP 400 - 请求无效 </p>
+<p>HTTP 401.1 - 未授权：登录失败 </p>
+<p>HTTP 401.2 - 未授权：服务器配置问题导致登录失败 </p>
+<p>HTTP 401.3 - ACL 禁止访问资源 </p>
+<p>HTTP 401.4 - 未授权：授权被筛选器拒绝 </p>
+<p>HTTP 401.5 - 未授权：ISAPI 或 CGI 授权失败  </p>
+<p>HTTP 403 - 禁止访问 </p>
+<p>HTTP 403 - 对 Internet 服务管理器 (HTML) 的访问仅限于 Localhost </p>
+<p>HTTP 403.1 禁止访问：禁止可执行访问 </p>
+<p>HTTP 403.2 - 禁止访问：禁止读访问 </p>
+<p>HTTP 403.3 - 禁止访问：禁止写访问 </p>
+<p>HTTP 403.4 - 禁止访问：要求 SSL </p>
+<p>HTTP 403.5 - 禁止访问：要求 SSL 128 </p>
+<p>HTTP 403.6 - 禁止访问：IP 地址被拒绝 </p>
+<p>HTTP 403.7 - 禁止访问：要求客户证书 </p>
+<p>HTTP 403.8 - 禁止访问：禁止站点访问 </p>
+<p>HTTP 403.9 - 禁止访问：连接的用户过多 </p>
+<p>HTTP 403.10 - 禁止访问：配置无效 </p>
+<p>HTTP 403.11 - 禁止访问：密码更改 </p>
+<p>HTTP 403.12 - 禁止访问：映射器拒绝访问 </p>
+<p>HTTP 403.13 - 禁止访问：客户证书已被吊销 </p>
+<p>HTTP 403.15 - 禁止访问：客户访问许可过多 </p>
+<p>HTTP 403.16 - 禁止访问：客户证书不可信或者无效 </p>
+<p>HTTP 403.17 - 禁止访问：客户证书已经到期或者尚未生效 </p>
+<p>HTTP 404.1 - 无法找到 Web 站点 </p>
+<p>HTTP 404 - 无法找到文件 </p>
+<p>HTTP 405 - 资源被禁止 </p>
+<p>HTTP 406 - 无法接受 </p>
+<p>HTTP 407 - 要求代理身份验证 </p>
+<p>HTTP 410 - 永远不可用 </p>
+<p>HTTP 412 - 先决条件失败 </p>
+<p>HTTP 414 - 请求 - URI 太长 </p>
+<p>HTTP 500 - 内部服务器错误 </p>
+<p>HTTP 500.100 - 内部服务器错误 - ASP 错误 </p>
+<p>HTTP 500-11 服务器关闭 </p>
+<p>HTTP 500-12 应用程序重新启动 </p>
+<p>HTTP 500-13 - 服务器太忙 </p>
+<p>HTTP 500-14 - 应用程序无效 </p>
+<p>HTTP 500-15 - 不允许请求 global.asa </p>
+<p>Error 501 - 未实现 </p>
+<p>HTTP 502 - 网关错误 </p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2xx-成功"><span class="toc-number">1.</span> <span class="toc-text">2xx  成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3xx-重定向"><span class="toc-number">2.</span> <span class="toc-text">3xx  重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4xx-客户机中出现的错误"><span class="toc-number">3.</span> <span class="toc-text">4xx  客户机中出现的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5xx-服务器中出现的错误"><span class="toc-number">4.</span> <span class="toc-text">5xx  服务器中出现的错误</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2016/10/03/blog/web/http鐘舵€佽〃/";
+  var disqus_url = "https://www.qwerse.com/2016/10/03/blog/web/http鐘舵€佽〃/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

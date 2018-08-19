@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>cobbler配置的安装和坑 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>cobbler配置的安装和坑</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/07/06</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#cobbler" class='tag'>cobbler</a>
+
+
+            
+          </div>
+          <h5 id="先说一下坑"><a href="#先说一下坑" class="headerlink" title="先说一下坑"></a>先说一下坑</h5><ul>
+<li><p>url –url=”<a href="http://127.0.0.1/cobbler/ks_mirror/Centos-7.4mini-x86_64/&quot;" target="_blank" rel="noopener">http://127.0.0.1/cobbler/ks_mirror/Centos-7.4mini-x86_64/&quot;</a> </p>
+<p>ks文件里一定要指定<code>url --url</code>,127.0.0.1一定要替换局域网里面的ip</p>
+</li>
+<li><p>能进安装界面，但是卡死不动，是ks文件没有配置好。怎么获取好的配置文件呢？最简单的方式就是用光盘安装一遍。进入root主目录有个ana开头的文件，把里面的内容复制下来就行了。我一般喜欢用图形安装方式，比较不容易出现问题。</p>
+</li>
+</ul>
+<h4 id="安装配置步骤"><a href="#安装配置步骤" class="headerlink" title="安装配置步骤"></a>安装配置步骤</h4><p>网上教程太多，重复的造轮子也没有什么意义</p>
+<p>选择一篇我自己实践过的文章，写的非常的好。</p>
+<p><a href="https://www.jianguoyun.com/p/DROpJUgQqeD4BhighWE" target="_blank" rel="noopener">文章（点击下载）</a></p>
+<p>附一下<br>我的ks文件，是centos7的图形安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#version=DEVEL</span><br><span class="line"># System authorization information</span><br><span class="line">auth --enableshadow --passalgo=sha512</span><br><span class="line"># Use CDROM installation media</span><br><span class="line">install</span><br><span class="line"># Use graphical install</span><br><span class="line">graphical</span><br><span class="line"># Run the Setup Agent on first boot</span><br><span class="line">firstboot --enable</span><br><span class="line">ignoredisk --only-use=sda</span><br><span class="line"># Keyboard layouts</span><br><span class="line">keyboard --vckeymap=us --xlayouts=&apos;us&apos;</span><br><span class="line"># System language</span><br><span class="line">lang en_US.UTF-8</span><br><span class="line"></span><br><span class="line"># Network information</span><br><span class="line">network  --bootproto=dhcp --device=eth0 --onboot=off --ipv6=auto --no-activate</span><br><span class="line">network  --hostname=localhost.localdomain</span><br><span class="line"></span><br><span class="line"># Root password</span><br><span class="line">rootpw --iscrypted $6$KISrAVI4.I92wl5M$Q4vAA3tqkoXOq0otYYUBEwtHdb1SB9YttiEBzOkcHhALakx/1sUoh1y83bSB2zUFvtTd6Zgb9Xq4lxhJ.hE.y/</span><br><span class="line"># System services</span><br><span class="line">services --enabled=&quot;chronyd&quot;</span><br><span class="line"># System timezone</span><br><span class="line">timezone America/New_York --isUtc</span><br><span class="line"># System bootloader configuration</span><br><span class="line">bootloader --append=&quot; crashkernel=auto&quot; --location=mbr --boot-drive=sda</span><br><span class="line">autopart --type=lvm</span><br><span class="line"># Partition clearing information</span><br><span class="line">clearpart --none --initlabel</span><br><span class="line"></span><br><span class="line">%packages</span><br><span class="line">@minimal</span><br><span class="line">@core</span><br><span class="line">chrony</span><br><span class="line">kexec-tools</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line">%addon com_redhat_kdump --enable --reserve-mb=&apos;auto&apos;</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line">%anaconda</span><br><span class="line">pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty</span><br><span class="line">pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok</span><br><span class="line">pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty</span><br><span class="line">%end</span><br></pre></td></tr></table></figure></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#先说一下坑"><span class="toc-number">1.</span> <span class="toc-text">先说一下坑</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装配置步骤"><span class="toc-number"></span> <span class="toc-text">安装配置步骤</span></a>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2018/07/06/blog/linux/cobbler閰嶇疆鍙婂潙/";
+  var disqus_url = "https://www.qwerse.com/2018/07/06/blog/linux/cobbler閰嶇疆鍙婂潙/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

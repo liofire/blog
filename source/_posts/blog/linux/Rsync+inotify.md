@@ -1,14 +1,10 @@
 ---
-author: QwerSe
-head: 
 date: 2016-09-13
 title:  rsync+inotify(触发式同步)
 tags: linux
 
-category: GitBlog
+category: linux
 status: publish
-summary: rsync可以实现触发式的文件同步，但是通过crontab守护进程方式进行触发，同步的数据和实际数据会有差异。
-而inotify可以监控文件系统的各种变化，当文件有任何变动时，就触发rsync同步，这样刚好解决了同步数据的实时性问题。
 ---
 
 

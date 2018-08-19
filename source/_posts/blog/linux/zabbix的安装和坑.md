@@ -1,0 +1,52 @@
+---
+author: QwerSe
+head:
+date: 2018-06-27
+title: zabbix的安装和坑
+tags: zabbix
+
+category: linux
+status: publish
+summary: 时区问题要警惕，不然安装过后进不了web界面.使用yum安装比使用源码安装好，简单和方便
+---
+
+
+
+
+好久没写博客了，自己还是太懒惰啊
+系统:centos7
+安装版本:4.0alpha8
+zabbix最好使用yum安装，这是主流安装。
+
+### zabbix需要lamp或者lnmp环境架构
+php安装：
+appnode官网：https://www.appnode.com/
+使用appnode只需要搭建php，mysql和httpd用yum安装，这样zabbix才不会安装出现问题。
+
+mysql安装：
+`yum install mysql-server mysql`
+
+apache安装:
+`yum install httpd`
+zabbix安装:
+没必要重复造轮子了网址：https://www.zabbix.com/download
+配置好yun源后安装
+	`yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent`
+
+---
+也不说安装的步骤了，网上太多了，我就讲一些坑就行了。
+1. 使用yum安装比使用源码安装好，简单和方便
+
+2. 时区问题要警惕，不然安装过后进不了web界面
+`/etc/httpd/conf.d/zabbix.conf文件中的timezone取消注释改成php_value date.timezone Asia/Shanghai`
+`修改PHP.ini找到date.timezone这行，去掉前面的分号，改成：date.timezone = Asia/Shanghai重启php`
+
+3. /etc/zabbix/zabbix_server.conf 和 /etc/zabbix/web/zabbix.conf.php 里面的数据库账号密码要一致
+4. localhost:80/zabbix  ，账号Admin 密码 zabbix 默认的
+
+
+
+
+
+
+

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>rsync+inotify(触发式同步) | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>rsync+inotify(触发式同步)</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/09/13</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+            
+          </div>
+          <p>### </p>
+<h4 id="一、rsync-cron的优点与不足"><a href="#一、rsync-cron的优点与不足" class="headerlink" title="一、rsync+cron的优点与不足"></a>一、rsync+cron的优点与不足</h4><p>与传统的cp、s 需求，例如定期的备份文件服务器数据到远端服务器，对本地磁盘定期做数据镜像等。 随着应用系统规模的不断扩大，对数据的安全性和可靠性也提出的更好的要求，rsync在高端业务系统中也逐渐暴露出了很多不足，首先，rsync同步数据时，需要扫描所有文件后进行比对，进行增量传输。如果文件数量达到了百万甚至千万量级，扫描所有文件将是非常耗时的。而且正在发生变化的往往是其中很少的一部分，这是非常低效的方式。其次，rsync不能实时的去监测、同步数据，虽然它可以通过linux守护进程的方式进行触发同步，但是两次触发动作一定会有时间差，这样就导致了服务端和客户端数据可能出现不一致，无法在应用故障时完全的恢复数据</p>
+<h4 id="二、inotify介绍"><a href="#二、inotify介绍" class="headerlink" title="二、inotify介绍"></a>二、inotify介绍</h4><pre><code> Inotify 是一种强大的、细粒度的、异步的文件系统事件监控机制，linux内核从2.6.13起，加入了Inotify支持，通过Inotify可以监控文件系统中添
+ 加、删除，修改、移动等各种细微事件，利用这个内核接口，第三方软件就可以监控文件系统下文件的各种变化情况，而inotify-tools就是这样的一
+ 个第三方软件。
+    rsync可以实现触发式的文件同步，但是通过crontab守护进程方式进行触发，同步的数据和实际数据会有差异，而inotify可以监控文件系统的各种
+变化，当文件有任何变动时，就触发rsync同步，这样刚好解决了同步数据的实时性问题。
+</code></pre><h4 id="三、-安装inotify工具inotify-tools"><a href="#三、-安装inotify工具inotify-tools" class="headerlink" title="三、 安装inotify工具inotify-tools"></a>三、 安装inotify工具inotify-tools</h4><h5 id="1-确认内核支持"><a href="#1-确认内核支持" class="headerlink" title="1. 确认内核支持"></a>1. 确认内核支持</h5><pre><code>[root@uplook ~]# ll /proc/sys/fs/inotify
+总计 0
+-rw-r--r-- 1 root root 0 10-01 08:07 max_queued_events
+-rw-r--r-- 1 root root 0 10-01 08:07 max_user_instances
+-rw-r--r-- 1 root root 0 10-01 08:07 max_user_watches
+</code></pre><h5 id="2-安装rsync与inotify-tools"><a href="#2-安装rsync与inotify-tools" class="headerlink" title="2 安装rsync与inotify-tools"></a>2 安装rsync与inotify-tools</h5><pre><code>http://inotify-tools.sourceforge.net
+inotify-tools是用来监控文件系统变化的工具，因此必须安装在内容发布节点（数据源）
+[root@uplook ~]# tar xf inotify-tools-3.14.tar.gz 
+[root@uplook ~]# cd inotify-tools-3.14
+[root@uplook inotify-tools-3.14]# ./configure &amp;&amp; make &amp;&amp; make install
+</code></pre><p>inotify-tools指令:</p>
+<p>   inotifywait        用于等待文件或文件集上的一个特定事件，它可以监控任何文件和目录<br>   inotifywatch        用于收集被监控的文件系统统计数据，包括每个inotify事件发生多少次等信息</p>
+<p>####四、 inotifywait相关参数<br>Inotifywait是一个监控等待事件，可以配合shell脚本使用，常用的一些参数：</p>
+<pre><code>-m， 即--monitor，表示始终保持事件监听状态
+-r，      即--recursive，表示递归查询目录
+-q，     即--quiet，表示打印出监控事件
+-e，     即--event，通过此参数可以指定要监控的事件，常见的事件有modify、delete、create、attrib等
+
+
+
+
+
+[root@uplook ~]# inotifywait -mrq -e modify,delete,create,attrib /var/www/html/
+
+[root@uplook ~]# inotifywait -mrq --timefmt &apos;%d/%m/%y %H:%M&apos; --format &apos;%T %w%f&apos; -e modify,delete,create,attrib /var/www/html/
+04/06/14 14:23 /var/www/html/file1
+04/06/14 14:23 /var/www/html/file1
+
+[root@uplook ~]# nohup inotifywait -mrq --timefmt &apos;%d/%m/%y %H:%M&apos; --format &apos;%T %w%f&apos; -e modify,delete,create,attrib /var/www/html &gt;&gt; file_modify.txt　&amp;
+
+[root@uplook ~]# inotifywait -mrq --format &apos;%w%f&apos; -e modify,delete,create,attrib /var/www/html/
+/var/www/html/file2
+/var/www/html/file2
+</code></pre><h4 id="五、配置示例"><a href="#五、配置示例" class="headerlink" title="五、配置示例"></a>五、配置示例</h4><p>拓扑图<br>                        192.168.5.11        发布服务器(数据源)<br>                        /var/www/html</p>
+<pre><code>web2 192.168.5.16   web3 192.168.5.2
+/var/www/html             /var/www/html
+</code></pre><p>发部服务器<br> hosts</p>
+<pre><code>[root@source ~]# cat /etc/hosts
+127.0.0.1           localhost
+192.168.5.11   source
+192.168.5.16   web2
+192.168.5.2     web3
+</code></pre><p>配置ssh公钥认证</p>
+<pre><code>[root@source ~]# ssh-keygen
+[root@source ~]# ssh-copy-id -i web2
+[root@source ~]# ssh-copy-id -i web3
+[root@source ~]# ssh web2 date;ssh web3 date
+2015年 09月 29日 星期日 11:31:19 CST
+2015年 09月 29日 星期日 11:33:07 CST
+</code></pre><p> 安装inotify-tools<br>[root@source ~]# yum -y install rsync httpd<br>[root@source ~]# tar xf inotify-tools-3.14.tar.gz<br>[root@source ~]# cd inotify-tools-3.14<br>[root@source inotify-tools-3.14]# ./configure &amp;&amp; make &amp;&amp; make install</p>
+<p>编写脚本<br>  [root@source ~]# cat /root/rsync_inotify.sh</p>
+<pre><code>#!/bin/bash                                                                                                    
+web2=192.168.5.16                                                                                        
+web3=192.168.5.2                                                                                        
+src=/var/www/html/                                                                                        
+dst=/var/www/html/                                                                                        
+
+inotifywait -mrq  --format &apos;%w%f&apos; -e modify,delete,create,attrib $src \                
+　　| while read file                                                                                        
+do                                                                                                                    
+
+                rsync -avzHXA --delete $src root@$web2:$dst &amp;&gt;/dev/null            
+                rsync -avzHXA --delete $src root@$web3:$dst &amp;&gt;/dev/null            
+
+
+done                                                                                                                
+
+[root@source ~]# chmod a+x /root/rsync_inotify.sh
+[root@source ~]# nohup /root/rsync_inotify.sh &amp;
+
+
+web2, web3
+[root@web2 ~]# yum -y install rsync httpd
+[root@web3 ~]# yum -y install rsync httpd
+</code></pre><p>同步测试</p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、rsync-cron的优点与不足"><span class="toc-number">1.</span> <span class="toc-text">一、rsync+cron的优点与不足</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、inotify介绍"><span class="toc-number">2.</span> <span class="toc-text">二、inotify介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、-安装inotify工具inotify-tools"><span class="toc-number">3.</span> <span class="toc-text">三、 安装inotify工具inotify-tools</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-确认内核支持"><span class="toc-number">3.1.</span> <span class="toc-text">1. 确认内核支持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-安装rsync与inotify-tools"><span class="toc-number">3.2.</span> <span class="toc-text">2 安装rsync与inotify-tools</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、配置示例"><span class="toc-number">4.</span> <span class="toc-text">五、配置示例</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2016/09/13/blog/linux/Rsync+inotify/";
+  var disqus_url = "https://www.qwerse.com/2016/09/13/blog/linux/Rsync+inotify/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

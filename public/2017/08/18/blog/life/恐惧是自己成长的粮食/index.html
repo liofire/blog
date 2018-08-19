@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>恐惧是自己成长的粮食 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>恐惧是自己成长的粮食</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/08/18</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/life/">life</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#GitBlog" class='tag'>GitBlog</a>
+
+
+            
+          </div>
+          <p>每一天我们平均都要恐惧一次，我的恐惧来自自卑，我怕发言，我怕别人注意到我。我每天都有害怕的东西，但我每次好像都克服了，我事后像获得了无穷的力量一样，我成长了。</p>
+<p>​    恐惧是不能够消除的，这就好像世界上的属性一样，它跟水一样的。只有勇敢和无畏的精神才能够锻炼自我，使自己变得跟强。</p>
+<p>​    不要让自己迷失在每一天中，坚持是一种优秀的品质，每一件事只有坚持，才能到达极致。自己的想法永远也不要脱离实际，无水之根，必定会走向灭亡。不要害怕前路的困难阻碍，用勇气去战胜这一切，让自己心服口服。把每一天都当做自己最后的一天去过，更能让自己看清以后的道路。脚踏实地，勇往直前。</p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2017/08/18/blog/life/恐惧是自己成长的粮食/";
+  var disqus_url = "https://www.qwerse.com/2017/08/18/blog/life/恐惧是自己成长的粮食/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>windows磁盘管理复习笔记 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>windows磁盘管理复习笔记</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/12/19</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/windows/">windows</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#windows" class='tag'>windows</a>
+
+
+            
+          </div>
+          <p>###一、磁盘概述</p>
+<p>#####1、磁盘硬件了解</p>
+<p>1）扇区：<br>磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的<br>物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取<br>和写入数据时，要以扇区为单位</p>
+<p>2）簇：<br>是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并<br>不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概念，是最小的<br>存储单元。</p>
+<p>3）大小：8字节  实际占用空间：4096字节=515字节*8个扇区</p>
+<h5 id="2、MBR磁盘与GPT磁盘"><a href="#2、MBR磁盘与GPT磁盘" class="headerlink" title="2、MBR磁盘与GPT磁盘"></a>2、MBR磁盘与GPT磁盘</h5><p>1）MBR磁盘(BIOS+MBR)</p>
+<h6 id="引导代码"><a href="#引导代码" class="headerlink" title="引导代码"></a>引导代码</h6><p>占扇区前446个字节，计算机在上电完成BIOS自检后，会将该主引导扇区加载到内存<br>中产a执行前446个字节的引导程序，引导程序首先会在分区表中查找活动分区，如果<br>存在活动分区 ，则根据活动分区的偏移量找到该活动分区上的引导扇区的地址，将<br>引导扇区加载到内存中，同时检查引导扇区的有效性，然后根据该引导盲区的规则去<br>引导操作系统。</p>
+<p>######分区表<br>占扇区中间64个字节，分区表是磁盘管理的重要部分，通过分区表信息来定位各个<br>分区，访问用户的数据。分区表包含4个分区表项，每一个分区项通过位置偏移、分区<br>大小来唯一的确定一个分区是主分区还是扩展分区。每个分区项占16个字节。<br>因为MBR仅仅为分区表项保留了64个字节的存储空间，而每个分区则占用16个字节，也<br>就是说只能分4个分区，而4个分区在生产环境下往往不是最合理的分区方式，因此就<br>产生了扩展分区，在扩展分区中进一步划分逻辑分区，每个逻辑分区的分区信息都<br>存储在一个类似于MBR的扩展引导记录中（EBR），扩展引导记录包括分区表和结束标志<br>结束标志（55AA）</p>
+<p>a.主分区：用来启动操作系统</p>
+<p>b.扩展磁盘分区：用来存储数据</p>
+<p>2）GPT磁盘(UEFI+GPT)<br>    a.EFI系统磁盘分区（ESP）<br>    b.Windows RE磁盘分区<br>    c.MSR磁盘分区<br>    d.windows磁盘分区</p>
+<p>##基本磁盘与动态磁盘</p>
+<p>###二、基本卷的管理</p>
+<pre><code>1、压缩卷
+2、安装新磁盘
+3、创建主分区
+4、建立扩展磁盘分区
+5、指定“活动”磁盘分区
+6、磁盘分区的格式化、卷标、转换文件系统与删除
+7、更改驱动器号及路径
+8、扩展基本卷
+</code></pre><p>###三、动态磁盘的管理</p>
+<pre><code>1、将基本磁盘转移为动态磁盘
+1、administrators/backup operators
+2、建议关闭所有运行的应用程序
+3、原有的主分区与逻辑分区都会变成简单卷
+4、一旦转换完成，整个磁盘内不会再有任何基本卷,但被保护的分区除外
+5、一理转换完成，就无法再转换为基本磁盘，除非先删除磁盘内的所有卷，也就是空磁盘才可以被转换为基本磁盘
+6、一个磁盘内如果安装了多套win操作系统，也不要做转换，一旦转换后，除目前用的操作系统外，其他系统将无法启动。
+</code></pre><p>卷类型：<br>    简单卷（simple volume）<br>    扩展简单卷（extend volume）<br>    跨区卷（spanned volume）<br>    带区卷（striped volume）<br>    镜像卷（mirror volume）<br>    RAID-5卷</p>
+<p>###四、移动磁盘<br>    1、将基本磁盘移动到另外一台计算机内<br>        1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，如果有<br>            冲突，则选用下一个可用的盘符<br>        2）如果原来没有盘符，则移动后也没有<br>    2、将动态磁盘移动到另外一台计算机<br>        1）因为被移动的磁盘移动到目的服务器后会被识为“外部磁盘”，因此先“导入外部磁盘”<br>        2）1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，<br>            如果有冲突，则选用下一个可用的盘符</p>
+<p>###五、存储空间<br>    1、虚拟磁盘与卷(池-虚拟磁盘-卷)<br>        1）虚拟磁盘配置类型<br>    a.simple:<br>    a)数据跨越各硬盘，主要功能是扩大磁盘容量<br>    b)会降低数据访问的可靠性<br>    c)存储池内至少需要有1块磁盘才可以实现这种功能<br>    b.2-Way Mirror<br>    a)同一份数据会存储2份，且是跨越各个磁盘（并非仅存储在2个磁盘内）<br>    b)两份相同的数据可以提高数据访问的可靠性，但也因此占用两倍的磁盘空间、降低<br>        磁盘实际可存储的数据量<br>    c)存储池内至少需要2块磁盘<br>    d)只容忍有2块磁盘出现故障<br>    c.3-Way Mirror<br>    a)同一份数据会存储3份，因此数据的可靠性更高，但会占用更多的磁盘空间<br>    b)存储池内至少需要5块磁盘才可以使用<br>    c)可以容忍两块磁盘损坏<br>    d.Parity:<br>    a)数据跨越各硬盘，可以提高数据访问的可靠性，便也会因为同位数据功能占用硬盘<br>        空间而降低磁盘实际可存储数据的容量<br>    b)存储池内至少需要3块硬盘才可以实现<br>    c)只容忍1块磁盘损坏</p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2、MBR磁盘与GPT磁盘"><span class="toc-number">1.</span> <span class="toc-text">2、MBR磁盘与GPT磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#引导代码"><span class="toc-number">1.1.</span> <span class="toc-text">引导代码</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2017/12/19/blog/windows/windows纾佺洏绠＄悊鍜屼娇鐢ㄤ箣绗旇/";
+  var disqus_url = "https://www.qwerse.com/2017/12/19/blog/windows/windows纾佺洏绠＄悊鍜屼娇鐢ㄤ箣绗旇/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

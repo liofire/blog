@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>docker的基本用法 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>docker的基本用法</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/12/08</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+            
+          </div>
+          <p>就如同mysql改查一样只需要了解就行，以后需要在深入，就行了。</p>
+<p>构建镜像</p>
+<pre><code>docker search nginx \\以nginx的docker镜像为例
+docker pull   nginx \\获取镜像
+docker images       \\查看本机有哪些docker镜像
+</code></pre><p>在亲自获取过程中由于国情，被 q 了，只有到国内去下载了</p>
+<pre><code>1，阿里云docker加速器
+2，时速云docker市场
+</code></pre><p>都能获取到镜像。</p>
+<h4 id="1，从一个镜像，启动一个容器"><a href="#1，从一个镜像，启动一个容器" class="headerlink" title="1，从一个镜像，启动一个容器"></a>1，从一个镜像，启动一个容器</h4><pre><code>docker run -it --name one-nginx nginx /bin/bash
+\\run 运行的意思，-it 开启一个伪终端，不关闭，--name 起一个自定义名字,/bin/bash 启动的程序
+    docker run -idt --name one-nginx nginx /bin/bash
+    \\-d 把程序后端运行
+</code></pre><h4 id="2，查看容器运行情况"><a href="#2，查看容器运行情况" class="headerlink" title="2，查看容器运行情况"></a>2，查看容器运行情况</h4><pre><code>docker ps  \\查看进程
+docker ps -a \\查看所有进程
+docker ps -l \\查看最后一个进程
+</code></pre><h4 id="3，删除容器"><a href="#3，删除容器" class="headerlink" title="3，删除容器"></a>3，删除容器</h4><pre><code>docker rm 容器id
+</code></pre><h4 id="4，删除镜像"><a href="#4，删除镜像" class="headerlink" title="4，删除镜像"></a>4，删除镜像</h4><pre><code>docker rmi 镜像id
+</code></pre>
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，从一个镜像，启动一个容器"><span class="toc-number">1.</span> <span class="toc-text">1，从一个镜像，启动一个容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，查看容器运行情况"><span class="toc-number">2.</span> <span class="toc-text">2，查看容器运行情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，删除容器"><span class="toc-number">3.</span> <span class="toc-text">3，删除容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4，删除镜像"><span class="toc-number">4.</span> <span class="toc-text">4，删除镜像</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2016/12/08/blog/linux/docker鍩虹鎿嶄綔/";
+  var disqus_url = "https://www.qwerse.com/2016/12/08/blog/linux/docker鍩虹鎿嶄綔/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

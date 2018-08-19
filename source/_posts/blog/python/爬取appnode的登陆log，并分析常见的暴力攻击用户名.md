@@ -1,0 +1,559 @@
+---
+author: QwerSe
+head:
+date: 2018-04-27
+title: 爬取appnode的登陆log，并分析常见的暴力攻击用户名
+tags: python
+category: coding
+---
+学习了很多东西，不用的话，那就是不会。
+前天想把appnode的登陆失败的记录趴下来，并且把攻击者用的账户名和ip用pandas给分析出来
+![](http://ww1.sinaimg.cn/large/ab318c02gy1fr56xd6ti2j20rh0j1gmg.jpg)
+
+
+用普通的网页分析那是不可能分析出来的，用fiddler，扛扛的
+51cto 这个fiddler视屏讲的非常不错，http://edu.51cto.com/center/course/lesson/index?id=210299
+爬的时候被CSRF码，困扰过，不过已解决。
+### #爬虫代码
+
+
+```python
+
+import requests
+import re
+
+from pymongo import MongoClient as mongo
+
+
+url = 'http://10.10.12.115:7788/api'
+d = {'Username':'qwerse',
+     'Password':'esrewq',
+     'api_action':'User.Login',
+     '_r':'1525767430025'}
+
+head ={
+'Accept': 'application/json, text/plain, */*',
+'Content-Type': 'application/x-www-form-urlencoded',
+'X-CSRF-TOKEN': 'nbZvu5q9XCGwYZ7F',
+'Referer': 'http://10.10.12.115:7788',
+'Accept-Language': 'zh-CN',
+'Accept-Encoding':'gzip, deflate',
+'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
+'Host': '10.10.12.115:7788',
+'Content-Length': '70',
+'DNT': '1',
+'Connection': 'Keep-Alive',
+'Pragma': 'no-cache',
+'Cookie': 'username-10-10-12-115-6082="2|1:0|10:1524637290|26:username-10-10-12-115-6082|44:YTVjZTA4MWRkN2Q2NDI2M2E2YTM5OTVjN2ZlZDMyYmQ=|09b0d8ec2a17aeb3ba2b4a6578f893551f52608c4126c2ec7ba330351f87a96d"; CSRF-TOKEN=nbZvu5q9XCGwYZ7F; login-params=%7B%22Username%22%3A%22qwerse%22%7D; table_page_size=20'
+    
+}
+
+
+
+#保持cookice不掉        
+s = requests.Session()
+#登录
+a = s.post(url,data = d,headers=head)
+#获取CSRF码
+x = re.search('CSRFToken":"(\w+)",',a.text).group(1)
+#填录CSRF码
+head2 = {'X-CSRF-TOKEN':x,
+         'Accept':'application/json, text/plain, */*',
+         'Referer':'http://10.10.12.115:7788/#/ccenter/nodemgr',
+         'Accept-Encoding':'gzip, deflate',
+         'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
+         'Host':'10.10.12.115:7788',
+         'Connection':'Keep-Alive'
+}
+
+#得到攻击页面，并加以分析
+c = s.get('http://10.10.12.115:7788/api?api_action=Login.ErrorList&_pageSize=1000&LoginTime=%5B1525104000%2C1525762289%5D&_pageNumber=1&_r=1525762289662&api_agent_app=usermgr&api_nodeid=5',headers=head2)
+#使用正则获取需要的信息
+count = re.search('"PageCount":(\d+),',c.text).group(1)
+#把需要的结果循环插录mongodb
+client = MongoClient('10.10.12.115',27017)
+db = client.ip
+data = db.data
+for i in range(1,int(count)+1):
+    c = s.get('http://10.10.12.115:7788/api?api_action=Login.ErrorList&_pageSize=1000&LoginTime=%5B1525104000%2C1525762289%5D&_pageNumber={}&_r=1525762289662&api_agent_app=usermgr&api_nodeid=5'.format(i),headers=head2)
+    d = re.findall('{"Id":(\d+),"Username":"(\w+)","Pty":"ssh:notty","Ip":"(.*?)",',c.text)
+    for ii in d:
+        id_ = ii[0]
+        user = ii[1]
+        ip = ii[2]
+        
+        data.insert({'id':id_,'user':user,'ip':ip})
+        print ('ok')
+
+```
+
+## 分析爬下来的数据
+
+
+```python
+import numpy as np
+import pandas as pd
+from pymongo import MongoClient as mongo
+from pyecharts import Pie
+```
+
+
+```python
+client = mongo('10.10.12.115',27017)
+db = client.ip
+data = db.data
+```
+
+
+```python
+wind = pd.DataFrame(list(data.find()))
+del wind['_id']
+del wind['id']
+wind
+```
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ip</th>
+      <th>user</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>218.65.30.53</td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>81378</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81379</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81380</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81381</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81382</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81383</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81384</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81385</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81386</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81387</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81388</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81389</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81390</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81391</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81392</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81393</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81394</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81395</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81396</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81397</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81398</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81399</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81400</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81401</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81402</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81403</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81404</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81405</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81406</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <th>81407</th>
+      <td>118.193.185.235</td>
+      <td>test</td>
+    </tr>
+  </tbody>
+</table>
+<p>81408 rows × 2 columns</p>
+</div>
+
+
+
+
+```python
+sss =[]
+for i,ii in wind['ip'].groupby(wind['user']):
+    ip = list(set(ii.values))
+    cishu = len(ii)
+    yi_ci = pd.DataFrame({'cishu':cishu,'ip':str(ip)},index=[i])
+    
+    sss.append(yi_ci)
+    
+bb = pd.concat(sss)
+
+```
+
+
+```python
+bb.sort_values(by='cishu',ascending=False).head(10)#前10名记录
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cishu</th>
+      <th>ip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>root</th>
+      <td>75542</td>
+      <td>['167.99.87.138', '61.177.172.31', '122.114.16...</td>
+    </tr>
+    <tr>
+      <th>guest</th>
+      <td>1947</td>
+      <td>['118.193.185.235', '132.148.19.140', '167.99....</td>
+    </tr>
+    <tr>
+      <th>admin</th>
+      <td>675</td>
+      <td>['123.20.46.198', '167.99.87.138', '188.165.20...</td>
+    </tr>
+    <tr>
+      <th>test</th>
+      <td>627</td>
+      <td>['116.48.130.162', '124.202.158.199', '167.99....</td>
+    </tr>
+    <tr>
+      <th>user</th>
+      <td>123</td>
+      <td>['167.99.87.138', '54.37.16.51', '45.58.115.38...</td>
+    </tr>
+    <tr>
+      <th>pi</th>
+      <td>90</td>
+      <td>['54.37.16.51', '186.149.55.139', '110.175.168...</td>
+    </tr>
+    <tr>
+      <th>support</th>
+      <td>88</td>
+      <td>['193.204.5.40', '54.37.16.51', '185.143.222.7...</td>
+    </tr>
+    <tr>
+      <th>ubuntu</th>
+      <td>85</td>
+      <td>['194.78.59.98', '182.23.83.29', '112.29.245.2...</td>
+    </tr>
+    <tr>
+      <th>oracle</th>
+      <td>80</td>
+      <td>['119.28.43.188', '182.245.124.114', '222.87.2...</td>
+    </tr>
+    <tr>
+      <th>service</th>
+      <td>73</td>
+      <td>['51.15.233.107', '185.143.222.7', '185.143.22...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+attr = bb.index
+v1 = bb['cishu']
+pie = Pie("饼图示例")
+pie.add("", attr, v1,radius=[30, 75],is_legend_show=False)
+
+```
+![](http://ww1.sinaimg.cn/large/ab318c02gy1fr574ww0l9j20p00cijs7.jpg)

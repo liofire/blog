@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>ubuntu16.04/boot分区满了,更新内核时导致apt出现错误 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>ubuntu16.04/boot分区满了,更新内核时导致apt出现错误</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/08/16</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+            
+          </div>
+          <p>问题场景：</p>
+<p>​    更新内核，出现问题，提示文件写入不了/boot分区。仔细用 df -h 一看，/boot分区占用100%了。</p>
+<p>​        这个时候apt也用不了了，什么软件也安装不了，提示依赖问题。</p>
+<p>问题总结：</p>
+<p>​        更新内核时由于需要安装到/boot分区，但是/boot分区是满的，无法更新软件。导致apt的安装程序收阻，这也是一个bug吧。完全无法恢复，只能扩大/boot分区，才行。</p>
+<p>解决方法：</p>
+<h4 id="扩大-boot分区"><a href="#扩大-boot分区" class="headerlink" title="扩大/boot分区"></a>扩大/boot分区</h4><p>​        假设有如下几个分区：</p>
+<ul>
+<li>/dev/sda1      /boot      500M</li>
+<li>/dev/sda2     /                400G</li>
+<li>/dev/dm-0    swap         4G</li>
+<li>/dev/sda3                        2G   #新的分区，用来替换现行的/boot分区</li>
+</ul>
+<p>#####格式化新分区为ext4,并设置为主分区：</p>
+<p>​    在图形界面使用gparted这个软件，sudo apt-get install gparted。来进行硬盘操作。</p>
+<p>具体的使用方法我就不多说了，这不是主题，既然会玩linux，这就不是问题。</p>
+<h5 id="挂在新的分区到-boot，替换旧的-boot分区"><a href="#挂在新的分区到-boot，替换旧的-boot分区" class="headerlink" title="挂在新的分区到/boot，替换旧的/boot分区"></a>挂在新的分区到/boot，替换旧的/boot分区</h5><p>这个有个必须的操作，需要把旧分区的内容全部复制到新分区上</p>
+<p>​    </p>
+<p>​    挂在新硬盘到/mnt分区：sudo mount /dev/sda3 /mnt </p>
+<p>​    把旧/boot分区的内容复制到新分区上：sudo rsync -av /boot/ /mnt/</p>
+<p>​    卸载原/boot分区：sudo umount /boot</p>
+<p>​    卸载新分区所在的mnt文件夹：sudo umount /mnt</p>
+<p>​    挂在新分区到/boot下：sudo mount /dev/sda3 /boot</p>
+<h5 id="把更改信息添加到-etc-fstab文件，这是必须的，不然开不了机"><a href="#把更改信息添加到-etc-fstab文件，这是必须的，不然开不了机" class="headerlink" title="把更改信息添加到/etc/fstab文件，这是必须的，不然开不了机"></a>把更改信息添加到/etc/fstab文件，这是必须的，不然开不了机</h5><p>​    查看新分区的UUID信息：sudo lbkid     #查看/dev/sda3分区的UUID</p>
+<p>​    如下例子：</p>
+<p>​            UUID=883fa013-48ba-473e-b8bc-5c4d910872ff    /boot    ext4    defaults    02</p>
+<p>​            把新分区的UUID写到到文件里，覆盖旧分区的UUID。</p>
+<p>###重启开机，运行sudo apt-get install -f  就行了</p>
+<p>​    </p>
+<p>​                </p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#扩大-boot分区"><span class="toc-number">1.</span> <span class="toc-text">扩大/boot分区</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#挂在新的分区到-boot，替换旧的-boot分区"><span class="toc-number">1.1.</span> <span class="toc-text">挂在新的分区到/boot，替换旧的/boot分区</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#把更改信息添加到-etc-fstab文件，这是必须的，不然开不了机"><span class="toc-number">1.2.</span> <span class="toc-text">把更改信息添加到/etc/fstab文件，这是必须的，不然开不了机</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2017/08/16/blog/linux/ubuntu16.04/boot分区满了,更新内核时导致apt出现错误/";
+  var disqus_url = "https://www.qwerse.com/2017/08/16/blog/linux/ubuntu16.04/boot分区满了,更新内核时导致apt出现错误/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

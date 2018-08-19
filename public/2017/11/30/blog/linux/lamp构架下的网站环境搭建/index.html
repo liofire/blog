@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>lamp构架下的网站环境搭建 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>lamp构架下的网站环境搭建</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/11/30</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#Linux" class='tag'>Linux</a>
+
+
+            
+          </div>
+          <h2 id="apache2-4编译安装"><a href="#apache2-4编译安装" class="headerlink" title="apache2.4编译安装"></a>apache2.4编译安装</h2><p>httpd依赖于apr, apr-util</p>
+<p>apr全称为apache portable runtime，能实现httpd跨平台运行</p>
+<pre><code>httpd-2.4 依賴于1.4＋及以上版本的apr
+
+    apr-1.5.0.tar.bz2
+    apr-util-1.5.3.tar.bz2
+    httpd-2.4.9.tar.bz2
+
+    pcre-devel包
+    openssl-devel     
+
+
+2、编译安装 
+# yum install gcc
+# yum install pcre-devel
+
+# tar xf apr-1.5.0.tar.bz2
+# cd apr-1.5.0
+# ./configure --prefix=/usr/local/apr   (--prefix指定apr安装的目录)
+# make
+# make  install
+
+# tar xf apr-util-1.5.3.tar.bz2
+# cd apr-util-1.5.3
+# ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+# make &amp;&amp; make install ###该项被漏掉，补充@20160714
+
+
+# tar xf httpd-2.4.9.tar.bz2
+    以下为几个主要的配置项
+    --sysconfdir=/etc/httpd24  指定配置文件路径
+    --enable-so  启动模块动态装卸载
+    --enable-ssl 编译ssl模块
+    --enable-cgi 支持cgi机制（能够让静态web服务器能够解析动态请求的一个协议）
+    --enable-rewrite  支持url重写     --Author : Leshami
+    --with-zlib  支持数据包压缩       --Blog   : http://blog.csdn.net/leshami
+    --with-pcre  支持正则表达式
+    --with-apr=/usr/local/apr  指明依赖的apr所在目录
+    --with-apr-util=/usr/local/apr-util/  指明依赖的apr-util所在的目录
+    --enable-modules=most      启用的模块
+    --enable-mpms-shared=all   以共享方式编译的模块
+    --with-mpm=prefork         指明httpd的工作方式为prefork
+
+# cd httpd-2.4.9
+# ./configure                           \
+    --with-apr=/usr/local/apr           \
+    --with-apr-util=/usr/local/apr-util \
+    --prefix=/usr/local/apache \
+    --sysconfdir=/etc/httpd24  \
+    --enable-so                \
+    --enable-ssl               \
+    --enable-cgi               \
+    --enable-rewrite           \
+    --with-zlib                \
+    --with-pcre                \
+    --with-mpm=prefork         \
+    --enable-modules=most      \
+    --enable-mpms-shared=all   
+
+# make 
+# make install
+</code></pre><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apache的启动：/usr/<span class="built_in">local</span>/apache/bin/apachectl <span class="built_in">start</span>(<span class="built_in">stop</span>,restart)</span><br><span class="line">制作systemctl的启动脚本，网上找一找就行。</span><br><span class="line">一定要记得iptables -F 和setenforce <span class="number">0.</span>不然别人访问不了你的。</span><br></pre></td></tr></table></figure>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>mysql直接使用的yum安装，编译太慢烦了。用docker更加简单。</p>
+<p>一般网上给出的资料都是</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">yum install mysql</span></span><br><span class="line"><span class="meta">#</span><span class="bash">yum install mysql-server</span></span><br><span class="line"><span class="meta">#</span><span class="bash">yum install mysql-devel</span></span><br></pre></td></tr></table></figure>
+<p>安装mysql和mysql-devel都成功，但是安装mysql-server失败，如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# yum install mysql-server</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading<span class="built_in"> mirror </span>speeds <span class="keyword">from</span> cached hostfile</span><br><span class="line"> * base: mirrors.sina.cn</span><br><span class="line"> * extras: mirrors.sina.cn</span><br><span class="line"> * updates: mirrors.sina.cn</span><br><span class="line"><span class="literal">No</span> package mysql-server available.</span><br><span class="line">Error: <span class="literal">Nothing</span> <span class="keyword">to</span> <span class="keyword">do</span></span><br></pre></td></tr></table></figure>
+<p>查资料发现是CentOS 7 版本将MySQL数据库软件从默认的程序列表中移除，用mariadb代替了。</p>
+<p>有两种解决办法：</p>
+<p>1、方法一：安装mariadb</p>
+<p>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
+<p>安装mariadb，大小59 M。</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">yl</span>-web <span class="built_in">yl</span>]<span class="meta"># yum install mariadb-server mariadb</span></span><br></pre></td></tr></table></figure>
+<p>mariadb数据库的相关命令是：</p>
+<p>systemctl start mariadb  #启动MariaDB</p>
+<p>systemctl stop mariadb  #停止MariaDB</p>
+<p>systemctl restart mariadb  #重启MariaDB</p>
+<p>systemctl enable mariadb  #设置开机启动</p>
+<p>所以先启动数据库</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">yl</span>-web <span class="built_in">yl</span>]<span class="meta"># systemctl start mariadb</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以正常使用mysql了</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 3</span><br><span class="line">Server version: 5.5.41-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2014, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="emphasis">'help;'</span> or <span class="emphasis">'\h'</span> for help. Type <span class="emphasis">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| Database           |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| information<span class="emphasis">_schema |</span></span><br><span class="line"><span class="emphasis">| mysql              |</span></span><br><span class="line"><span class="emphasis">| performance_</span>schema |</span><br><span class="line">| test               |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
+<p>安装mariadb后显示的也是 MariaDB [(none)]&gt; ，可能看起来有点不习惯。下面是第二种方法。</p>
+<h2 id="2、方法二：官网下载安装mysql-server"><a href="#2、方法二：官网下载安装mysql-server" class="headerlink" title="2、方法二：官网下载安装mysql-server"></a>2、方法二：官网下载安装mysql-server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -ivh mysql-community-release-el7-5.noarch.rpm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mysql-community-server</span></span><br></pre></td></tr></table></figure>
+<p>安装成功后重启mysql服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> service mysqld restart</span></span><br></pre></td></tr></table></figure>
+<p>有时候直接启动会报错记得要关闭selinux    <figure class="highlight plain"><figcaption><span>0```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果想变动mysql的数据库位置可以修改/etc/my.cnf文件</span><br><span class="line"></span><br><span class="line">碰到数据库起不来的情况一般都是文件权限的问题数据库要用到的文件和文件夹一律```chown mysql:mysql filename</span><br></pre></td></tr></table></figure></p>
+<p>初次安装mysql，root账户没有密码。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# mysql -u root </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.6.26 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="emphasis">'help;'</span> or <span class="emphasis">'\h'</span> for help. Type <span class="emphasis">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; show databases;</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| Database           |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| information<span class="emphasis">_schema |</span></span><br><span class="line"><span class="emphasis">| mysql              |</span></span><br><span class="line"><span class="emphasis">| performance_</span>schema |</span><br><span class="line">| test               |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>设置密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'password'</span>);</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
+<p>不需要重启数据库即可生效。</p>
+<p>把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。</p>
+<p><code>mysql&gt; grant all privileges on *.* to root@&#39;%&#39;identified by &#39;password&#39;;</code></p>
+<p>如果是新用户而不是root，则要先新建用户</p>
+<p><code>mysql&gt;create user &#39;username&#39;@&#39;%&#39; identified by &#39;password&#39;;</code></p>
+<p>此时就可以进行远程连接了。</p>
+<h2 id="安装php7-0"><a href="#安装php7-0" class="headerlink" title="安装php7.0"></a>安装php7.0</h2><p>php源码安装比较好，因为这个解释器。编译效率好。</p>
+<p>首先上个代码，来个直观印象</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php7 \</span><br><span class="line"> -<span class="ruby">-with-curl \</span></span><br><span class="line"><span class="ruby"> --with-freetype-dir \</span></span><br><span class="line"><span class="ruby"> --with-gd \</span></span><br><span class="line"><span class="ruby"> --with-gettext \</span></span><br><span class="line"><span class="ruby"> --with-iconv-dir \</span></span><br><span class="line"><span class="ruby"> --with-kerberos \</span></span><br><span class="line"><span class="ruby"> --with-libdir=lib64 \</span></span><br><span class="line"><span class="ruby"> --with-libxml-dir \</span></span><br><span class="line"><span class="ruby"> --enable-fpm</span></span><br><span class="line"><span class="ruby"> --with-openssl \</span></span><br><span class="line"><span class="ruby"> --with-pcre-regex \</span></span><br><span class="line"><span class="ruby"> --with-pdo-sqlite \</span></span><br><span class="line"><span class="ruby"> --with-pear \</span></span><br><span class="line"><span class="ruby"> --with-png-dir \</span></span><br><span class="line"><span class="ruby"> --with-xmlrpc \</span></span><br><span class="line"><span class="ruby"> --with-xsl \</span></span><br><span class="line"><span class="ruby"> --with-zlib \</span></span><br><span class="line"><span class="ruby"> --with-apxs2=<span class="regexp">/usr/local</span><span class="regexp">/apache/bin</span><span class="regexp">/apxs \</span></span></span><br><span class="line"><span class="ruby"> --enable-fpm \</span></span><br><span class="line"><span class="ruby"> --enable-bcmath \</span></span><br><span class="line"><span class="ruby"> --enable-libxml \</span></span><br><span class="line"><span class="ruby"> --enable-inline-optimization \</span></span><br><span class="line"><span class="ruby"> --enable-gd-native-ttf \</span></span><br><span class="line"><span class="ruby"> --enable-mbregex \</span></span><br><span class="line"><span class="ruby"> --enable-mbstring \</span></span><br><span class="line"><span class="ruby"> --enable-opcache \</span></span><br><span class="line"><span class="ruby"> --enable-pcntl \</span></span><br><span class="line"><span class="ruby"> --enable-shmop \</span></span><br><span class="line"><span class="ruby"> --enable-soap \</span></span><br><span class="line"><span class="ruby"> --enable-sockets \</span></span><br><span class="line"><span class="ruby"> --enable-sysvsem \</span></span><br><span class="line"><span class="ruby"> --enable-xml \</span></span><br><span class="line"><span class="ruby"> --enable-zip \</span></span><br><span class="line"><span class="ruby"> --enable-mysqlnd \</span></span><br><span class="line"><span class="ruby"> --with-mysqli=mysqlnd \</span></span><br><span class="line"><span class="ruby"> --with-pdo-mysql=mysqlnd</span></span><br><span class="line"><span class="ruby"> --with-mysql-sock=<span class="regexp">/var/lib</span><span class="regexp">/mysql/mysql</span>.sock</span></span><br></pre></td></tr></table></figure>
+<p>php下载<a href="http://www.php.net。下载7.0的版本就行了，然后在安装编译需要的程序。" target="_blank" rel="noopener">www.php.net。下载7.0的版本就行了，然后在安装编译需要的程序。</a></p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">yum</span> -y install libjpeg libjpeg-devel libpng libpng-devel free<span class="keyword">type</span> freetype-devel libxml2 libxml2-devel <span class="type">MySQL</span> pcre-develcurl-devel libxslt-devel</span><br></pre></td></tr></table></figure>
+<p>下载后解压进入执行上面的代码，就能够编译执行.make完执行make test检测一下，没有问题就make install。</p>
+<p>安装完成，复制php配置文件到安装目录</p>
+<figure class="highlight plain"><figcaption><span>php.ini-development</span><a href="/usr/local/php/lib/php.ini```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置http.conf</span><br></pre></td></tr></table></figure>
+<p>配置http.conf<br>//加载解析php模块<br>LoadModule php7_module modules/libphp7.so</p>
+<p>//解析后缀名.php的文件</p>
+<filesmatch "\.ph(p[2-6]?|tml)$"=""><br>    SetHandler application/x-httpd-php<br></filesmatch>
+
+<p>//默认页面</p>
+<p><ifmodule dir_module=""><br>    DirectoryIndex index.php index.html<br></ifmodule><br><code>`</code></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#apache2-4编译安装"><span class="toc-number">1.</span> <span class="toc-text">apache2.4编译安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装mysql"><span class="toc-number">2.</span> <span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、方法二：官网下载安装mysql-server"><span class="toc-number">3.</span> <span class="toc-text">2、方法二：官网下载安装mysql-server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装php7-0"><span class="toc-number">4.</span> <span class="toc-text">安装php7.0</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2017/11/30/blog/linux/lamp构架下的网站环境搭建/";
+  var disqus_url = "https://www.qwerse.com/2017/11/30/blog/linux/lamp构架下的网站环境搭建/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

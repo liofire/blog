@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link active">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='index'>
+  <div class="posts-list">
+    
+      <section>
+        <a href="/2016/12/08/blog/linux/docker的基本用法/">
+          <h3 class='post-head'>
+            docker的基本用法
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <p>就如同mysql改查一样只需要了解就行，以后需要在深入，就行了。</p>
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/12/08</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+      <section>
+        <a href="/2016/11/03/blog/linux/centos6,内核升级为3.10/">
+          <h3 class='post-head'>
+            centos6,内核升级为3.10
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <h3 id="导入公钥："><a href="#导入公钥：" class="headerlink" title="导入公钥："></a>导入公钥：</h3><pre><code>rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/11/03</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+      <section>
+        <a href="/2016/10/03/blog/web/http 状态代码表/">
+          <h3 class='post-head'>
+            http 状态代码表
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <p>　  </p>
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/10/03</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络/">网络</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+      <section>
+        <a href="/2016/09/29/blog/mysql/MySql主从备份/">
+          <h3 class='post-head'>
+            MySql主从备份
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <h3 id="一-MySQL复制概述"><a href="#一-MySQL复制概述" class="headerlink" title="一.MySQL复制概述"></a>一.MySQL复制概述</h3><p>MySQL支持单向、异步复制，复制过程中一个服务器充当主服务器，而一个或多个其它服务器充当从服务器。MySQL复制基于主服务器在二进制日志中跟踪所有对数据库的更改(更新、删除等等)。因此，要进行复制，必须在主服务器上启用二进制日志。每个从服务器从主服务器接收主服务器已经记录到其二进制日志的保存的更新。当一个从服务器连接主服务器时，它通知主服务器从服务器在日志中读取的最后一次成功更新的位置。从服务器接收从那时起发生的任何更新，并在本机上执行相同的更新。然后封锁并等待主服务器通知新的更新。从服务器执行备份不会干扰主服务器，在备份过程中主服务器可以继续处理更新。</p>
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/09/29</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+      <section>
+        <a href="/2016/09/25/blog/linux/mysql基础操作/">
+          <h3 class='post-head'>
+            mysql基础操作
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <h3 id="一、初识SQL语言"><a href="#一、初识SQL语言" class="headerlink" title="一、初识SQL语言"></a>一、初识SQL语言</h3><p>SQL（Structured Query Language 即结构化查询语言）<br>SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：<br>DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTER<br>DML语句      数据库操纵语言：     插入数据INSERT、删除数据DELETE、更新数据UPDATE、查询数据SELECT<br>DCL语句      数据库控制语言：     例如控制用户的访问权限GRANT、REVOKE</p>
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/09/25</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/GitBlog/">GitBlog</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+      <section>
+        <a href="/2016/09/13/blog/linux/Rsync+inotify/">
+          <h3 class='post-head'>
+            rsync+inotify(触发式同步)
+          </h3>
+        </a>
+        
+        <div class="post-content">
+          
+            
+              
+                <p>### </p>
+              
+          
+        </div>
+        <div class='post-meta'>
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/09/13</time>
+          
+            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+          
+          
+            <span class="seperator">|</span>
+             
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              
+             
+  <a href="/tags/#linux" class='tag'>linux</a>
+
+
+          
+        </div>
+      </section>
+    
+  </div>
+  <aside>
+    
+    <div class="search">
+      <div class="content">
+        <form action="//www.google.com/search" target="_blank" class="search-form">
+          <input type="text" name="q" maxlength="20" placeholder=Search>
+          <input type="hidden" name='sitesearch' value="https://www.qwerse.com">
+        </form>
+      </div>
+    </div>
+    
+    
+      <div class="avatar">
+        <img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg" alt="avatar">
+          
+            <div class="content">
+                <span>Qwerse</span>
+            </div>
+          
+      </div>
+    
+    
+      <div class="categories">
+        <h1>
+          Categories
+        </h1>
+        <div class="content">
+          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全/">安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li></ul>
+        </div>
+      </div>
+    
+    
+      <div class="links">
+        <h1>
+          Blogroll
+        </h1>
+        <div class="content">
+          
+            <a href="https://www.baidu.com/" target="_blank">百度</a>
+          
+            <a href="https://www.google.com/" target="_blank">谷歌</a>
+          
+            <a href="https://www.zhihu.com/" target="_blank">知乎</a>
+          
+        </div>
+      </div>
+    
+  </aside>
+</main>
+
+  <div class="paging">
+  <div class="paging-container">
+    
+    <div class='page-prev'>
+      <a href="/page/3/">Prev</a>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

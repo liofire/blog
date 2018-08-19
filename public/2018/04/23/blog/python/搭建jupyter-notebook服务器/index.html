@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>搭建jupyter-notebook服务器 | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>搭建jupyter-notebook服务器</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/23</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#服务" class='tag'>服务</a>
+
+
+            
+          </div>
+          <h3 id="安装notebook"><a href="#安装notebook" class="headerlink" title="安装notebook"></a>安装notebook</h3><ul>
+<li>安装pip缺少一些系统文件我嫌麻烦，使用了conda集成包。<br>官网直接下载下来的是sh文件执行就行，不要把conda加入系统变量会导致yum用不了。</li>
+</ul>
+<h5 id="配置notebook"><a href="#配置notebook" class="headerlink" title="配置notebook"></a>配置notebook</h5><ul>
+<li>生成 /home/ipynb/.jupyter/jupyter_notebook_config.py 文件</li>
+</ul>
+<p><code>jupyter notebook --generate-config</code></p>
+<ul>
+<li>编辑配置文件</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#注释为ssl，没什么大用</span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.certfile</span> = u<span class="string">'/home/ipython/full_chain.pem'</span></span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.keyfile</span> = u<span class="string">'/home/ipython/private.key'</span></span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.ip</span> = <span class="string">'*'</span>                  #任何ip可以连接</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.open_browser</span> = False      #启动不打开浏览器</span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.password</span> = <span class="string">'sha1:26ab20ed1e8a:73a3b3aecc20aa27b9eba88be46dc7d247dc5b46'</span> #密码这里先#掉（第<span class="number">4</span>步会生成密码，然后填入sha1，解注释）</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.port</span> =<span class="number">6082</span>    #开启的端口</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.notebook_dir</span> = <span class="string">'/home/ipython/test'</span> #工作目录</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置密码</li>
+</ul>
+<p>localhost:8888 进入notebook 新建一个ipynb<br>运行<br><code>from notebook.auth import passwd</code><br><code>passwd()</code></p>
+<p>输入两遍密码得到sha1 返回第3步，把密码的#解掉，””中填入sha1</p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><ul>
+<li>增强jupyter的编辑能力(强烈推荐！)，使jupyter如IDE一般强大<br><a href="https://github.com/jupyterlab/jupyterlab" target="_blank" rel="noopener">https://github.com/jupyterlab/jupyterlab</a><br>我是使用的conda，用conda安装。githup也有其他安装方法，看看文档。<br><code>conda install -c conda-forge jupyterlab</code></li>
+</ul>
+<h3 id="开机自动运行"><a href="#开机自动运行" class="headerlink" title="开机自动运行"></a>开机自动运行</h3><ul>
+<li>利用systemctl来进行开机启动</li>
+</ul>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Jupyter Notebook</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="attr">PIDFile</span>=/home/ipython/run/jupyter.pid</span><br><span class="line"><span class="attr">ExecStart</span>=/conda/bin/jupyter-lab</span><br><span class="line"><span class="attr">User</span>=ipython</span><br><span class="line"><span class="attr">Group</span>=ipython</span><br><span class="line"><span class="attr">WorkingDirectory</span>=/home/ipython/test</span><br><span class="line"><span class="attr">Environment</span>=<span class="string">'XDG_RUNTIME_DIR=/home/ipython/run'</span> #这个每个电脑都不一样，使用jupyter --path 查看RUNTIME的值就知道了</span><br><span class="line"><span class="attr">Restart</span>=always</span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>感谢：<br>. <a href="http://chnwentao.com/2017/11/%E5%B7%A5%E5%85%B7JupyterNotebook%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" target="_blank" rel="noopener">http://chnwentao.com/2017/11/%E5%B7%A5%E5%85%B7JupyterNotebook%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</a><br>. <a href="https://bitmingw.com/2017/07/09/run-jupyter-notebook-server/" target="_blank" rel="noopener">https://bitmingw.com/2017/07/09/run-jupyter-notebook-server/</a></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装notebook"><span class="toc-number">1.</span> <span class="toc-text">安装notebook</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#配置notebook"><span class="toc-number">1.0.1.</span> <span class="toc-text">配置notebook</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插件安装"><span class="toc-number">2.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开机自动运行"><span class="toc-number">3.</span> <span class="toc-text">开机自动运行</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2018/04/23/blog/python/搭建jupyter-notebook服务器/";
+  var disqus_url = "https://www.qwerse.com/2018/04/23/blog/python/搭建jupyter-notebook服务器/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang=>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="QwerSe-一击致命，一点就透
+">
+  <meta name="keywords" content="Markdown,linux,网络,构架">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>局域网搭建dns | QwerSe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>QwerSe</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>局域网搭建dns</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/01/16</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#dns" class='tag'>dns</a>
+
+
+            
+          </div>
+          <h3 id="选择dns软件”pdnsd”"><a href="#选择dns软件”pdnsd”" class="headerlink" title="选择dns软件”pdnsd”"></a>选择dns软件”pdnsd”</h3><p>用过dnsmasq和bind。都不太符合自己的意思。尤其是bind简直是太笨重了。</p>
+<h4 id="pdnsd的优势"><a href="#pdnsd的优势" class="headerlink" title="pdnsd的优势"></a>pdnsd的优势</h4><p>Ubuntu16.04默认使用dnsmasq作为dns解析服务，换句话说，一个Ubuntu 16.04LTS的电脑本身就是一个开放53端口的DNS服务器，听起来有点像买Ubuntu电脑送DNS服务器的感觉。但事实确实是这样的，因为Ubuntu默认开机启动dnsmasq服务，而且即使你把它stop了，Ubuntu还会定时重启，而且在启动dnsmasq服务的时候，Ubuntu系统会自动修改/etc/resolv.conf这个默认DNS服务指向文件为127.0.0.1，导致你试图修改这个文件改变你的DNS服务器地址后会莫名其妙被改回127.0.0.1。但是我之所以要用Pdnsd替换点dnsmasq的主要目的还是为了防止DNS污染。</p>
+<p>首先Pdnsd有这样几个优势</p>
+<p>1、可以将UDP协议的DNS请求转换为TCP协议进行发送，通过这种方式避免DNS污染</p>
+<p>2、pdnsd可以选择性的拒绝一些常见的被污染的目标地址，直接通过境内的dns服务器即可获得正确结果</p>
+<p>3、pdnsd可以做本地DNS缓存，而且可以自由设置过期时间，对于已缓存的DNS地址，局域网内其他电脑在DNS解析上的耗时可以缩减到1ms以内，大大提升了电脑的上网速度</p>
+<h4 id="Ubuntu-16-04LTS系统为例详细讲解安装过程"><a href="#Ubuntu-16-04LTS系统为例详细讲解安装过程" class="headerlink" title="Ubuntu 16.04LTS系统为例详细讲解安装过程"></a>Ubuntu 16.04LTS系统为例详细讲解安装过程</h4><h5 id="1、-第一步：将dnsmasq的监听端口从53端口挪到其他端口"><a href="#1、-第一步：将dnsmasq的监听端口从53端口挪到其他端口" class="headerlink" title="1、  第一步：将dnsmasq的监听端口从53端口挪到其他端口"></a>1、  第一步：将dnsmasq的监听端口从53端口挪到其他端口</h5><p>首先要科普一下，Ubuntu系统中的dnsmasq并不只有一个实例在运行，而是会开启多个，在我的电脑中因为开启了Ubuntu自带的Wifi分享功能，本机多了一个内网IP地址10.42.0.1，并且作为这个Wifi网络的DNS服务器，所以我现在电脑上运行着三个dnsmasq进程。<br>查看电脑53端口的占用情况，可以用一下命令<br><code>sudo netstat -apn | grep 53</code></p>
+<p>我的计算机有线网卡的内网地址为192.168.1.100，并且分享了一个Wifi网络，在这个Wifi网络中的内网地址是10.42.0.1在Ubuntu默认情况下，所有网卡的53端口（包括ipv6地址）均会被dnsmasq所占，并且不止一个dnsmasq实例正在运行。</p>
+<h5 id="注：之所以有127-0-0-1-53而没有192-168-1-100-53或者0-0-0-0-53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10-42-0-1-53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10-42-0-1-所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。"><a href="#注：之所以有127-0-0-1-53而没有192-168-1-100-53或者0-0-0-0-53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10-42-0-1-53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10-42-0-1-所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。" class="headerlink" title="注：之所以有127.0.0.1:53而没有192.168.1.100:53或者0.0.0.0:53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10.42.0.1:53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10.42.0.1,所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。"></a>注：之所以有127.0.0.1:53而没有192.168.1.100:53或者0.0.0.0:53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10.42.0.1:53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10.42.0.1,所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。</h5><h5 id="注：运行在127-0-0-1的-53的dnsmasq进程和运行在10-42-0-1的dnsmasq是两个-不同的进程，使用不同的配置文件"><a href="#注：运行在127-0-0-1的-53的dnsmasq进程和运行在10-42-0-1的dnsmasq是两个-不同的进程，使用不同的配置文件" class="headerlink" title="注：运行在127.0.0.1的:53的dnsmasq进程和运行在10.42.0.1的dnsmasq是两个 不同的进程，使用不同的配置文件"></a>注：运行在127.0.0.1的:53的dnsmasq进程和运行在10.42.0.1的dnsmasq是两个 不同的进程，使用不同的配置文件</h5><p>在Ubuntu默认情况下，127.0.0.1和0.0.0.0的53端口一般由同一个dnsmasq进程所占，而其他网段比如10.42.0.1由另一个dnsmasq进程控制，由于10.42.0.1是笔记本共享出的wifi，所以这里的dnsmasq除了做dns转发以外，还有一个更重要的作用就是做DHCP服务器动态为连接热点的设备分配IP地址。<br>那么如何观察本机一共有多少dnsmasq进程，这些dnsmasq的配置文件又各是谁呢？可以用如下指令</p>
+<p><code>ps -fC dnsmasq|more</code></p>
+<p>现在我们要用pdnsd替换掉的就是监听在127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个端口的dnsmasq服务，也就是pid为12625的这个dnsmasq，其他的dnsmasq因为并没有挤占端口，而且还要作为DHCP服务使用，所以我们不要停掉他们。那么如何将dnsmasq的监听端口挪走呢，只需要修改dnsmasq的配置文件并重启即可，虽然仅仅stop掉dnsmasq的服务也有用，但是Ubuntu隔一段时间又会自动重启并同时修改/etc/resolv.conf文件，所以最好的方式还是把dnsmasq的端口挪走一劳永逸。<br>首先我们停止dnsmasq的服务</p>
+<p><code>sudo service dnsmasq stop</code></p>
+<p>现在使用netstat -nl观察端口的监听情况是不是发现127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个53端口都已经没有啦，而且并没有影响10.42.0.1:53上做DHCP服务的dnsmasq的运行。</p>
+<h5 id="注：为什么127-0-0-1-53没有了而10-42-0-1-53还是由dnsmasq所占，原因如上面已经提到过的，"><a href="#注：为什么127-0-0-1-53没有了而10-42-0-1-53还是由dnsmasq所占，原因如上面已经提到过的，" class="headerlink" title="注：为什么127.0.0.1:53没有了而10.42.0.1:53还是由dnsmasq所占，原因如上面已经提到过的，"></a>注：为什么127.0.0.1:53没有了而10.42.0.1:53还是由dnsmasq所占，原因如上面已经提到过的，</h5><p>这两个端口的dnsmasq并不是一个dnsmasq进程，所使用配置文件和发挥的功能也不一样，而我们要修改两个网段最终的DNS服务程序，只需要将127.0.0.1:53这个dnsmasq换掉即可，不需要管10.42.0.1:53这个内网的dnsmasq进程<br>然后修改dnsmasq的配置文件</p>
+<p><code>sudo nano /etc/dnsmasq.conf</code></p>
+<p>在第十行将dnsmasq的监听端口从53挪到9053，这样我们就把系统默认的dnsmasq的端口挪到了9053</p>
+<p>然后重启dnsmasq服务</p>
+<p><code>sudo service dnsmasq restart</code></p>
+<p>现在在使用netstat -nl查看，是不是发现原来127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个53端口都变成9053啦，现在我们已经为pdnsd服务腾出了工作端口，下一步我们可以安装pdnsd了</p>
+<p>注：于此同时，由于我们系统的dns服务器指向还是127.0.0.1,所以此时你的电脑已经上不了忘了，解决方法是修改/etc/resolv.con文件将127.0.0.1换成ISP提供的DNS服务器或者114.114.114.114或者阿里的223.5.5.5等等。</p>
+<h4 id="2、安装Pdnsd服务"><a href="#2、安装Pdnsd服务" class="headerlink" title="2、安装Pdnsd服务"></a>2、安装Pdnsd服务</h4><p><code>sudo apk-get install pdnsd</code></p>
+<p>在安装时会跳出一个选择框，我们选manual<br>（注意如果此时提示你网络问题请到/etc/resolv.conf文件中把dns服务器地址从127.0.1.1改到114.114.114.114）<br>安装完pdnsd服务之后我们需要修改它的配置文件，主要目的是设置两组DNS服务器，第一组是国内的114.114.114.114,第二组是OpenDNS的5353端口，114.114.114.114的53端口即使使用TCP连接解析也会返回一些脏地址，但我们仍然要用他的原因它的ping通率要比OpenDns要高，主要作用是加速一些国内正常DNS的解析，防止访问国内网站时走OpenDNS导致解析变慢。所以下面配置文件中的114.114.114.114也可以换成你当地ISP分给你的DNS服务器，尤其是在114.114.114.114 ping不通的情况下。另外，下面配置文件中的reject列表也非常重要，只有当114.114.114.114返回脏地址在这个列表中时才会触发pdnsd再发送一个请求到OpenDNS，所以务必要将114.114.114.114所有的脏地址都收录到这个列表中。同时，如果你本地ping不通OpenDNS的两个地址时，有两种方式可以解决，第一种是使用Redsocks+代理将tcp协议的DNS查询请求加密发送到国外代理服务器，另一种是使用能ping通的国外其他DNS服务器，尽量避开53端口，也就是说尽量找国外支持53端口以外进行解析的DNS服务器。</p>
+<p><code>sudo nano /etc/pdnsd.conf</code></p>
+<p>将这个文件修改如下</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Read the pdnsd.conf(5) manpage for an explanation of the options.  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">/* Note: this file is overriden by automatic config files when </span></span><br><span class="line"><span class="comment">  /etc/default/pdnsd AUTO_MODE is set and that </span></span><br><span class="line"><span class="comment">  /usr/share/pdnsd/pdnsd-$AUTO_MODE.conf exists </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line">  </span><br><span class="line">global &#123;  </span><br><span class="line">    perm_cache=<span class="number">4096</span>;  </span><br><span class="line">    cache_dir=<span class="string">"/var/cache/pdnsd"</span>;  </span><br><span class="line">    run_as=<span class="string">"pdnsd"</span>;  </span><br><span class="line">    server_ip = <span class="number">192.168</span><span class="number">.1</span><span class="number">.81</span>;  # 将自己的有线网卡的局域网地址设为工作地址，这样可以方便局域网用户把你的电脑当成DNS服务器,这里要换成你的地址，但是好像<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>我试过不行  </span><br><span class="line">    server_port=<span class="number">53</span>;            # 使用DNS协议默认的<span class="number">53</span>号地址  </span><br><span class="line">    status_ctl = on;  </span><br><span class="line">    query_method=tcp_only;   #非常重要，使用tcp协议请求DNS结果，防止被污染  </span><br><span class="line">    neg_domain_pol = off;    </span><br><span class="line">    paranoid = on;    </span><br><span class="line">    par_queries = <span class="number">1</span>;    </span><br><span class="line">    min_ttl = <span class="number">6</span>h;    </span><br><span class="line">    max_ttl = <span class="number">12</span>h;    </span><br><span class="line">    timeout = <span class="number">10</span>;    </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/* with status_ctl=on and resolvconf installed, this will work out from the box </span></span><br><span class="line"><span class="comment">  this is the recommended setup for mobile machines */</span>  </span><br><span class="line">server &#123;    </span><br><span class="line">   label = <span class="string">"routine"</span>;  # 这个随便写    </span><br><span class="line">   ip = <span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span>;   # 这里为上级 dns 的 ip 地址，如果<span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span>能够ping通，可以用<span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span>    </span><br><span class="line">   timeout = <span class="number">5</span>;    </span><br><span class="line">   reject = <span class="number">74.125</span><span class="number">.127</span><span class="number">.102</span>,  #这里非常重要，这些ip是防火墙喜欢将DNS污染到的目标地址，也就是脏地址，你可以使用nslookup命令查询当地的脏地址并补充在这个列表中，如果<span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span>返回脏地址后pdnsd会自动重新发送DNS请求到下面的OpenDNS服务器，如果一个脏地址没有在列在这里，那么还是会收到污染的结果  </span><br><span class="line">       <span class="number">74.125</span><span class="number">.155</span><span class="number">.102</span>,    </span><br><span class="line">       <span class="number">74.125</span><span class="number">.39</span><span class="number">.102</span>,    </span><br><span class="line">       <span class="number">74.125</span><span class="number">.39</span><span class="number">.113</span>,    </span><br><span class="line">       <span class="number">209.85</span><span class="number">.229</span><span class="number">.138</span>,    </span><br><span class="line">       <span class="number">128.121</span><span class="number">.126</span><span class="number">.139</span>,    </span><br><span class="line">       <span class="number">159.106</span><span class="number">.121</span><span class="number">.75</span>,    </span><br><span class="line">       <span class="number">169.132</span><span class="number">.13</span><span class="number">.103</span>,    </span><br><span class="line">       <span class="number">192.67</span><span class="number">.198</span><span class="number">.6</span>,    </span><br><span class="line">       <span class="number">202.106</span><span class="number">.1</span><span class="number">.2</span>,    </span><br><span class="line">       <span class="number">202.181</span><span class="number">.7</span><span class="number">.85</span>,    </span><br><span class="line">       <span class="number">203.161</span><span class="number">.230</span><span class="number">.171</span>,    </span><br><span class="line">       <span class="number">203.98</span><span class="number">.7</span><span class="number">.65</span>,    </span><br><span class="line">       <span class="number">207.12</span><span class="number">.88</span><span class="number">.98</span>,    </span><br><span class="line">       <span class="number">208.56</span><span class="number">.31</span><span class="number">.43</span>,    </span><br><span class="line">       <span class="number">209.145</span><span class="number">.54</span><span class="number">.50</span>,    </span><br><span class="line">       <span class="number">209.220</span><span class="number">.30</span><span class="number">.174</span>,    </span><br><span class="line">       <span class="number">209.36</span><span class="number">.73</span><span class="number">.33</span>,    </span><br><span class="line">       <span class="number">211.94</span><span class="number">.66</span><span class="number">.147</span>,    </span><br><span class="line">       <span class="number">213.169</span><span class="number">.251</span><span class="number">.35</span>,    </span><br><span class="line">       <span class="number">216.221</span><span class="number">.188</span><span class="number">.182</span>,    </span><br><span class="line">       <span class="number">216.234</span><span class="number">.179</span><span class="number">.13</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.39</span>,    </span><br><span class="line">       <span class="number">37.61</span><span class="number">.54</span><span class="number">.158</span>,    </span><br><span class="line">       <span class="number">4.36</span><span class="number">.66</span><span class="number">.178</span>,    </span><br><span class="line">       <span class="number">46.82</span><span class="number">.174</span><span class="number">.68</span>,    </span><br><span class="line">       <span class="number">59.24</span><span class="number">.3</span><span class="number">.173</span>,    </span><br><span class="line">       <span class="number">64.33</span><span class="number">.88</span><span class="number">.161</span>,    </span><br><span class="line">       <span class="number">64.33</span><span class="number">.99</span><span class="number">.47</span>,    </span><br><span class="line">       <span class="number">64.66</span><span class="number">.163</span><span class="number">.251</span>,    </span><br><span class="line">       <span class="number">65.104</span><span class="number">.202</span><span class="number">.252</span>,    </span><br><span class="line">       <span class="number">65.160</span><span class="number">.219</span><span class="number">.113</span>,    </span><br><span class="line">       <span class="number">66.45</span><span class="number">.252</span><span class="number">.237</span>,    </span><br><span class="line">       <span class="number">69.55</span><span class="number">.52</span><span class="number">.253</span>,    </span><br><span class="line">       <span class="number">72.14</span><span class="number">.205</span><span class="number">.104</span>,    </span><br><span class="line">       <span class="number">72.14</span><span class="number">.205</span><span class="number">.99</span>,    </span><br><span class="line">       <span class="number">78.16</span><span class="number">.49</span><span class="number">.15</span>,    </span><br><span class="line">       <span class="number">8.7</span><span class="number">.198</span><span class="number">.45</span>,    </span><br><span class="line">       <span class="number">93.46</span><span class="number">.8</span><span class="number">.89</span>,    </span><br><span class="line">       <span class="number">37.61</span><span class="number">.54</span><span class="number">.158</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.39</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.247</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.246</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.245</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.244</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">65.49</span><span class="number">.2</span><span class="number">.178</span>,    </span><br><span class="line">       <span class="number">189.163</span><span class="number">.17</span><span class="number">.5</span>,    </span><br><span class="line">       <span class="number">23.89</span><span class="number">.5</span><span class="number">.60</span>,    </span><br><span class="line">       <span class="number">49.2</span><span class="number">.123</span><span class="number">.56</span>,    </span><br><span class="line">       <span class="number">54.76</span><span class="number">.135</span><span class="number">.1</span>,    </span><br><span class="line">       <span class="number">77.4</span><span class="number">.7</span><span class="number">.92</span>,    </span><br><span class="line">       <span class="number">118.5</span><span class="number">.49</span><span class="number">.6</span>,    </span><br><span class="line">       <span class="number">159.24</span><span class="number">.3</span><span class="number">.173</span>,    </span><br><span class="line">       <span class="number">188.5</span><span class="number">.4</span><span class="number">.96</span>,    </span><br><span class="line">       <span class="number">197.4</span><span class="number">.4</span><span class="number">.12</span>,    </span><br><span class="line">       <span class="number">220.250</span><span class="number">.64</span><span class="number">.24</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.30</span>,    </span><br><span class="line">       <span class="number">249.129</span><span class="number">.46</span><span class="number">.48</span>,    </span><br><span class="line">       <span class="number">253.157</span><span class="number">.14</span><span class="number">.165</span>;    </span><br><span class="line">   reject_policy = fail;    </span><br><span class="line">   exclude = <span class="string">".google.com"</span>,    </span><br><span class="line">       <span class="string">".cn"</span>,      #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".baidu.com"</span>,   #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".qq.com"</span>,  #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".gstatic.com"</span>,    </span><br><span class="line">       <span class="string">".googleusercontent.com"</span>,    </span><br><span class="line">       <span class="string">".googlepages.com"</span>,    </span><br><span class="line">       <span class="string">".googlevideo.com"</span>,    </span><br><span class="line">       <span class="string">".googlecode.com"</span>,    </span><br><span class="line">       <span class="string">".googleapis.com"</span>,    </span><br><span class="line">       <span class="string">".googlesource.com"</span>,    </span><br><span class="line">       <span class="string">".googledrive.com"</span>,    </span><br><span class="line">       <span class="string">".ggpht.com"</span>,    </span><br><span class="line">       <span class="string">".youtube.com"</span>,    </span><br><span class="line">       <span class="string">".youtu.be"</span>,    </span><br><span class="line">       <span class="string">".ytimg.com"</span>,    </span><br><span class="line">       <span class="string">".twitter.com"</span>,    </span><br><span class="line">       <span class="string">".facebook.com"</span>,    </span><br><span class="line">       <span class="string">".fastly.net"</span>,    </span><br><span class="line">       <span class="string">".akamai.net"</span>,    </span><br><span class="line">       <span class="string">".akamaiedge.net"</span>,    </span><br><span class="line">       <span class="string">".akamaihd.net"</span>,    </span><br><span class="line">       <span class="string">".edgesuite.net"</span>,    </span><br><span class="line">       <span class="string">".edgekey.net"</span>;    </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">server &#123;    </span><br><span class="line">   # Better setup dns server(DON'T USE PORT <span class="number">53</span>) on your own vps for faster proxying    </span><br><span class="line">   label = <span class="string">"special"</span>;  # 这个随便写    </span><br><span class="line">   ip = <span class="number">208.67</span><span class="number">.222</span><span class="number">.222</span>,<span class="number">208.67</span><span class="number">.220</span><span class="number">.220</span>; # 这里为上级 dns 的 ip 地址    </span><br><span class="line">   port = <span class="number">5353</span>;    </span><br><span class="line">   proxy_only = on;    </span><br><span class="line">   timeout = <span class="number">5</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存后重启pdnsd发现并没有像我们想的一样53端口出现监听，因为我们还需要将pdnsd以守护模式运行</p>
+<p><code>sudo nano /etc/default/pdnsd</code></p>
+<p>将START_DAEMON=no改为START_DAEMON=yes</p>
+<p>现在可以重启pdnsd服务了</p>
+<p><code>sudo /etc/init.d/pdnsd restart</code></p>
+<p>重启之后再使用netstat -nl查看端口情况，是不是53端口已经正在使用了，或者使用sudo netstat -apn | grep 53看看是不是由pdnsd服务占用53端口</p>
+<p>最后一步，就是将我们本机的DNS服务器地址指向pdnsd</p>
+<p><code>sudo nano /etc/resolv.conf</code></p>
+<p>将原来的127.0.1.1改成上面配置文件配置的地址，即如果是局域网地址，就填192.168.1.81，视你自己的网络情况而定，如果上面填的是0.0.0.0，那么此处就填127.0.0.1</p>
+<p>然后再使用nslookup <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>和nslookup <a href="http://www.facebook.com" target="_blank" rel="noopener">www.facebook.com</a><br>看一下dns解析结果是否正确<br>如果baidu.com无法解析说明Pdnsd配置有问题，此时要检查53端口是否已被监听<br>如果baidu.com正常而facebook.com无法解析或者返回错误地址，首先我们可以查看并清空一下缓存</p>
+<p><code>sudo pdnsd-ctl dump</code><br><code>sudo pdnsd-ctl empty-cache</code></p>
+<p>如果还是返回污染后的地址，就把这个污染地址加到上面/etc/pdnsd.conf的脏域名列表中，就可以获得正确结果了<br>那么如何判断DNS解析后的域名是否正确呢，方法是nslookup <a href="http://www.twittter.com" target="_blank" rel="noopener">www.twittter.com</a> 和nslookup <a href="http://www.youtube.com，真的解析地址会返回多个解析结果，而污染后的结果只有一个" target="_blank" rel="noopener">www.youtube.com，真的解析地址会返回多个解析结果，而污染后的结果只有一个</a><br>如下图中前两个是错误的解析结果，后两个是正确的解析结果，或者你还可以通过webdnstools.com这个网站去查询正确的解析结果与本地的结果进行比对</p>
+<p><strong>—-局域网设置内网域名—–</strong></p>
+<p>a.最简单办法直接用pdnsd-ctl 插入一条 A 记录,举例：</p>
+<p><code>pdnsd-ctl add a 127.0.0.1 www.linuxbyte.org. 900</code>（900 为TTL 值）</p>
+<p>同样你可以用pdnsd-ctl add 插入其他的mx，ns，cname 记录等<br>b.第一方法适合临时做一些修改，要想真正的劫持一个域名可以在 pdnsd.conf 中加入 rr section。举例：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line">name = linuxbyte.org;</span><br><span class="line">ns = localhost;</span><br><span class="line">soa = localhost, root.localhost, 42, 86400, 900, 86400, 86400;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是劫持了ns 记录，把域名解析交给你指定的dns 服务器来做。<br>​<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line"><span class="attribute">name</span> = *.linuxbyte.org<span class="comment">;</span></span><br><span class="line"><span class="attribute">cname</span> = www.linuxsky.org<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里把所有linuxbyte.org 的二级域名都做了cname到了 <a href="http://www.linuxsky.org" target="_blank" rel="noopener">www.linuxsky.org</a></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line">name = www.linuxbyte.org;</span><br><span class="line">a = 192.168.0.123</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接插入一条A 记录。</p>
+<p><code>`</code></p>
+
+        </section>
+    </article>
+    
+        <!-- disqus 评论框 start -->
+        <div class="comment">
+            <div id="disqus_thread" class="disqus-thread">
+              <i>Loading comments box needs to over the wall</i>
+            </div>
+        </div>
+        <!-- disqus 评论框 end -->
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择dns软件”pdnsd”"><span class="toc-number">1.</span> <span class="toc-text">选择dns软件”pdnsd”</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pdnsd的优势"><span class="toc-number">1.1.</span> <span class="toc-text">pdnsd的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ubuntu-16-04LTS系统为例详细讲解安装过程"><span class="toc-number">1.2.</span> <span class="toc-text">Ubuntu 16.04LTS系统为例详细讲解安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、-第一步：将dnsmasq的监听端口从53端口挪到其他端口"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、  第一步：将dnsmasq的监听端口从53端口挪到其他端口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注：之所以有127-0-0-1-53而没有192-168-1-100-53或者0-0-0-0-53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10-42-0-1-53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10-42-0-1-所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。"><span class="toc-number">1.2.2.</span> <span class="toc-text">注：之所以有127.0.0.1:53而没有192.168.1.100:53或者0.0.0.0:53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10.42.0.1:53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10.42.0.1,所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注：运行在127-0-0-1的-53的dnsmasq进程和运行在10-42-0-1的dnsmasq是两个-不同的进程，使用不同的配置文件"><span class="toc-number">1.2.3.</span> <span class="toc-text">注：运行在127.0.0.1的:53的dnsmasq进程和运行在10.42.0.1的dnsmasq是两个 不同的进程，使用不同的配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注：为什么127-0-0-1-53没有了而10-42-0-1-53还是由dnsmasq所占，原因如上面已经提到过的，"><span class="toc-number">1.2.4.</span> <span class="toc-text">注：为什么127.0.0.1:53没有了而10.42.0.1:53还是由dnsmasq所占，原因如上面已经提到过的，</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、安装Pdnsd服务"><span class="toc-number">1.3.</span> <span class="toc-text">2、安装Pdnsd服务</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+<!-- disqus 公共JS代码 -->
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = "QwerseBlog";
+  var disqus_identifier = "https://www.qwerse.com/2018/01/16/blog/linux/局域网搭建dns/";
+  var disqus_url = "https://www.qwerse.com/2018/01/16/blog/linux/局域网搭建dns/";
+
+  isAgent(getDisqus)
+
+  // determine user agent in China
+  function isAgent(cb) {
+    var url = '//graph.facebook.com/feed?callback=h';
+    var xhr = new XMLHttpRequest();
+    var called = false;
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      called = true;
+      cb(true);
+      }
+    };
+    xhr.send();
+    // timeout 1s, this facebook API is very fast.
+    setTimeout(function() {
+      if (!called) {
+      xhr.abort();
+      cb(false)
+      }
+    }, 1000);
+  }
+
+  function getDisqus(isAgent) {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
+    dsq.async = true
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
+  }
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>

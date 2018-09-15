@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>利用ngrok远程内网机器 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="需要用ngrok把公司内网的服务器穿出来，好22连接管理。linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具 ####1，安装好go环境，ngrok是用go编写的。 1、下载go的软件包 1wget http://qwerse.hk.ufileos.com/go1.4.2.linux-amd64.tar.gz 2、解压出来可以随便指定位置 1tar">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用ngrok远程内网机器">
+<meta property="og:url" content="https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="需要用ngrok把公司内网的服务器穿出来，好22连接管理。linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具 ####1，安装好go环境，ngrok是用go编写的。 1、下载go的软件包 1wget http://qwerse.hk.ufileos.com/go1.4.2.linux-amd64.tar.gz 2、解压出来可以随便指定位置 1tar">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用ngrok远程内网机器">
+<meta name="twitter:description" content="需要用ngrok把公司内网的服务器穿出来，好22连接管理。linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具 ####1，安装好go环境，ngrok是用go编写的。 1、下载go的软件包 1wget http://qwerse.hk.ufileos.com/go1.4.2.linux-amd64.tar.gz 2、解压出来可以随便指定位置 1tar">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>利用ngrok远程内网机器</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/10/29</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/linux/利用ngrok远程内网机器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/29/blog/linux/利用ngrok远程内网机器/" class="article-date">
+  <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用ngrok远程内网机器
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#linux" class='tag'>linux</a>
-
-
-            
-          </div>
-          <p>需要用ngrok把公司内网的服务器穿出来，好22连接管理。<br>linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需要用ngrok把公司内网的服务器穿出来，好22连接管理。<br>linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具</p>
 <p>####1，安装好go环境，ngrok是用go编写的。</p>
 <p>1、下载go的软件包</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="string">http:</span><span class="comment">//qwerse.hk.ufileos.com/go1.4.2.linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
@@ -120,144 +136,94 @@
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">server_addr:</span> <span class="string">"ngrok.your-domain.com:4443"</span></span><br><span class="line"><span class="symbol">trust_host_root_certs:</span> false</span><br><span class="line"><span class="symbol">tunnels:</span></span><br><span class="line"><span class="symbol">  example:</span></span><br><span class="line"><span class="symbol">   subdomain:</span> <span class="string">"example"</span> <span class="meta">#定义服务器分配域名前缀</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    http:</span> <span class="number">80</span> <span class="meta">#映射端口，不加ip默认本机</span></span><br><span class="line"><span class="symbol">    https:</span> <span class="number">80</span></span><br><span class="line"><span class="symbol">  web:</span></span><br><span class="line"><span class="symbol">   subdomain:</span> <span class="string">"web"</span> <span class="meta">#定义服务器分配域名前缀</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    http:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">80</span> <span class="meta">#映射端口，可以通过加ip为内网任意一台映射</span></span><br><span class="line"><span class="symbol">    https:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">80</span></span><br><span class="line"> </span><br><span class="line"><span class="symbol">  ssh:</span></span><br><span class="line"><span class="symbol">   remote_port:</span> <span class="number">50001</span> <span class="meta">#服务器分配tcp转发端口，如果不填写此项则由服务器分配</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    tcp:</span> <span class="number">22</span> <span class="meta">#映射本地的22端口</span></span><br></pre></td></tr></table></figure>
 <p>使用ngrok<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./ngrok -config=./ngrok<span class="selector-class">.cfg</span> -subdomain=blog <span class="number">80</span>  #映射本机的<span class="number">80</span>端口→blog<span class="selector-class">.ngrok</span><span class="selector-class">.your-domain</span><span class="selector-class">.com</span></span><br><span class="line">./ngrok -config ngrok<span class="selector-class">.cfg</span> start ssh  #开启ssh的隧道</span><br></pre></td></tr></table></figure></p>
 
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/" data-id="cjm39c2tg001bjkuct4ll4arl" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
   </div>
-  <aside>
+  
     
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2，安装git安装git"><span class="toc-number">1.</span> <span class="toc-text">2，安装git安装git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-下载及编译ngrok"><span class="toc-number">2.</span> <span class="toc-text">3,下载及编译ngrok</span></a></li></ol>
-        </div>
-    </div>
-    
-  </aside>
-</main>
+<nav id="article-nav">
+  
+    <a href="/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          thinkpad x260重装系统遇到的麻烦及解决方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/26/blog/life/我的工作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的工作</div>
+    </a>
+  
+</nav>
 
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/";
-  var disqus_url = "https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
+  
+</article>
 
 
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

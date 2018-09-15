@@ -1,531 +1,856 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QwerSe-一击致命，一点就透">
+<meta name="keywords" content="Markdown,linux,网络,构架">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QwerSe">
+<meta property="og:url" content="https://www.qwerse.com/page/2/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="QwerSe-一击致命，一点就透">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QwerSe">
+<meta name="twitter:description" content="QwerSe-一击致命，一点就透">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link active">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='index'>
-  <div class="posts-list">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-blog/python/搭建jupyter-notebook服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/blog/python/搭建jupyter-notebook服务器/" class="article-date">
+  <time datetime="2018-04-22T16:00:00.000Z" itemprop="datePublished">2018-04-23</time>
+</a>
     
-      <section>
-        <a href="/2018/04/16/blog/python/爬神漫画py程序/">
-          <h3 class='post-head'>
-            爬神漫画py程序
-          </h3>
-        </a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>###流程图</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/16</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/23/blog/python/搭建jupyter-notebook服务器/">搭建jupyter-notebook服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装notebook"><a href="#安装notebook" class="headerlink" title="安装notebook"></a>安装notebook</h3><ul>
+<li>安装pip缺少一些系统文件我嫌麻烦，使用了conda集成包。<br>官网直接下载下来的是sh文件执行就行，不要把conda加入系统变量会导致yum用不了。</li>
+</ul>
+<h5 id="配置notebook"><a href="#配置notebook" class="headerlink" title="配置notebook"></a>配置notebook</h5><ul>
+<li>生成 /home/ipynb/.jupyter/jupyter_notebook_config.py 文件</li>
+</ul>
+<p><code>jupyter notebook --generate-config</code></p>
+<ul>
+<li>编辑配置文件</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#注释为ssl，没什么大用</span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.certfile</span> = u<span class="string">'/home/ipython/full_chain.pem'</span></span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.keyfile</span> = u<span class="string">'/home/ipython/private.key'</span></span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.ip</span> = <span class="string">'*'</span>                  #任何ip可以连接</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.open_browser</span> = False      #启动不打开浏览器</span><br><span class="line"><span class="selector-id">#c</span><span class="selector-class">.NotebookApp</span><span class="selector-class">.password</span> = <span class="string">'sha1:26ab20ed1e8a:73a3b3aecc20aa27b9eba88be46dc7d247dc5b46'</span> #密码这里先#掉（第<span class="number">4</span>步会生成密码，然后填入sha1，解注释）</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.port</span> =<span class="number">6082</span>    #开启的端口</span><br><span class="line">c<span class="selector-class">.NotebookApp</span><span class="selector-class">.notebook_dir</span> = <span class="string">'/home/ipython/test'</span> #工作目录</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置密码</li>
+</ul>
+<p>localhost:8888 进入notebook 新建一个ipynb<br>运行<br><code>from notebook.auth import passwd</code><br><code>passwd()</code></p>
+<p>输入两遍密码得到sha1 返回第3步，把密码的#解掉，””中填入sha1</p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><ul>
+<li>增强jupyter的编辑能力(强烈推荐！)，使jupyter如IDE一般强大<br><a href="https://github.com/jupyterlab/jupyterlab" target="_blank" rel="noopener">https://github.com/jupyterlab/jupyterlab</a><br>我是使用的conda，用conda安装。githup也有其他安装方法，看看文档。<br><code>conda install -c conda-forge jupyterlab</code></li>
+</ul>
+<h3 id="开机自动运行"><a href="#开机自动运行" class="headerlink" title="开机自动运行"></a>开机自动运行</h3><ul>
+<li>利用systemctl来进行开机启动</li>
+</ul>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Jupyter Notebook</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="attr">PIDFile</span>=/home/ipython/run/jupyter.pid</span><br><span class="line"><span class="attr">ExecStart</span>=/conda/bin/jupyter-lab</span><br><span class="line"><span class="attr">User</span>=ipython</span><br><span class="line"><span class="attr">Group</span>=ipython</span><br><span class="line"><span class="attr">WorkingDirectory</span>=/home/ipython/test</span><br><span class="line"><span class="attr">Environment</span>=<span class="string">'XDG_RUNTIME_DIR=/home/ipython/run'</span> #这个每个电脑都不一样，使用jupyter --path 查看RUNTIME的值就知道了</span><br><span class="line"><span class="attr">Restart</span>=always</span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>感谢：<br>. <a href="http://chnwentao.com/2017/11/%E5%B7%A5%E5%85%B7JupyterNotebook%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" target="_blank" rel="noopener">http://chnwentao.com/2017/11/%E5%B7%A5%E5%85%B7JupyterNotebook%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</a><br>. <a href="https://bitmingw.com/2017/07/09/run-jupyter-notebook-server/" target="_blank" rel="noopener">https://bitmingw.com/2017/07/09/run-jupyter-notebook-server/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/04/23/blog/python/搭建jupyter-notebook服务器/" data-id="cjm39c2tn001ojkuc18ovzj3p" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/04/23/blog/python/搭建jupyter-notebook服务器/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务/">服务</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/爬神漫画py程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/blog/python/爬神漫画py程序/" class="article-date">
+  <time datetime="2018-04-15T16:00:00.000Z" itemprop="datePublished">2018-04-16</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/coding/">coding</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/04/12/blog/python/抛球并且看它能够弹跳多高/">
-          <h3 class='post-head'>
-            抛球并且看它能够弹跳多高
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>前几天看到，知乎黄哥出的一道题：</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/12</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/blog/python/爬神漫画py程序/">爬神漫画py程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###流程图</p>
+<p>有一点不好就是，不能直接转换成png或jpg。还得继续学习。。</p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1fqe7j1qk4qj20hg0glq3l.jpg" alt="流程图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests </span><br><span class="line"><span class="keyword">from</span>  bs4 <span class="keyword">import</span> BeautifulSoup <span class="keyword">as</span> shop</span><br><span class="line"><span class="keyword">import</span> re, time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pyvips</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver <span class="comment">#模拟浏览器，用于解析js</span></span><br><span class="line"></span><br><span class="line">tong =[<span class="number">1</span>]</span><br><span class="line">driver = webdriver.PhantomJS(executable_path=<span class="string">'C:\\pjs\\bin\\phantomjs.exe'</span>)</span><br><span class="line">tou_url = <span class="string">'http://www.shenmanhua.com'</span></span><br><span class="line">head =&#123; <span class="string">"Accept"</span>:<span class="string">"text/html,application/xhtml+xml,application/xml;"</span>,</span><br><span class="line">            <span class="string">"Accept-Encoding"</span>:<span class="string">"gzip"</span>,</span><br><span class="line">            <span class="string">"Accept-Language"</span>:<span class="string">"zh-CN,zh;q=0.8"</span>,</span><br><span class="line">            <span class="string">"Referer"</span>:<span class="string">"http://www.www.baidu.com/"</span>,</span><br><span class="line">            <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="string">'''网页下载器'''</span></span><br><span class="line">    </span><br><span class="line">    wangye = requests.get(url,headers=head)</span><br><span class="line">    <span class="keyword">return</span> wangye.text</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">js</span><span class="params">(url)</span>:</span></span><br><span class="line">     <span class="string">'''解析js'''</span></span><br><span class="line">        </span><br><span class="line">    driver.get(url)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> driver.page_source</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">one</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''解析所有漫画页面'''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">275</span>):</span><br><span class="line">        head_url = <span class="string">'http://www.shenmanhua.com/all_p&#123;&#125;.html'</span>.format(str(i))</span><br><span class="line">        head_wangye = get_html(head_url)</span><br><span class="line">        <span class="keyword">yield</span> head_wangye</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(url)</span>:</span></span><br><span class="line">	得到每部漫画的简介页</span><br><span class="line">    wangye = get_html(url)</span><br><span class="line">    c = shop(wangye,<span class="string">'lxml'</span>)</span><br><span class="line">    d = c.title.string</span><br><span class="line">    dirname = d.split(<span class="string">' '</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">#建立文件夹</span></span><br><span class="line">    File_Path = os.getcwd()+<span class="string">'\\'</span>+dirname</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(File_Path):</span><br><span class="line">        </span><br><span class="line">        os.makedirs(File_Path)</span><br><span class="line">    tong[<span class="number">0</span>] = File_Path</span><br><span class="line">    </span><br><span class="line">    f = c.select(<span class="string">'ul &gt; li &gt; a[title]'</span>)</span><br><span class="line">    html_3 = three(f)</span><br><span class="line">    sum_1 = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> html_3:</span><br><span class="line">        kong = []</span><br><span class="line">  </span><br><span class="line">        </span><br><span class="line">        txt_html = get_html(i)</span><br><span class="line">        <span class="keyword">if</span> sum_1 == <span class="number">1</span>:</span><br><span class="line">            </span><br><span class="line">            js_html = js(i)</span><br><span class="line">            txt_html = js_html</span><br><span class="line">            sum_1 = <span class="number">0</span>        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">#h = i.get('title') #章节名</span></span><br><span class="line">        kong.append(txt_html)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#kong.append(h)</span></span><br><span class="line">           </span><br><span class="line">        <span class="keyword">yield</span> kong</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">three</span><span class="params">(f)</span>:</span></span><br><span class="line">	<span class="string">'''得到每个章节的网址'''</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">        g = i.get(<span class="string">'href'</span>) <span class="comment">#章节后缀0</span></span><br><span class="line">        uurl = tou_url + g</span><br><span class="line">        <span class="keyword">yield</span> uurl</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mh_info</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="comment">#得到mh_info对象</span></span><br><span class="line">    sum_fire = <span class="number">1</span></span><br><span class="line">    fire = []</span><br><span class="line">    <span class="keyword">for</span> ii <span class="keyword">in</span> x:</span><br><span class="line">        </span><br><span class="line">        zz = re.compile(<span class="string">'mh_info=\&#123;(.*?)\&#125;;'</span>,re.S)</span><br><span class="line">        to = re.compile(<span class="string">'totalimg:(\d+)'</span>,re.S)</span><br><span class="line">        im = re.compile(<span class="string">'imgpath:"(.*?)"'</span>,re.S)</span><br><span class="line">        pa = re.compile(<span class="string">'pagename:"(.*?)"'</span>,re.S)</span><br><span class="line">        </span><br><span class="line">        mh_p = (zz.search(ii[<span class="number">0</span>]).group(<span class="number">1</span>))</span><br><span class="line">        totalimg = (to.search(mh_p).group(<span class="number">1</span>))</span><br><span class="line">        imgpath = (im.search(mh_p).group(<span class="number">1</span>))</span><br><span class="line">        pagename = (pa.search(mh_p).group(<span class="number">1</span>))</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        fire.append(totalimg)</span><br><span class="line">        fire.append(pagename)</span><br><span class="line">        <span class="keyword">if</span> sum_fire == <span class="number">1</span>:</span><br><span class="line">            fire.append(imgpath)</span><br><span class="line">        </span><br><span class="line">            </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">yield</span> fire</span><br><span class="line">        fire = []</span><br><span class="line">        sum_fire += <span class="number">1</span>              </span><br><span class="line">            </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zhizhao_url</span><span class="params">(fire)</span>:</span></span><br><span class="line">	<span class="string">'''依靠得到的mh_info算出其他章节。'''</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> fire :</span><br><span class="line">        <span class="keyword">if</span> len(i) == <span class="number">3</span>:</span><br><span class="line">            z = <span class="string">'http://mhpic.mh51.com/comic/&#123;&#125;'</span>.format(i[<span class="number">2</span>])</span><br><span class="line">        filepath = tong[<span class="number">0</span>] +<span class="string">'\\'</span> + i[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filepath):</span><br><span class="line">            </span><br><span class="line">            os.makedirs(filepath)        </span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,int(i[<span class="number">0</span>])+<span class="number">1</span>):</span><br><span class="line">            url = z + <span class="string">'&#123;&#125;.jpg-smh.middle.webp'</span>.format(str(x))</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="string">'''下载'''</span></span><br><span class="line">            html = requests.get(url)</span><br><span class="line">            <span class="keyword">with</span> open(filepath+<span class="string">'\\'</span>+str(x)+<span class="string">'.webp'</span>,<span class="string">'wb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(html.content)</span><br><span class="line">                file.close()</span><br><span class="line">            webp = filepath+<span class="string">'\\'</span>+str(x)+<span class="string">'.webp'</span></span><br><span class="line">            jpg = filepath+<span class="string">'\\'</span>+str(x)+<span class="string">'.png'</span></span><br><span class="line">            </span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            commandline = <span class="string">'dwebp "%s" -o "%s"'</span> % (webp, jpg)</span><br><span class="line">            <span class="keyword">print</span> (commandline)</span><br><span class="line">            os.system(commandline)</span><br><span class="line">                </span><br><span class="line">                            </span><br><span class="line">            <span class="keyword">print</span> (<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    wangye = one()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> wangye:</span><br><span class="line">        a = shop(i,<span class="string">'lxml'</span>)</span><br><span class="line">        b =a.select(<span class="string">'.sdiv'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">            </span><br><span class="line">            houcuo = i.get(<span class="string">'href'</span>)</span><br><span class="line">            zhangjie_url = tou_url + houcuo</span><br><span class="line">            x = two(zhangjie_url)</span><br><span class="line">            f= mh_info(x)</span><br><span class="line">            </span><br><span class="line">            zhizhao_url(f)</span><br><span class="line">            </span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/04/16/blog/python/爬神漫画py程序/" data-id="cjm39c2tz0024jkuclo7jmfdq" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/04/16/blog/python/爬神漫画py程序/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/抛球并且看它能够弹跳多高" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/12/blog/python/抛球并且看它能够弹跳多高/" class="article-date">
+  <time datetime="2018-04-11T16:00:00.000Z" itemprop="datePublished">2018-04-12</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/算法/">算法</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/03/31/blog/python/今日头条分析ajax进行post爬取/">
-          <h3 class='post-head'>
-            今日头条分析ajax进行post爬取
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>###启用了双线程，更加给力了。。。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests,re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> RequestException</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span>  BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index_html</span><span class="params">(sum,keys)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''得到索引页'''</span></span><br><span class="line">    url_keys =&#123;</span><br><span class="line">        <span class="string">'offset'</span>:sum,</span><br><span class="line">        <span class="string">'format'</span>:<span class="string">'json'</span>,</span><br><span class="line">        <span class="string">'keyword'</span>:keys,</span><br><span class="line">        <span class="string">'autoload'</span>:<span class="string">'true'</span>,</span><br><span class="line">        <span class="string">'count'</span>:<span class="string">'20'</span>,</span><br><span class="line">        <span class="string">'cur_tab'</span>:<span class="string">'3'</span>,</span><br><span class="line">        <span class="string">'from'</span>:<span class="string">'gallery'</span></span><br><span class="line">    &#125;</span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:55.0) Gecko/20100101 Firefox/55.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">'https://www.toutiao.com/search_content/?'</span> + urlencode(url_keys)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        wangye_index = requests.get(url,headers=header)</span><br><span class="line">        <span class="keyword">if</span> wangye_index.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> wangye_index.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'索引页出错'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ajax_json</span><span class="params">(ajax)</span>:</span></span><br><span class="line">    <span class="string">'''从索引页里面解析出，详情页的网址'''</span></span><br><span class="line">    data = json.loads(ajax)</span><br><span class="line">    <span class="keyword">if</span> data <span class="keyword">and</span> <span class="string">'data'</span> <span class="keyword">in</span> data.keys():</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data.get(<span class="string">'data'</span>):</span><br><span class="line">            <span class="keyword">yield</span> i.get(<span class="string">'article_url'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">info_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="string">'''获取详情页图像网址'''</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:55.0) Gecko/20100101 Firefox/55.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        wangzhi = requests.get(url,headers=header)</span><br><span class="line">        <span class="keyword">if</span> wangzhi.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> wangzhi.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'页面出错'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_url</span><span class="params">(tupian)</span>:</span></span><br><span class="line">    <span class="string">'''获取图片网址'''</span></span><br><span class="line">    title_test = BeautifulSoup(tupian,<span class="string">'lxml'</span>)</span><br><span class="line">    title = title_test.select(<span class="string">'title'</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    jiexi = re.compile(<span class="string">'gallery:\sJSON.parse\((.*?)\),'</span>, re.S)</span><br><span class="line">    jieguo_1 = re.search(jiexi, tupian)</span><br><span class="line"></span><br><span class="line">    jieguo = (jieguo_1.group(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    a = jieguo.replace(<span class="string">'\\'</span>, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">    tt = re.compile(<span class="string">'"(http.*?)"'</span>, re.S)</span><br><span class="line"></span><br><span class="line">    tt_url = re.findall(tt, a)</span><br><span class="line">    cishu = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tt_url:</span><br><span class="line">        cishu += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> cishu % <span class="number">4</span> == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">yield</span> [title,i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_xie</span><span class="params">(t)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''把图片写入文件'''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sum_c</span><br><span class="line">    sum_c +=<span class="number">1</span></span><br><span class="line">    a = t[<span class="number">0</span>]</span><br><span class="line">    c = requests.get(t[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">with</span> open(a[:<span class="number">6</span>]+str(sum_c)+<span class="string">'.jpg'</span>,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(c.content)</span><br><span class="line">        f.close()</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"写入完毕！"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(i)</span>:</span></span><br><span class="line">    wangye_ajax = index_html(i,<span class="string">'街拍'</span>)</span><br><span class="line">    url = ajax_json(wangye_ajax)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> url:</span><br><span class="line">        tail_html = info_html(i)</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> image_url(tail_html):</span><br><span class="line">            file_xie(x)</span><br><span class="line"></span><br><span class="line">sum_c = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="string">'''开启多线程'''</span></span><br><span class="line">	</span><br><span class="line">	p = Process(target=main, args=(<span class="number">0</span>,))</span><br><span class="line">	b = Process(target=main, args=(<span class="number">20</span>,))</span><br><span class="line">	p.start()</span><br><span class="line">	b.start()</span><br></pre></td></tr></table></figure></p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/03/31</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/12/blog/python/抛球并且看它能够弹跳多高/">抛球并且看它能够弹跳多高</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天看到，知乎黄哥出的一道题：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">题目：一个标准的科学实验是，抛球并且看它能够弹跳多高。一旦球的“弹跳性”已经确定了，这个比率值就会给出弹跳性的指数。</span><br><span class="line">例如，如果球从<span class="number">10</span>米高落下弹跳到<span class="number">6</span>米高，这个索引就是<span class="number">0.6</span>，并且球在一次弹跳之后总的运动距离是<span class="number">16</span>米。</span><br><span class="line">如果球继续弹跳，两次弹跳后的距离将会是<span class="number">10</span>米+<span class="number">6</span>米+<span class="number">6</span>米+<span class="number">3.6</span>米=<span class="number">25.6</span>米。注意，每次后续的弹跳运动的距离，都是到地板的距离加上这个距离的<span class="number">0.6</span>倍，这个<span class="number">0.6</span>倍就是球反弹回来的距离。编一个程序，让用户输入球的一个初始高度以及允许球持续弹跳的次数。输出球的运动的总距离。</span><br></pre></td></tr></table></figure>
+<p>我使用了两种方法，黄哥要求用递归。</p>
+<p>第一种for方法：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    h = int(input(<span class="string">"高\n"</span>))</span><br><span class="line">    s = int(input(<span class="string">"次数\n"</span>))</span><br><span class="line">    <span class="selector-tag">a</span> = []</span><br><span class="line">    <span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> range(s):</span><br><span class="line">        <span class="selector-tag">a</span>.append(h)</span><br><span class="line">        <span class="selector-tag">b</span> = h*<span class="number">0.6</span></span><br><span class="line">        <span class="selector-tag">a</span>.append(b)</span><br><span class="line">        h = b</span><br><span class="line"></span><br><span class="line">print (sum(a))</span><br></pre></td></tr></table></figure></p>
+<p>第二种递归方法:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def <span class="keyword">test</span>(<span class="keyword">h</span>, s, ra =0.6):</span><br><span class="line">    a= <span class="keyword">h</span> * ra</span><br><span class="line">    <span class="keyword">if</span> s == 0:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">h</span></span><br><span class="line">    <span class="keyword">if</span> hs == <span class="keyword">h</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">h</span> + <span class="keyword">test</span>(a, s=s-1)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">h</span>*2 + <span class="keyword">test</span>(a, s=s-1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hs =10</span><br><span class="line">ss = 2</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> (<span class="keyword">test</span>(hs, ss))</span><br></pre></td></tr></table></figure>
+<p>黄哥给的框架：<br><img src="https://pic3.zhimg.com/80/v2-2d1a569277f2ab81181500a2f5816b86_hd.jpg" alt="例子"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/04/12/blog/python/抛球并且看它能够弹跳多高/" data-id="cjm39c2tq001ujkuck0wgwwhf" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/04/12/blog/python/抛球并且看它能够弹跳多高/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/今日头条分析ajax进行post爬取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/31/blog/python/今日头条分析ajax进行post爬取/" class="article-date">
+  <time datetime="2018-03-30T16:00:00.000Z" itemprop="datePublished">2018-03-31</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/coding/">coding</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/02/10/blog/python/学习python写个今年还剩多少天的小程序/">
-          <h3 class='post-head'>
-            学习python写个今年还剩多少天的小程序
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PoR</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''分出是闰年还是平年'''</span></span><br><span class="line">	<span class="keyword">if</span> (nian % <span class="number">4</span>) == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">366</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">365</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(yue)</span>:</span></span><br><span class="line">	<span class="string">'''计算出到底是还剩多少天'''</span></span><br><span class="line">	sumNian = PoR()</span><br><span class="line">	a = <span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> sumNian == <span class="number">365</span>:</span><br><span class="line">		<span class="string">'''计算平年'''</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> ping:</span><br><span class="line">			a = a+i</span><br><span class="line"></span><br><span class="line">		pgo = ping[:yue]</span><br><span class="line"></span><br><span class="line">		p = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> pgo:</span><br><span class="line">			p = p + i</span><br><span class="line"></span><br><span class="line">		p = a - p </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span>  p - ri</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="string">'''计算闰年'''</span></span><br><span class="line">		b = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> run:</span><br><span class="line">			b = b + i</span><br><span class="line"></span><br><span class="line">		o = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		rgo = run[:yue]</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> rgo:</span><br><span class="line">			o = o + i</span><br><span class="line"></span><br><span class="line">		o = b - o</span><br><span class="line">		<span class="keyword">return</span> o - ri</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">ping = [<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>]</span><br><span class="line">run = [<span class="number">0</span>,<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>]</span><br><span class="line"></span><br><span class="line">newtime = time.strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'----'</span>)</span><br><span class="line">nian =int(newtime[:<span class="number">4</span>])</span><br><span class="line">yue =int(newtime[<span class="number">4</span>:<span class="number">6</span>])</span><br><span class="line">ri =int(newtime[<span class="number">6</span>:<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bingo = sum(yue)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'今年还剩%s天'</span>%bingo)</span><br></pre></td></tr></table></figure>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/02/10</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/31/blog/python/今日头条分析ajax进行post爬取/">今日头条分析ajax进行post爬取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###启用了双线程，更加给力了。。。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests,re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> RequestException</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span>  BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index_html</span><span class="params">(sum,keys)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''得到索引页'''</span></span><br><span class="line">    url_keys =&#123;</span><br><span class="line">        <span class="string">'offset'</span>:sum,</span><br><span class="line">        <span class="string">'format'</span>:<span class="string">'json'</span>,</span><br><span class="line">        <span class="string">'keyword'</span>:keys,</span><br><span class="line">        <span class="string">'autoload'</span>:<span class="string">'true'</span>,</span><br><span class="line">        <span class="string">'count'</span>:<span class="string">'20'</span>,</span><br><span class="line">        <span class="string">'cur_tab'</span>:<span class="string">'3'</span>,</span><br><span class="line">        <span class="string">'from'</span>:<span class="string">'gallery'</span></span><br><span class="line">    &#125;</span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:55.0) Gecko/20100101 Firefox/55.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">'https://www.toutiao.com/search_content/?'</span> + urlencode(url_keys)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        wangye_index = requests.get(url,headers=header)</span><br><span class="line">        <span class="keyword">if</span> wangye_index.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> wangye_index.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'索引页出错'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ajax_json</span><span class="params">(ajax)</span>:</span></span><br><span class="line">    <span class="string">'''从索引页里面解析出，详情页的网址'''</span></span><br><span class="line">    data = json.loads(ajax)</span><br><span class="line">    <span class="keyword">if</span> data <span class="keyword">and</span> <span class="string">'data'</span> <span class="keyword">in</span> data.keys():</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data.get(<span class="string">'data'</span>):</span><br><span class="line">            <span class="keyword">yield</span> i.get(<span class="string">'article_url'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">info_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="string">'''获取详情页图像网址'''</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:55.0) Gecko/20100101 Firefox/55.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        wangzhi = requests.get(url,headers=header)</span><br><span class="line">        <span class="keyword">if</span> wangzhi.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> wangzhi.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'页面出错'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_url</span><span class="params">(tupian)</span>:</span></span><br><span class="line">    <span class="string">'''获取图片网址'''</span></span><br><span class="line">    title_test = BeautifulSoup(tupian,<span class="string">'lxml'</span>)</span><br><span class="line">    title = title_test.select(<span class="string">'title'</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    jiexi = re.compile(<span class="string">'gallery:\sJSON.parse\((.*?)\),'</span>, re.S)</span><br><span class="line">    jieguo_1 = re.search(jiexi, tupian)</span><br><span class="line"></span><br><span class="line">    jieguo = (jieguo_1.group(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    a = jieguo.replace(<span class="string">'\\'</span>, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">    tt = re.compile(<span class="string">'"(http.*?)"'</span>, re.S)</span><br><span class="line"></span><br><span class="line">    tt_url = re.findall(tt, a)</span><br><span class="line">    cishu = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tt_url:</span><br><span class="line">        cishu += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> cishu % <span class="number">4</span> == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">yield</span> [title,i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_xie</span><span class="params">(t)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''把图片写入文件'''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sum_c</span><br><span class="line">    sum_c +=<span class="number">1</span></span><br><span class="line">    a = t[<span class="number">0</span>]</span><br><span class="line">    c = requests.get(t[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">with</span> open(a[:<span class="number">6</span>]+str(sum_c)+<span class="string">'.jpg'</span>,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(c.content)</span><br><span class="line">        f.close()</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"写入完毕！"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(i)</span>:</span></span><br><span class="line">    wangye_ajax = index_html(i,<span class="string">'街拍'</span>)</span><br><span class="line">    url = ajax_json(wangye_ajax)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> url:</span><br><span class="line">        tail_html = info_html(i)</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> image_url(tail_html):</span><br><span class="line">            file_xie(x)</span><br><span class="line"></span><br><span class="line">sum_c = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="string">'''开启多线程'''</span></span><br><span class="line">	</span><br><span class="line">	p = Process(target=main, args=(<span class="number">0</span>,))</span><br><span class="line">	b = Process(target=main, args=(<span class="number">20</span>,))</span><br><span class="line">	p.start()</span><br><span class="line">	b.start()</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/03/31/blog/python/今日头条分析ajax进行post爬取/" data-id="cjm39c2ti001hjkucu6z1geuh" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/03/31/blog/python/今日头条分析ajax进行post爬取/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/学习python写个今年还剩多少天的小程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/10/blog/python/学习python写个今年还剩多少天的小程序/" class="article-date">
+  <time datetime="2018-02-09T16:00:00.000Z" itemprop="datePublished">2018-02-10</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/coding/">coding</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/01/16/blog/linux/局域网搭建dns/">
-          <h3 class='post-head'>
-            局域网搭建dns
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <h3 id="选择dns软件”pdnsd”"><a href="#选择dns软件”pdnsd”" class="headerlink" title="选择dns软件”pdnsd”"></a>选择dns软件”pdnsd”</h3><p>用过dnsmasq和bind。都不太符合自己的意思。尤其是bind简直是太笨重了。</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/01/16</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/10/blog/python/学习python写个今年还剩多少天的小程序/">学习python写个今年还剩多少天的小程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PoR</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''分出是闰年还是平年'''</span></span><br><span class="line">	<span class="keyword">if</span> (nian % <span class="number">4</span>) == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">366</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">365</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(yue)</span>:</span></span><br><span class="line">	<span class="string">'''计算出到底是还剩多少天'''</span></span><br><span class="line">	sumNian = PoR()</span><br><span class="line">	a = <span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> sumNian == <span class="number">365</span>:</span><br><span class="line">		<span class="string">'''计算平年'''</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> ping:</span><br><span class="line">			a = a+i</span><br><span class="line"></span><br><span class="line">		pgo = ping[:yue]</span><br><span class="line"></span><br><span class="line">		p = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> pgo:</span><br><span class="line">			p = p + i</span><br><span class="line"></span><br><span class="line">		p = a - p </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span>  p - ri</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="string">'''计算闰年'''</span></span><br><span class="line">		b = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> run:</span><br><span class="line">			b = b + i</span><br><span class="line"></span><br><span class="line">		o = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		rgo = run[:yue]</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> rgo:</span><br><span class="line">			o = o + i</span><br><span class="line"></span><br><span class="line">		o = b - o</span><br><span class="line">		<span class="keyword">return</span> o - ri</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">ping = [<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>]</span><br><span class="line">run = [<span class="number">0</span>,<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>]</span><br><span class="line"></span><br><span class="line">newtime = time.strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'----'</span>)</span><br><span class="line">nian =int(newtime[:<span class="number">4</span>])</span><br><span class="line">yue =int(newtime[<span class="number">4</span>:<span class="number">6</span>])</span><br><span class="line">ri =int(newtime[<span class="number">6</span>:<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bingo = sum(yue)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'今年还剩%s天'</span>%bingo)</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span><span class="meta">---</span></span><br><span class="line"><span class="string">今年还剩324天</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/02/10/blog/python/学习python写个今年还剩多少天的小程序/" data-id="cjm39c2th001ejkuc9qfpifti" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/02/10/blog/python/学习python写个今年还剩多少天的小程序/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/linux/局域网搭建dns" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/16/blog/linux/局域网搭建dns/" class="article-date">
+  <time datetime="2018-01-15T16:00:00.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#dns" class='tag'>dns</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2017/12/19/blog/windows/windows磁盘管理复习笔记/">
-          <h3 class='post-head'>
-            windows磁盘管理复习笔记
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>###一、磁盘概述</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/12/19</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/16/blog/linux/局域网搭建dns/">局域网搭建dns</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="选择dns软件”pdnsd”"><a href="#选择dns软件”pdnsd”" class="headerlink" title="选择dns软件”pdnsd”"></a>选择dns软件”pdnsd”</h3><p>用过dnsmasq和bind。都不太符合自己的意思。尤其是bind简直是太笨重了。</p>
+<h4 id="pdnsd的优势"><a href="#pdnsd的优势" class="headerlink" title="pdnsd的优势"></a>pdnsd的优势</h4><p>Ubuntu16.04默认使用dnsmasq作为dns解析服务，换句话说，一个Ubuntu 16.04LTS的电脑本身就是一个开放53端口的DNS服务器，听起来有点像买Ubuntu电脑送DNS服务器的感觉。但事实确实是这样的，因为Ubuntu默认开机启动dnsmasq服务，而且即使你把它stop了，Ubuntu还会定时重启，而且在启动dnsmasq服务的时候，Ubuntu系统会自动修改/etc/resolv.conf这个默认DNS服务指向文件为127.0.0.1，导致你试图修改这个文件改变你的DNS服务器地址后会莫名其妙被改回127.0.0.1。但是我之所以要用Pdnsd替换点dnsmasq的主要目的还是为了防止DNS污染。</p>
+<p>首先Pdnsd有这样几个优势</p>
+<p>1、可以将UDP协议的DNS请求转换为TCP协议进行发送，通过这种方式避免DNS污染</p>
+<p>2、pdnsd可以选择性的拒绝一些常见的被污染的目标地址，直接通过境内的dns服务器即可获得正确结果</p>
+<p>3、pdnsd可以做本地DNS缓存，而且可以自由设置过期时间，对于已缓存的DNS地址，局域网内其他电脑在DNS解析上的耗时可以缩减到1ms以内，大大提升了电脑的上网速度</p>
+<h4 id="Ubuntu-16-04LTS系统为例详细讲解安装过程"><a href="#Ubuntu-16-04LTS系统为例详细讲解安装过程" class="headerlink" title="Ubuntu 16.04LTS系统为例详细讲解安装过程"></a>Ubuntu 16.04LTS系统为例详细讲解安装过程</h4><h5 id="1、-第一步：将dnsmasq的监听端口从53端口挪到其他端口"><a href="#1、-第一步：将dnsmasq的监听端口从53端口挪到其他端口" class="headerlink" title="1、  第一步：将dnsmasq的监听端口从53端口挪到其他端口"></a>1、  第一步：将dnsmasq的监听端口从53端口挪到其他端口</h5><p>首先要科普一下，Ubuntu系统中的dnsmasq并不只有一个实例在运行，而是会开启多个，在我的电脑中因为开启了Ubuntu自带的Wifi分享功能，本机多了一个内网IP地址10.42.0.1，并且作为这个Wifi网络的DNS服务器，所以我现在电脑上运行着三个dnsmasq进程。<br>查看电脑53端口的占用情况，可以用一下命令<br><code>sudo netstat -apn | grep 53</code></p>
+<p>我的计算机有线网卡的内网地址为192.168.1.100，并且分享了一个Wifi网络，在这个Wifi网络中的内网地址是10.42.0.1在Ubuntu默认情况下，所有网卡的53端口（包括ipv6地址）均会被dnsmasq所占，并且不止一个dnsmasq实例正在运行。</p>
+<h5 id="注：之所以有127-0-0-1-53而没有192-168-1-100-53或者0-0-0-0-53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10-42-0-1-53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10-42-0-1-所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。"><a href="#注：之所以有127-0-0-1-53而没有192-168-1-100-53或者0-0-0-0-53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10-42-0-1-53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10-42-0-1-所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。" class="headerlink" title="注：之所以有127.0.0.1:53而没有192.168.1.100:53或者0.0.0.0:53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10.42.0.1:53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10.42.0.1,所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。"></a>注：之所以有127.0.0.1:53而没有192.168.1.100:53或者0.0.0.0:53是Ubuntu默认不向局域网开放自己的53端口，理由当然是为了安全，防止让你真的变成一台局域网DNS服务器，而有10.42.0.1:53的原因是本计算机分享了一个Wifi，在这个Wifi局域网中，这台电脑既当网关也当DNS服务器，该wifi中的所有电脑被DHCP分配到的DNS服务器均为10.42.0.1,所以对于这个内网，dnsmasq是向局域网开放自己的53端口的。</h5><h5 id="注：运行在127-0-0-1的-53的dnsmasq进程和运行在10-42-0-1的dnsmasq是两个-不同的进程，使用不同的配置文件"><a href="#注：运行在127-0-0-1的-53的dnsmasq进程和运行在10-42-0-1的dnsmasq是两个-不同的进程，使用不同的配置文件" class="headerlink" title="注：运行在127.0.0.1的:53的dnsmasq进程和运行在10.42.0.1的dnsmasq是两个 不同的进程，使用不同的配置文件"></a>注：运行在127.0.0.1的:53的dnsmasq进程和运行在10.42.0.1的dnsmasq是两个 不同的进程，使用不同的配置文件</h5><p>在Ubuntu默认情况下，127.0.0.1和0.0.0.0的53端口一般由同一个dnsmasq进程所占，而其他网段比如10.42.0.1由另一个dnsmasq进程控制，由于10.42.0.1是笔记本共享出的wifi，所以这里的dnsmasq除了做dns转发以外，还有一个更重要的作用就是做DHCP服务器动态为连接热点的设备分配IP地址。<br>那么如何观察本机一共有多少dnsmasq进程，这些dnsmasq的配置文件又各是谁呢？可以用如下指令</p>
+<p><code>ps -fC dnsmasq|more</code></p>
+<p>现在我们要用pdnsd替换掉的就是监听在127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个端口的dnsmasq服务，也就是pid为12625的这个dnsmasq，其他的dnsmasq因为并没有挤占端口，而且还要作为DHCP服务使用，所以我们不要停掉他们。那么如何将dnsmasq的监听端口挪走呢，只需要修改dnsmasq的配置文件并重启即可，虽然仅仅stop掉dnsmasq的服务也有用，但是Ubuntu隔一段时间又会自动重启并同时修改/etc/resolv.conf文件，所以最好的方式还是把dnsmasq的端口挪走一劳永逸。<br>首先我们停止dnsmasq的服务</p>
+<p><code>sudo service dnsmasq stop</code></p>
+<p>现在使用netstat -nl观察端口的监听情况是不是发现127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个53端口都已经没有啦，而且并没有影响10.42.0.1:53上做DHCP服务的dnsmasq的运行。</p>
+<h5 id="注：为什么127-0-0-1-53没有了而10-42-0-1-53还是由dnsmasq所占，原因如上面已经提到过的，"><a href="#注：为什么127-0-0-1-53没有了而10-42-0-1-53还是由dnsmasq所占，原因如上面已经提到过的，" class="headerlink" title="注：为什么127.0.0.1:53没有了而10.42.0.1:53还是由dnsmasq所占，原因如上面已经提到过的，"></a>注：为什么127.0.0.1:53没有了而10.42.0.1:53还是由dnsmasq所占，原因如上面已经提到过的，</h5><p>这两个端口的dnsmasq并不是一个dnsmasq进程，所使用配置文件和发挥的功能也不一样，而我们要修改两个网段最终的DNS服务程序，只需要将127.0.0.1:53这个dnsmasq换掉即可，不需要管10.42.0.1:53这个内网的dnsmasq进程<br>然后修改dnsmasq的配置文件</p>
+<p><code>sudo nano /etc/dnsmasq.conf</code></p>
+<p>在第十行将dnsmasq的监听端口从53挪到9053，这样我们就把系统默认的dnsmasq的端口挪到了9053</p>
+<p>然后重启dnsmasq服务</p>
+<p><code>sudo service dnsmasq restart</code></p>
+<p>现在在使用netstat -nl查看，是不是发现原来127.0.0.1:53和192.168.1.81:53和0.0.0.0:53这几个53端口都变成9053啦，现在我们已经为pdnsd服务腾出了工作端口，下一步我们可以安装pdnsd了</p>
+<p>注：于此同时，由于我们系统的dns服务器指向还是127.0.0.1,所以此时你的电脑已经上不了忘了，解决方法是修改/etc/resolv.con文件将127.0.0.1换成ISP提供的DNS服务器或者114.114.114.114或者阿里的223.5.5.5等等。</p>
+<h4 id="2、安装Pdnsd服务"><a href="#2、安装Pdnsd服务" class="headerlink" title="2、安装Pdnsd服务"></a>2、安装Pdnsd服务</h4><p><code>sudo apk-get install pdnsd</code></p>
+<p>在安装时会跳出一个选择框，我们选manual<br>（注意如果此时提示你网络问题请到/etc/resolv.conf文件中把dns服务器地址从127.0.1.1改到114.114.114.114）<br>安装完pdnsd服务之后我们需要修改它的配置文件，主要目的是设置两组DNS服务器，第一组是国内的114.114.114.114,第二组是OpenDNS的5353端口，114.114.114.114的53端口即使使用TCP连接解析也会返回一些脏地址，但我们仍然要用他的原因它的ping通率要比OpenDns要高，主要作用是加速一些国内正常DNS的解析，防止访问国内网站时走OpenDNS导致解析变慢。所以下面配置文件中的114.114.114.114也可以换成你当地ISP分给你的DNS服务器，尤其是在114.114.114.114 ping不通的情况下。另外，下面配置文件中的reject列表也非常重要，只有当114.114.114.114返回脏地址在这个列表中时才会触发pdnsd再发送一个请求到OpenDNS，所以务必要将114.114.114.114所有的脏地址都收录到这个列表中。同时，如果你本地ping不通OpenDNS的两个地址时，有两种方式可以解决，第一种是使用Redsocks+代理将tcp协议的DNS查询请求加密发送到国外代理服务器，另一种是使用能ping通的国外其他DNS服务器，尽量避开53端口，也就是说尽量找国外支持53端口以外进行解析的DNS服务器。</p>
+<p><code>sudo nano /etc/pdnsd.conf</code></p>
+<p>将这个文件修改如下</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Read the pdnsd.conf(5) manpage for an explanation of the options.  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">/* Note: this file is overriden by automatic config files when </span></span><br><span class="line"><span class="comment">  /etc/default/pdnsd AUTO_MODE is set and that </span></span><br><span class="line"><span class="comment">  /usr/share/pdnsd/pdnsd-$AUTO_MODE.conf exists </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line">  </span><br><span class="line">global &#123;  </span><br><span class="line">    perm_cache=<span class="number">4096</span>;  </span><br><span class="line">    cache_dir=<span class="string">"/var/cache/pdnsd"</span>;  </span><br><span class="line">    run_as=<span class="string">"pdnsd"</span>;  </span><br><span class="line">    server_ip = <span class="number">192.168</span><span class="number">.1</span><span class="number">.81</span>;  # 将自己的有线网卡的局域网地址设为工作地址，这样可以方便局域网用户把你的电脑当成DNS服务器,这里要换成你的地址，但是好像<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>我试过不行  </span><br><span class="line">    server_port=<span class="number">53</span>;            # 使用DNS协议默认的<span class="number">53</span>号地址  </span><br><span class="line">    status_ctl = on;  </span><br><span class="line">    query_method=tcp_only;   #非常重要，使用tcp协议请求DNS结果，防止被污染  </span><br><span class="line">    neg_domain_pol = off;    </span><br><span class="line">    paranoid = on;    </span><br><span class="line">    par_queries = <span class="number">1</span>;    </span><br><span class="line">    min_ttl = <span class="number">6</span>h;    </span><br><span class="line">    max_ttl = <span class="number">12</span>h;    </span><br><span class="line">    timeout = <span class="number">10</span>;    </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/* with status_ctl=on and resolvconf installed, this will work out from the box </span></span><br><span class="line"><span class="comment">  this is the recommended setup for mobile machines */</span>  </span><br><span class="line">server &#123;    </span><br><span class="line">   label = <span class="string">"routine"</span>;  # 这个随便写    </span><br><span class="line">   ip = <span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span>;   # 这里为上级 dns 的 ip 地址，如果<span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span>能够ping通，可以用<span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span>    </span><br><span class="line">   timeout = <span class="number">5</span>;    </span><br><span class="line">   reject = <span class="number">74.125</span><span class="number">.127</span><span class="number">.102</span>,  #这里非常重要，这些ip是防火墙喜欢将DNS污染到的目标地址，也就是脏地址，你可以使用nslookup命令查询当地的脏地址并补充在这个列表中，如果<span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span>返回脏地址后pdnsd会自动重新发送DNS请求到下面的OpenDNS服务器，如果一个脏地址没有在列在这里，那么还是会收到污染的结果  </span><br><span class="line">       <span class="number">74.125</span><span class="number">.155</span><span class="number">.102</span>,    </span><br><span class="line">       <span class="number">74.125</span><span class="number">.39</span><span class="number">.102</span>,    </span><br><span class="line">       <span class="number">74.125</span><span class="number">.39</span><span class="number">.113</span>,    </span><br><span class="line">       <span class="number">209.85</span><span class="number">.229</span><span class="number">.138</span>,    </span><br><span class="line">       <span class="number">128.121</span><span class="number">.126</span><span class="number">.139</span>,    </span><br><span class="line">       <span class="number">159.106</span><span class="number">.121</span><span class="number">.75</span>,    </span><br><span class="line">       <span class="number">169.132</span><span class="number">.13</span><span class="number">.103</span>,    </span><br><span class="line">       <span class="number">192.67</span><span class="number">.198</span><span class="number">.6</span>,    </span><br><span class="line">       <span class="number">202.106</span><span class="number">.1</span><span class="number">.2</span>,    </span><br><span class="line">       <span class="number">202.181</span><span class="number">.7</span><span class="number">.85</span>,    </span><br><span class="line">       <span class="number">203.161</span><span class="number">.230</span><span class="number">.171</span>,    </span><br><span class="line">       <span class="number">203.98</span><span class="number">.7</span><span class="number">.65</span>,    </span><br><span class="line">       <span class="number">207.12</span><span class="number">.88</span><span class="number">.98</span>,    </span><br><span class="line">       <span class="number">208.56</span><span class="number">.31</span><span class="number">.43</span>,    </span><br><span class="line">       <span class="number">209.145</span><span class="number">.54</span><span class="number">.50</span>,    </span><br><span class="line">       <span class="number">209.220</span><span class="number">.30</span><span class="number">.174</span>,    </span><br><span class="line">       <span class="number">209.36</span><span class="number">.73</span><span class="number">.33</span>,    </span><br><span class="line">       <span class="number">211.94</span><span class="number">.66</span><span class="number">.147</span>,    </span><br><span class="line">       <span class="number">213.169</span><span class="number">.251</span><span class="number">.35</span>,    </span><br><span class="line">       <span class="number">216.221</span><span class="number">.188</span><span class="number">.182</span>,    </span><br><span class="line">       <span class="number">216.234</span><span class="number">.179</span><span class="number">.13</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.39</span>,    </span><br><span class="line">       <span class="number">37.61</span><span class="number">.54</span><span class="number">.158</span>,    </span><br><span class="line">       <span class="number">4.36</span><span class="number">.66</span><span class="number">.178</span>,    </span><br><span class="line">       <span class="number">46.82</span><span class="number">.174</span><span class="number">.68</span>,    </span><br><span class="line">       <span class="number">59.24</span><span class="number">.3</span><span class="number">.173</span>,    </span><br><span class="line">       <span class="number">64.33</span><span class="number">.88</span><span class="number">.161</span>,    </span><br><span class="line">       <span class="number">64.33</span><span class="number">.99</span><span class="number">.47</span>,    </span><br><span class="line">       <span class="number">64.66</span><span class="number">.163</span><span class="number">.251</span>,    </span><br><span class="line">       <span class="number">65.104</span><span class="number">.202</span><span class="number">.252</span>,    </span><br><span class="line">       <span class="number">65.160</span><span class="number">.219</span><span class="number">.113</span>,    </span><br><span class="line">       <span class="number">66.45</span><span class="number">.252</span><span class="number">.237</span>,    </span><br><span class="line">       <span class="number">69.55</span><span class="number">.52</span><span class="number">.253</span>,    </span><br><span class="line">       <span class="number">72.14</span><span class="number">.205</span><span class="number">.104</span>,    </span><br><span class="line">       <span class="number">72.14</span><span class="number">.205</span><span class="number">.99</span>,    </span><br><span class="line">       <span class="number">78.16</span><span class="number">.49</span><span class="number">.15</span>,    </span><br><span class="line">       <span class="number">8.7</span><span class="number">.198</span><span class="number">.45</span>,    </span><br><span class="line">       <span class="number">93.46</span><span class="number">.8</span><span class="number">.89</span>,    </span><br><span class="line">       <span class="number">37.61</span><span class="number">.54</span><span class="number">.158</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.39</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.247</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.246</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.245</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">190.93</span><span class="number">.244</span><span class="number">.4</span>,    </span><br><span class="line">       <span class="number">65.49</span><span class="number">.2</span><span class="number">.178</span>,    </span><br><span class="line">       <span class="number">189.163</span><span class="number">.17</span><span class="number">.5</span>,    </span><br><span class="line">       <span class="number">23.89</span><span class="number">.5</span><span class="number">.60</span>,    </span><br><span class="line">       <span class="number">49.2</span><span class="number">.123</span><span class="number">.56</span>,    </span><br><span class="line">       <span class="number">54.76</span><span class="number">.135</span><span class="number">.1</span>,    </span><br><span class="line">       <span class="number">77.4</span><span class="number">.7</span><span class="number">.92</span>,    </span><br><span class="line">       <span class="number">118.5</span><span class="number">.49</span><span class="number">.6</span>,    </span><br><span class="line">       <span class="number">159.24</span><span class="number">.3</span><span class="number">.173</span>,    </span><br><span class="line">       <span class="number">188.5</span><span class="number">.4</span><span class="number">.96</span>,    </span><br><span class="line">       <span class="number">197.4</span><span class="number">.4</span><span class="number">.12</span>,    </span><br><span class="line">       <span class="number">220.250</span><span class="number">.64</span><span class="number">.24</span>,    </span><br><span class="line">       <span class="number">243.185</span><span class="number">.187</span><span class="number">.30</span>,    </span><br><span class="line">       <span class="number">249.129</span><span class="number">.46</span><span class="number">.48</span>,    </span><br><span class="line">       <span class="number">253.157</span><span class="number">.14</span><span class="number">.165</span>;    </span><br><span class="line">   reject_policy = fail;    </span><br><span class="line">   exclude = <span class="string">".google.com"</span>,    </span><br><span class="line">       <span class="string">".cn"</span>,      #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".baidu.com"</span>,   #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".qq.com"</span>,  #排除国内DNS解析，如果正常翻，则可以在前面加#注释    </span><br><span class="line">       <span class="string">".gstatic.com"</span>,    </span><br><span class="line">       <span class="string">".googleusercontent.com"</span>,    </span><br><span class="line">       <span class="string">".googlepages.com"</span>,    </span><br><span class="line">       <span class="string">".googlevideo.com"</span>,    </span><br><span class="line">       <span class="string">".googlecode.com"</span>,    </span><br><span class="line">       <span class="string">".googleapis.com"</span>,    </span><br><span class="line">       <span class="string">".googlesource.com"</span>,    </span><br><span class="line">       <span class="string">".googledrive.com"</span>,    </span><br><span class="line">       <span class="string">".ggpht.com"</span>,    </span><br><span class="line">       <span class="string">".youtube.com"</span>,    </span><br><span class="line">       <span class="string">".youtu.be"</span>,    </span><br><span class="line">       <span class="string">".ytimg.com"</span>,    </span><br><span class="line">       <span class="string">".twitter.com"</span>,    </span><br><span class="line">       <span class="string">".facebook.com"</span>,    </span><br><span class="line">       <span class="string">".fastly.net"</span>,    </span><br><span class="line">       <span class="string">".akamai.net"</span>,    </span><br><span class="line">       <span class="string">".akamaiedge.net"</span>,    </span><br><span class="line">       <span class="string">".akamaihd.net"</span>,    </span><br><span class="line">       <span class="string">".edgesuite.net"</span>,    </span><br><span class="line">       <span class="string">".edgekey.net"</span>;    </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">server &#123;    </span><br><span class="line">   # Better setup dns server(DON'T USE PORT <span class="number">53</span>) on your own vps for faster proxying    </span><br><span class="line">   label = <span class="string">"special"</span>;  # 这个随便写    </span><br><span class="line">   ip = <span class="number">208.67</span><span class="number">.222</span><span class="number">.222</span>,<span class="number">208.67</span><span class="number">.220</span><span class="number">.220</span>; # 这里为上级 dns 的 ip 地址    </span><br><span class="line">   port = <span class="number">5353</span>;    </span><br><span class="line">   proxy_only = on;    </span><br><span class="line">   timeout = <span class="number">5</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存后重启pdnsd发现并没有像我们想的一样53端口出现监听，因为我们还需要将pdnsd以守护模式运行</p>
+<p><code>sudo nano /etc/default/pdnsd</code></p>
+<p>将START_DAEMON=no改为START_DAEMON=yes</p>
+<p>现在可以重启pdnsd服务了</p>
+<p><code>sudo /etc/init.d/pdnsd restart</code></p>
+<p>重启之后再使用netstat -nl查看端口情况，是不是53端口已经正在使用了，或者使用sudo netstat -apn | grep 53看看是不是由pdnsd服务占用53端口</p>
+<p>最后一步，就是将我们本机的DNS服务器地址指向pdnsd</p>
+<p><code>sudo nano /etc/resolv.conf</code></p>
+<p>将原来的127.0.1.1改成上面配置文件配置的地址，即如果是局域网地址，就填192.168.1.81，视你自己的网络情况而定，如果上面填的是0.0.0.0，那么此处就填127.0.0.1</p>
+<p>然后再使用nslookup <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>和nslookup <a href="http://www.facebook.com" target="_blank" rel="noopener">www.facebook.com</a><br>看一下dns解析结果是否正确<br>如果baidu.com无法解析说明Pdnsd配置有问题，此时要检查53端口是否已被监听<br>如果baidu.com正常而facebook.com无法解析或者返回错误地址，首先我们可以查看并清空一下缓存</p>
+<p><code>sudo pdnsd-ctl dump</code><br><code>sudo pdnsd-ctl empty-cache</code></p>
+<p>如果还是返回污染后的地址，就把这个污染地址加到上面/etc/pdnsd.conf的脏域名列表中，就可以获得正确结果了<br>那么如何判断DNS解析后的域名是否正确呢，方法是nslookup <a href="http://www.twittter.com" target="_blank" rel="noopener">www.twittter.com</a> 和nslookup <a href="http://www.youtube.com，真的解析地址会返回多个解析结果，而污染后的结果只有一个" target="_blank" rel="noopener">www.youtube.com，真的解析地址会返回多个解析结果，而污染后的结果只有一个</a><br>如下图中前两个是错误的解析结果，后两个是正确的解析结果，或者你还可以通过webdnstools.com这个网站去查询正确的解析结果与本地的结果进行比对</p>
+<p><strong>—-局域网设置内网域名—–</strong></p>
+<p>a.最简单办法直接用pdnsd-ctl 插入一条 A 记录,举例：</p>
+<p><code>pdnsd-ctl add a 127.0.0.1 www.linuxbyte.org. 900</code>（900 为TTL 值）</p>
+<p>同样你可以用pdnsd-ctl add 插入其他的mx，ns，cname 记录等<br>b.第一方法适合临时做一些修改，要想真正的劫持一个域名可以在 pdnsd.conf 中加入 rr section。举例：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line">name = linuxbyte.org;</span><br><span class="line">ns = localhost;</span><br><span class="line">soa = localhost, root.localhost, 42, 86400, 900, 86400, 86400;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是劫持了ns 记录，把域名解析交给你指定的dns 服务器来做。<br>​<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line"><span class="attribute">name</span> = *.linuxbyte.org<span class="comment">;</span></span><br><span class="line"><span class="attribute">cname</span> = www.linuxsky.org<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里把所有linuxbyte.org 的二级域名都做了cname到了 <a href="http://www.linuxsky.org" target="_blank" rel="noopener">www.linuxsky.org</a></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rr &#123;</span><br><span class="line">name = www.linuxbyte.org;</span><br><span class="line">a = 192.168.0.123</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接插入一条A 记录。</p>
+<p><code>`</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/01/16/blog/linux/局域网搭建dns/" data-id="cjm39c2w2004njkuc8fcrpfhh" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/01/16/blog/linux/局域网搭建dns/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dns/">dns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/windows/windows磁盘管理复习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/19/blog/windows/windows磁盘管理复习笔记/" class="article-date">
+  <time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/windows/">windows</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#windows" class='tag'>windows</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2017/11/30/blog/linux/lamp构架下的网站环境搭建/">
-          <h3 class='post-head'>
-            lamp构架下的网站环境搭建
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <h2 id="apache2-4编译安装"><a href="#apache2-4编译安装" class="headerlink" title="apache2.4编译安装"></a>apache2.4编译安装</h2><p>httpd依赖于apr, apr-util</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/11/30</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/blog/windows/windows磁盘管理复习笔记/">windows磁盘管理复习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###一、磁盘概述</p>
+<p>#####1、磁盘硬件了解</p>
+<p>1）扇区：<br>磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的<br>物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取<br>和写入数据时，要以扇区为单位</p>
+<p>2）簇：<br>是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并<br>不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概念，是最小的<br>存储单元。</p>
+<p>3）大小：8字节  实际占用空间：4096字节=515字节*8个扇区</p>
+<h5 id="2、MBR磁盘与GPT磁盘"><a href="#2、MBR磁盘与GPT磁盘" class="headerlink" title="2、MBR磁盘与GPT磁盘"></a>2、MBR磁盘与GPT磁盘</h5><p>1）MBR磁盘(BIOS+MBR)</p>
+<h6 id="引导代码"><a href="#引导代码" class="headerlink" title="引导代码"></a>引导代码</h6><p>占扇区前446个字节，计算机在上电完成BIOS自检后，会将该主引导扇区加载到内存<br>中产a执行前446个字节的引导程序，引导程序首先会在分区表中查找活动分区，如果<br>存在活动分区 ，则根据活动分区的偏移量找到该活动分区上的引导扇区的地址，将<br>引导扇区加载到内存中，同时检查引导扇区的有效性，然后根据该引导盲区的规则去<br>引导操作系统。</p>
+<p>######分区表<br>占扇区中间64个字节，分区表是磁盘管理的重要部分，通过分区表信息来定位各个<br>分区，访问用户的数据。分区表包含4个分区表项，每一个分区项通过位置偏移、分区<br>大小来唯一的确定一个分区是主分区还是扩展分区。每个分区项占16个字节。<br>因为MBR仅仅为分区表项保留了64个字节的存储空间，而每个分区则占用16个字节，也<br>就是说只能分4个分区，而4个分区在生产环境下往往不是最合理的分区方式，因此就<br>产生了扩展分区，在扩展分区中进一步划分逻辑分区，每个逻辑分区的分区信息都<br>存储在一个类似于MBR的扩展引导记录中（EBR），扩展引导记录包括分区表和结束标志<br>结束标志（55AA）</p>
+<p>a.主分区：用来启动操作系统</p>
+<p>b.扩展磁盘分区：用来存储数据</p>
+<p>2）GPT磁盘(UEFI+GPT)<br>    a.EFI系统磁盘分区（ESP）<br>    b.Windows RE磁盘分区<br>    c.MSR磁盘分区<br>    d.windows磁盘分区</p>
+<p>##基本磁盘与动态磁盘</p>
+<p>###二、基本卷的管理</p>
+<pre><code>1、压缩卷
+2、安装新磁盘
+3、创建主分区
+4、建立扩展磁盘分区
+5、指定“活动”磁盘分区
+6、磁盘分区的格式化、卷标、转换文件系统与删除
+7、更改驱动器号及路径
+8、扩展基本卷
+</code></pre><p>###三、动态磁盘的管理</p>
+<pre><code>1、将基本磁盘转移为动态磁盘
+1、administrators/backup operators
+2、建议关闭所有运行的应用程序
+3、原有的主分区与逻辑分区都会变成简单卷
+4、一旦转换完成，整个磁盘内不会再有任何基本卷,但被保护的分区除外
+5、一理转换完成，就无法再转换为基本磁盘，除非先删除磁盘内的所有卷，也就是空磁盘才可以被转换为基本磁盘
+6、一个磁盘内如果安装了多套win操作系统，也不要做转换，一旦转换后，除目前用的操作系统外，其他系统将无法启动。
+</code></pre><p>卷类型：<br>    简单卷（simple volume）<br>    扩展简单卷（extend volume）<br>    跨区卷（spanned volume）<br>    带区卷（striped volume）<br>    镜像卷（mirror volume）<br>    RAID-5卷</p>
+<p>###四、移动磁盘<br>    1、将基本磁盘移动到另外一台计算机内<br>        1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，如果有<br>            冲突，则选用下一个可用的盘符<br>        2）如果原来没有盘符，则移动后也没有<br>    2、将动态磁盘移动到另外一台计算机<br>        1）因为被移动的磁盘移动到目的服务器后会被识为“外部磁盘”，因此先“导入外部磁盘”<br>        2）1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，<br>            如果有冲突，则选用下一个可用的盘符</p>
+<p>###五、存储空间<br>    1、虚拟磁盘与卷(池-虚拟磁盘-卷)<br>        1）虚拟磁盘配置类型<br>    a.simple:<br>    a)数据跨越各硬盘，主要功能是扩大磁盘容量<br>    b)会降低数据访问的可靠性<br>    c)存储池内至少需要有1块磁盘才可以实现这种功能<br>    b.2-Way Mirror<br>    a)同一份数据会存储2份，且是跨越各个磁盘（并非仅存储在2个磁盘内）<br>    b)两份相同的数据可以提高数据访问的可靠性，但也因此占用两倍的磁盘空间、降低<br>        磁盘实际可存储的数据量<br>    c)存储池内至少需要2块磁盘<br>    d)只容忍有2块磁盘出现故障<br>    c.3-Way Mirror<br>    a)同一份数据会存储3份，因此数据的可靠性更高，但会占用更多的磁盘空间<br>    b)存储池内至少需要5块磁盘才可以使用<br>    c)可以容忍两块磁盘损坏<br>    d.Parity:<br>    a)数据跨越各硬盘，可以提高数据访问的可靠性，便也会因为同位数据功能占用硬盘<br>        空间而降低磁盘实际可存储数据的容量<br>    b)存储池内至少需要3块硬盘才可以实现<br>    c)只容忍1块磁盘损坏</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/" data-id="cjm39c2u7002njkucs58zkyo9" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/linux/lamp构架下的网站环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/30/blog/linux/lamp构架下的网站环境搭建/" class="article-date">
+  <time datetime="2017-11-29T16:00:00.000Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#Linux" class='tag'>Linux</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/">
-          <h3 class='post-head'>
-            thinkpad x260重装系统遇到的麻烦及解决方式
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>审计部的小伙伴电脑出现了问题，用尽了各种方法：</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/11/23</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/30/blog/linux/lamp构架下的网站环境搭建/">lamp构架下的网站环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="apache2-4编译安装"><a href="#apache2-4编译安装" class="headerlink" title="apache2.4编译安装"></a>apache2.4编译安装</h2><p>httpd依赖于apr, apr-util</p>
+<p>apr全称为apache portable runtime，能实现httpd跨平台运行</p>
+<pre><code>httpd-2.4 依賴于1.4＋及以上版本的apr
+
+    apr-1.5.0.tar.bz2
+    apr-util-1.5.3.tar.bz2
+    httpd-2.4.9.tar.bz2
+
+    pcre-devel包
+    openssl-devel     
+
+
+2、编译安装 
+# yum install gcc
+# yum install pcre-devel
+
+# tar xf apr-1.5.0.tar.bz2
+# cd apr-1.5.0
+# ./configure --prefix=/usr/local/apr   (--prefix指定apr安装的目录)
+# make
+# make  install
+
+# tar xf apr-util-1.5.3.tar.bz2
+# cd apr-util-1.5.3
+# ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+# make &amp;&amp; make install ###该项被漏掉，补充@20160714
+
+
+# tar xf httpd-2.4.9.tar.bz2
+    以下为几个主要的配置项
+    --sysconfdir=/etc/httpd24  指定配置文件路径
+    --enable-so  启动模块动态装卸载
+    --enable-ssl 编译ssl模块
+    --enable-cgi 支持cgi机制（能够让静态web服务器能够解析动态请求的一个协议）
+    --enable-rewrite  支持url重写     --Author : Leshami
+    --with-zlib  支持数据包压缩       --Blog   : http://blog.csdn.net/leshami
+    --with-pcre  支持正则表达式
+    --with-apr=/usr/local/apr  指明依赖的apr所在目录
+    --with-apr-util=/usr/local/apr-util/  指明依赖的apr-util所在的目录
+    --enable-modules=most      启用的模块
+    --enable-mpms-shared=all   以共享方式编译的模块
+    --with-mpm=prefork         指明httpd的工作方式为prefork
+
+# cd httpd-2.4.9
+# ./configure                           \
+    --with-apr=/usr/local/apr           \
+    --with-apr-util=/usr/local/apr-util \
+    --prefix=/usr/local/apache \
+    --sysconfdir=/etc/httpd24  \
+    --enable-so                \
+    --enable-ssl               \
+    --enable-cgi               \
+    --enable-rewrite           \
+    --with-zlib                \
+    --with-pcre                \
+    --with-mpm=prefork         \
+    --enable-modules=most      \
+    --enable-mpms-shared=all   
+
+# make 
+# make install
+</code></pre><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apache的启动：/usr/<span class="built_in">local</span>/apache/bin/apachectl <span class="built_in">start</span>(<span class="built_in">stop</span>,restart)</span><br><span class="line">制作systemctl的启动脚本，网上找一找就行。</span><br><span class="line">一定要记得iptables -F 和setenforce <span class="number">0.</span>不然别人访问不了你的。</span><br></pre></td></tr></table></figure>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>mysql直接使用的yum安装，编译太慢烦了。用docker更加简单。</p>
+<p>一般网上给出的资料都是</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">yum install mysql</span></span><br><span class="line"><span class="meta">#</span><span class="bash">yum install mysql-server</span></span><br><span class="line"><span class="meta">#</span><span class="bash">yum install mysql-devel</span></span><br></pre></td></tr></table></figure>
+<p>安装mysql和mysql-devel都成功，但是安装mysql-server失败，如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# yum install mysql-server</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading<span class="built_in"> mirror </span>speeds <span class="keyword">from</span> cached hostfile</span><br><span class="line"> * base: mirrors.sina.cn</span><br><span class="line"> * extras: mirrors.sina.cn</span><br><span class="line"> * updates: mirrors.sina.cn</span><br><span class="line"><span class="literal">No</span> package mysql-server available.</span><br><span class="line">Error: <span class="literal">Nothing</span> <span class="keyword">to</span> <span class="keyword">do</span></span><br></pre></td></tr></table></figure>
+<p>查资料发现是CentOS 7 版本将MySQL数据库软件从默认的程序列表中移除，用mariadb代替了。</p>
+<p>有两种解决办法：</p>
+<p>1、方法一：安装mariadb</p>
+<p>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
+<p>安装mariadb，大小59 M。</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">yl</span>-web <span class="built_in">yl</span>]<span class="meta"># yum install mariadb-server mariadb</span></span><br></pre></td></tr></table></figure>
+<p>mariadb数据库的相关命令是：</p>
+<p>systemctl start mariadb  #启动MariaDB</p>
+<p>systemctl stop mariadb  #停止MariaDB</p>
+<p>systemctl restart mariadb  #重启MariaDB</p>
+<p>systemctl enable mariadb  #设置开机启动</p>
+<p>所以先启动数据库</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">yl</span>-web <span class="built_in">yl</span>]<span class="meta"># systemctl start mariadb</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以正常使用mysql了</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 3</span><br><span class="line">Server version: 5.5.41-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2014, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="emphasis">'help;'</span> or <span class="emphasis">'\h'</span> for help. Type <span class="emphasis">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| Database           |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| information<span class="emphasis">_schema |</span></span><br><span class="line"><span class="emphasis">| mysql              |</span></span><br><span class="line"><span class="emphasis">| performance_</span>schema |</span><br><span class="line">| test               |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
+<p>安装mariadb后显示的也是 MariaDB [(none)]&gt; ，可能看起来有点不习惯。下面是第二种方法。</p>
+<h2 id="2、方法二：官网下载安装mysql-server"><a href="#2、方法二：官网下载安装mysql-server" class="headerlink" title="2、方法二：官网下载安装mysql-server"></a>2、方法二：官网下载安装mysql-server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -ivh mysql-community-release-el7-5.noarch.rpm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mysql-community-server</span></span><br></pre></td></tr></table></figure>
+<p>安装成功后重启mysql服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> service mysqld restart</span></span><br></pre></td></tr></table></figure>
+<p>有时候直接启动会报错记得要关闭selinux    <figure class="highlight plain"><figcaption><span>0```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果想变动mysql的数据库位置可以修改/etc/my.cnf文件</span><br><span class="line"></span><br><span class="line">碰到数据库起不来的情况一般都是文件权限的问题数据库要用到的文件和文件夹一律```chown mysql:mysql filename</span><br></pre></td></tr></table></figure></p>
+<p>初次安装mysql，root账户没有密码。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@yl-web yl]# mysql -u root </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.6.26 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="emphasis">'help;'</span> or <span class="emphasis">'\h'</span> for help. Type <span class="emphasis">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; show databases;</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| Database           |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">| information<span class="emphasis">_schema |</span></span><br><span class="line"><span class="emphasis">| mysql              |</span></span><br><span class="line"><span class="emphasis">| performance_</span>schema |</span><br><span class="line">| test               |</span><br><span class="line"><span class="code">+--------------------+</span></span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>设置密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'password'</span>);</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
+<p>不需要重启数据库即可生效。</p>
+<p>把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。</p>
+<p><code>mysql&gt; grant all privileges on *.* to root@&#39;%&#39;identified by &#39;password&#39;;</code></p>
+<p>如果是新用户而不是root，则要先新建用户</p>
+<p><code>mysql&gt;create user &#39;username&#39;@&#39;%&#39; identified by &#39;password&#39;;</code></p>
+<p>此时就可以进行远程连接了。</p>
+<h2 id="安装php7-0"><a href="#安装php7-0" class="headerlink" title="安装php7.0"></a>安装php7.0</h2><p>php源码安装比较好，因为这个解释器。编译效率好。</p>
+<p>首先上个代码，来个直观印象</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php7 \</span><br><span class="line"> -<span class="ruby">-with-curl \</span></span><br><span class="line"><span class="ruby"> --with-freetype-dir \</span></span><br><span class="line"><span class="ruby"> --with-gd \</span></span><br><span class="line"><span class="ruby"> --with-gettext \</span></span><br><span class="line"><span class="ruby"> --with-iconv-dir \</span></span><br><span class="line"><span class="ruby"> --with-kerberos \</span></span><br><span class="line"><span class="ruby"> --with-libdir=lib64 \</span></span><br><span class="line"><span class="ruby"> --with-libxml-dir \</span></span><br><span class="line"><span class="ruby"> --enable-fpm</span></span><br><span class="line"><span class="ruby"> --with-openssl \</span></span><br><span class="line"><span class="ruby"> --with-pcre-regex \</span></span><br><span class="line"><span class="ruby"> --with-pdo-sqlite \</span></span><br><span class="line"><span class="ruby"> --with-pear \</span></span><br><span class="line"><span class="ruby"> --with-png-dir \</span></span><br><span class="line"><span class="ruby"> --with-xmlrpc \</span></span><br><span class="line"><span class="ruby"> --with-xsl \</span></span><br><span class="line"><span class="ruby"> --with-zlib \</span></span><br><span class="line"><span class="ruby"> --with-apxs2=<span class="regexp">/usr/local</span><span class="regexp">/apache/bin</span><span class="regexp">/apxs \</span></span></span><br><span class="line"><span class="ruby"> --enable-fpm \</span></span><br><span class="line"><span class="ruby"> --enable-bcmath \</span></span><br><span class="line"><span class="ruby"> --enable-libxml \</span></span><br><span class="line"><span class="ruby"> --enable-inline-optimization \</span></span><br><span class="line"><span class="ruby"> --enable-gd-native-ttf \</span></span><br><span class="line"><span class="ruby"> --enable-mbregex \</span></span><br><span class="line"><span class="ruby"> --enable-mbstring \</span></span><br><span class="line"><span class="ruby"> --enable-opcache \</span></span><br><span class="line"><span class="ruby"> --enable-pcntl \</span></span><br><span class="line"><span class="ruby"> --enable-shmop \</span></span><br><span class="line"><span class="ruby"> --enable-soap \</span></span><br><span class="line"><span class="ruby"> --enable-sockets \</span></span><br><span class="line"><span class="ruby"> --enable-sysvsem \</span></span><br><span class="line"><span class="ruby"> --enable-xml \</span></span><br><span class="line"><span class="ruby"> --enable-zip \</span></span><br><span class="line"><span class="ruby"> --enable-mysqlnd \</span></span><br><span class="line"><span class="ruby"> --with-mysqli=mysqlnd \</span></span><br><span class="line"><span class="ruby"> --with-pdo-mysql=mysqlnd</span></span><br><span class="line"><span class="ruby"> --with-mysql-sock=<span class="regexp">/var/lib</span><span class="regexp">/mysql/mysql</span>.sock</span></span><br></pre></td></tr></table></figure>
+<p>php下载<a href="http://www.php.net。下载7.0的版本就行了，然后在安装编译需要的程序。" target="_blank" rel="noopener">www.php.net。下载7.0的版本就行了，然后在安装编译需要的程序。</a></p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">yum</span> -y install libjpeg libjpeg-devel libpng libpng-devel free<span class="keyword">type</span> freetype-devel libxml2 libxml2-devel <span class="type">MySQL</span> pcre-develcurl-devel libxslt-devel</span><br></pre></td></tr></table></figure>
+<p>下载后解压进入执行上面的代码，就能够编译执行.make完执行make test检测一下，没有问题就make install。</p>
+<p>安装完成，复制php配置文件到安装目录</p>
+<figure class="highlight plain"><figcaption><span>php.ini-development</span><a href="/usr/local/php/lib/php.ini```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置http.conf</span><br></pre></td></tr></table></figure>
+<p>配置http.conf<br>//加载解析php模块<br>LoadModule php7_module modules/libphp7.so</p>
+<p>//解析后缀名.php的文件</p>
+<filesmatch "\.ph(p[2-6]?|tml)$"=""><br>    SetHandler application/x-httpd-php<br></filesmatch>
+
+<p>//默认页面</p>
+<p><ifmodule dir_module=""><br>    DirectoryIndex index.php index.html<br></ifmodule><br><code>`</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/11/30/blog/linux/lamp构架下的网站环境搭建/" data-id="cjm39c2w0004kjkuc9xzww2kf" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/11/30/blog/linux/lamp构架下的网站环境搭建/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/" class="article-date">
+  <time datetime="2017-11-22T16:00:00.000Z" itemprop="datePublished">2017-11-23</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/windows/">windows</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#windows" class='tag'>windows</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2017/10/29/blog/linux/利用ngrok远程内网机器/">
-          <h3 class='post-head'>
-            利用ngrok远程内网机器
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>需要用ngrok把公司内网的服务器穿出来，好22连接管理。<br>linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/10/29</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/">thinkpad x260重装系统遇到的麻烦及解决方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>审计部的小伙伴电脑出现了问题，用尽了各种方法：</p>
+<p>###u盘启动</p>
+<pre><code>u盘是好的，里面也有pe。但电脑就是识别不了，按照网上的参数设置bios还是不行。索性就放弃了，用光盘噶事。
+</code></pre><p>###外置光驱启动</p>
+<pre><code>x260本身没有光驱，幸好老王拿来了外置光驱，我马上拿来用。
+
+能看到dvd的启动项，但是进不去光盘，选了还是进入硬盘的系统。
+
+思来想去，既然保险的方法，都不能用。那我就本地硬盘安装，速度快还高效。
+
+就怕装的过程中出错，那就危险大发了，因为没有保险手段恢复。
+</code></pre><p>#####首先本地硬盘安装要有两样东西</p>
+<pre><code>onekey和ghost镜像
+
+非常简单打开onekey指定ghost镜像，就好了，重启自动使用dos安装，给力。
+
+系统装好了，没有网卡驱动。在官网上下网卡驱动，再下个联想驱动管理。把所有的驱动都打好。就OK了
+
+其实我感觉外置光盘应该能够装系统，ghost安装好之后，电脑重启，默认从光盘启动（看到了windows10dvd启动界面）。
+
+感觉外置光盘，应该是给电脑装系统的万能工具。
+
+本地硬盘安装，也是非常不错的。但前提是现在用的系统能够进入系统执行onekey。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/" data-id="cjm39c2tt0020jkuc9hgt6xym" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/linux/利用ngrok远程内网机器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/29/blog/linux/利用ngrok远程内网机器/" class="article-date">
+  <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#linux" class='tag'>linux</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2017/10/26/blog/life/我的工作/">
-          <h3 class='post-head'>
-            我的工作
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>其实自己也很无赖</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/10/26</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/life/">生活</a>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/blog/linux/利用ngrok远程内网机器/">利用ngrok远程内网机器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需要用ngrok把公司内网的服务器穿出来，好22连接管理。<br>linux没有windows下有andesk和一些好用的远程桌面工具，只有ngrok这个比较好的工具</p>
+<p>####1，安装好go环境，ngrok是用go编写的。</p>
+<p>1、下载go的软件包</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="string">http:</span><span class="comment">//qwerse.hk.ufileos.com/go1.4.2.linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
+<p>2、解压出来可以随便指定位置</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf go1.<span class="number">4.2</span><span class="selector-class">.linux-386</span><span class="selector-class">.tar</span><span class="selector-class">.gzmv</span> go /usr/local/</span><br></pre></td></tr></table></figure>
+<p>3、go的命令需要做软连接到/usr/bin</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/go/</span>bin<span class="regexp">/* /u</span>sr<span class="regexp">/bin/</span></span><br></pre></td></tr></table></figure>
+<h4 id="2，安装git安装git"><a href="#2，安装git安装git" class="headerlink" title="2，安装git安装git"></a>2，安装git安装git</h4><p>1、安装git，我安装的是2.6版本，防止会出现另一个错误，安装git所需要的依赖包</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install </span>zlib-devel openssl-devel perl hg cpio expat-devel gettext-devel curl curl-devel perl-<span class="keyword">ExtUtils-MakeMaker </span>hg wget gcc gcc-c++</span><br></pre></td></tr></table></figure>
+<p>2、下载git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文本模式复制代码</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>www.kernel.org<span class="regexp">/pub/</span>software<span class="regexp">/scm/gi</span>t<span class="regexp">/git-2.6.0.tar.gz</span></span><br></pre></td></tr></table></figure>
+<p>3、解压git</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">zxvf</span> <span class="selector-tag">git-2</span><span class="selector-class">.6</span><span class="selector-class">.0</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br></pre></td></tr></table></figure>
+<p>4、编译git</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> git-2.6.0.<span class="string">/configure</span> <span class="params">--prefix=/usr/local/gitmakemake</span> install</span><br></pre></td></tr></table></figure>
+<p>5、创建git的软连接</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/git/</span>bin<span class="regexp">/* /u</span>sr<span class="regexp">/bin/</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-下载及编译ngrok"><a href="#3-下载及编译ngrok" class="headerlink" title="3,下载及编译ngrok"></a>3,下载及编译ngrok</h4><p>下载ngrok源码</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~<span class="string">/your_download_dir</span></span><br><span class="line">git clone https:<span class="string">//github.com/inconshreveable/ngrok.git</span> ngrok</span><br><span class="line"><span class="keyword">cd</span> ngrok</span><br></pre></td></tr></table></figure>
+<p>生成证书</p>
+<p>注意这里有个<code>NGROK_BASE_DOMAIN</code>；<br>假设最终需要提供的地址为<code>aevit.your-domain.com</code>，则<code>NGROK_BASE_DOMAIN</code>设置为<code>your-domain.com</code>；<br>假设最终需要提供的地址为<code>aevit.ngrok.your-domain.com</code>，则<code>NGROK_BASE_DOMAIN</code>设置为<code>ngrok.your-domain.com</code>；</p>
+<p>下面以<code>ngrok.your-domain.com</code>为例：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out rootCA<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -x509 -new -nodes -key rootCA<span class="selector-class">.key</span> -subj <span class="string">"/CN=ngrok.your-domain.com"</span> -days <span class="number">5000</span> -out rootCA.pem</span><br><span class="line">openssl genrsa -out device<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -new -key device<span class="selector-class">.key</span> -subj <span class="string">"/CN=ngrok.your-domain.com"</span> -out device.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> device<span class="selector-class">.csr</span> -CA rootCA<span class="selector-class">.pem</span> -CAkey rootCA<span class="selector-class">.key</span> -CAcreateserial -out device<span class="selector-class">.crt</span> -days</span><br></pre></td></tr></table></figure>
+<p>执行完以上命令，就会在<code>ngrok</code>目录下新生成6个文件</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">device.crt</span><br><span class="line">device.csr</span><br><span class="line">device.key</span><br><span class="line">rootCA.key</span><br><span class="line">rootCA.pem</span><br><span class="line">rootCA.srl</span><br></pre></td></tr></table></figure>
+<p><code>ngrok</code>通过<code>bindata</code>将ngrok源码目录下的<code>assets</code>目录（资源文件）打包到可执行文件(<code>ngrokd</code>和<code>ngrok</code>)中 去，<code>assets/client/tls</code> 和 <code>assets/server/tls</code> 下分别存放着用于<code>ngrok</code>和<code>ngrokd</code>的默认证书文件，我们需要将它们<strong>替换</strong>成我们自己生成的：(因此这一步<strong>务必</strong>放在编译可执行文件之前)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp rootCA<span class="selector-class">.pem</span> assets/client/tls/ngrokroot.crt</span><br><span class="line">cp device<span class="selector-class">.crt</span> assets/server/tls/snakeoil.crt</span><br><span class="line">cp device<span class="selector-class">.key</span> assets/server/tls/snakeoil.key</span><br></pre></td></tr></table></figure>
+<p>编译linux端版本</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果是32位系统，这里 GOARCH=386</span></span><br><span class="line"><span class="attribute">GOOS</span>=linux <span class="attribute">GOARCH</span>=amd64 make release-server release-client</span><br></pre></td></tr></table></figure>
+<p>最后成功的话，会在当前目录生成一个<code>bin</code>文件夹，里面包含了<code>ngrokd</code>和<code>ngrok</code>文件；<br>其中，<code>bin/ngrokd</code>文件是服务端程序；<br><code>bin/ngrok</code>文件是客户端程序（注意上面指定了<code>GOOS</code>为64位linux的，所以这个文件是不能在<code>mac</code>或<code>win</code>等其他平台跑的，下面将进行说明如何交叉编译）</p>
+<p>#####服务端启动</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/ngrok/bin/ngrokd <span class="attribute">-domain</span>=<span class="string">"<span class="variable">$NGROK_DOMAIN</span>"</span> <span class="attribute">-httpAddr</span>=<span class="string">":80"</span></span><br></pre></td></tr></table></figure>
+<p>#####客户端使用</p>
+<p>在<code>ngrok</code>程序的同级目录下，编写配置文件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">vim</span> <span class="selector-tag">ngrok</span><span class="selector-class">.cfg</span></span><br></pre></td></tr></table></figure>
+<p>内容如下:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">server_addr:</span> <span class="string">"ngrok.your-domain.com:4443"</span></span><br><span class="line"><span class="symbol">trust_host_root_certs:</span> false</span><br><span class="line"><span class="symbol">tunnels:</span></span><br><span class="line"><span class="symbol">  example:</span></span><br><span class="line"><span class="symbol">   subdomain:</span> <span class="string">"example"</span> <span class="meta">#定义服务器分配域名前缀</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    http:</span> <span class="number">80</span> <span class="meta">#映射端口，不加ip默认本机</span></span><br><span class="line"><span class="symbol">    https:</span> <span class="number">80</span></span><br><span class="line"><span class="symbol">  web:</span></span><br><span class="line"><span class="symbol">   subdomain:</span> <span class="string">"web"</span> <span class="meta">#定义服务器分配域名前缀</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    http:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">80</span> <span class="meta">#映射端口，可以通过加ip为内网任意一台映射</span></span><br><span class="line"><span class="symbol">    https:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">80</span></span><br><span class="line"> </span><br><span class="line"><span class="symbol">  ssh:</span></span><br><span class="line"><span class="symbol">   remote_port:</span> <span class="number">50001</span> <span class="meta">#服务器分配tcp转发端口，如果不填写此项则由服务器分配</span></span><br><span class="line"><span class="symbol">   proto:</span></span><br><span class="line"><span class="symbol">    tcp:</span> <span class="number">22</span> <span class="meta">#映射本地的22端口</span></span><br></pre></td></tr></table></figure>
+<p>使用ngrok<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./ngrok -config=./ngrok<span class="selector-class">.cfg</span> -subdomain=blog <span class="number">80</span>  #映射本机的<span class="number">80</span>端口→blog<span class="selector-class">.ngrok</span><span class="selector-class">.your-domain</span><span class="selector-class">.com</span></span><br><span class="line">./ngrok -config ngrok<span class="selector-class">.cfg</span> start ssh  #开启ssh的隧道</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/" data-id="cjm39c2tg001bjkuct4ll4arl" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/10/29/blog/linux/利用ngrok远程内网机器/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
   </div>
+  
+</article>
 
 
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#工作" class='tag'>工作</a>
+  
 
 
-          
-        </div>
-      </section>
-    
-  </div>
-  <aside>
-    
-    <div class="search">
-      <div class="content">
-        <form action="//www.google.com/search" target="_blank" class="search-form">
-          <input type="text" name="q" maxlength="20" placeholder=Search>
-          <input type="hidden" name='sitesearch' value="https://www.qwerse.com">
-        </form>
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
       </div>
-    </div>
-    
-    
-      <div class="avatar">
-        <img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg" alt="avatar">
-          
-            <div class="content">
-                <span>Qwerse</span>
-            </div>
-          
-      </div>
-    
-    
-      <div class="categories">
-        <h1>
-          Categories
-        </h1>
-        <div class="content">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全/">安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li></ul>
-        </div>
-      </div>
-    
-    
-      <div class="links">
-        <h1>
-          Blogroll
-        </h1>
-        <div class="content">
-          
-            <a href="https://www.baidu.com/" target="_blank">百度</a>
-          
-            <a href="https://www.google.com/" target="_blank">谷歌</a>
-          
-            <a href="https://www.zhihu.com/" target="_blank">知乎</a>
-          
-        </div>
-      </div>
-    
-  </aside>
-</main>
-
-  <div class="paging">
-  <div class="paging-container">
-    
-    <div class='page-prev'>
-      <a href="/">Prev</a>
-    </div>
-    
-    
-    <div class='page-next'>
-      <a href="/page/3/">Next</a>
-    </div>
-    
-  </div>
-</div>
-
-
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
 
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

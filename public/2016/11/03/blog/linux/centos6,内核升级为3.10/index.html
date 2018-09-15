@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>centos6,内核升级为3.10 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="导入公钥：rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org 要为redhat6和centos6安装ELRepo6仓库：rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm 安装 kernel-lt（lt=long-term）yum --ena">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos6,内核升级为3.10">
+<meta property="og:url" content="https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="导入公钥：rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org 要为redhat6和centos6安装ELRepo6仓库：rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm 安装 kernel-lt（lt=long-term）yum --ena">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos6,内核升级为3.10">
+<meta name="twitter:description" content="导入公钥：rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org 要为redhat6和centos6安装ELRepo6仓库：rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm 安装 kernel-lt（lt=long-term）yum --ena">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>centos6,内核升级为3.10</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/11/03</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/linux/centos6,内核升级为3.10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/03/blog/linux/centos6,内核升级为3.10/" class="article-date">
+  <time datetime="2016-11-02T16:00:00.000Z" itemprop="datePublished">2016-11-03</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/web/">web</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos6,内核升级为3.10
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#linux" class='tag'>linux</a>
-
-
-            
-          </div>
-          <h3 id="导入公钥："><a href="#导入公钥：" class="headerlink" title="导入公钥："></a>导入公钥：</h3><pre><code>rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="导入公钥："><a href="#导入公钥：" class="headerlink" title="导入公钥："></a>导入公钥：</h3><pre><code>rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 </code></pre><h3 id="要为redhat6和centos6安装ELRepo6仓库："><a href="#要为redhat6和centos6安装ELRepo6仓库：" class="headerlink" title="要为redhat6和centos6安装ELRepo6仓库："></a>要为redhat6和centos6安装ELRepo6仓库：</h3><pre><code>rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm
 </code></pre><h3 id="安装-kernel-lt（lt-long-term）"><a href="#安装-kernel-lt（lt-long-term）" class="headerlink" title="安装 kernel-lt（lt=long-term）"></a>安装 kernel-lt（lt=long-term）</h3><pre><code>yum --enablerepo=elrepo-kernel install kernel-lt -y
 </code></pre><h3 id="编辑grub-conf文件，修改Grub引导顺序"><a href="#编辑grub-conf文件，修改Grub引导顺序" class="headerlink" title="编辑grub.conf文件，修改Grub引导顺序"></a>编辑grub.conf文件，修改Grub引导顺序</h3><pre><code>vim /etc/grub.conf
@@ -115,144 +131,94 @@ _LVM rd_NO_DM rhgb quiet
 </code></pre><h3 id="5、重启，查看内核版本号"><a href="#5、重启，查看内核版本号" class="headerlink" title="5、重启，查看内核版本号"></a>5、重启，查看内核版本号</h3><pre><code>[root@dev ~]# uname -r
 3.10.28-1.el6.elrepo.x86_64
 </code></pre>
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/" data-id="cjm39c2sx000ejkucdypqsgtz" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
   </div>
-  <aside>
+  
     
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#导入公钥："><span class="toc-number">1.</span> <span class="toc-text">导入公钥：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#要为redhat6和centos6安装ELRepo6仓库："><span class="toc-number">2.</span> <span class="toc-text">要为redhat6和centos6安装ELRepo6仓库：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-kernel-lt（lt-long-term）"><span class="toc-number">3.</span> <span class="toc-text">安装 kernel-lt（lt=long-term）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑grub-conf文件，修改Grub引导顺序"><span class="toc-number">4.</span> <span class="toc-text">编辑grub.conf文件，修改Grub引导顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、重启，查看内核版本号"><span class="toc-number">5.</span> <span class="toc-text">5、重启，查看内核版本号</span></a></li></ol>
-        </div>
-    </div>
-    
-  </aside>
-</main>
+<nav id="article-nav">
+  
+    <a href="/2016/12/08/blog/linux/docker的基本用法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          docker的基本用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/03/blog/web/http 状态代码表/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http 状态代码表</div>
+    </a>
+  
+</nav>
 
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/";
-  var disqus_url = "https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
+  
+</article>
 
 
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2016/11/03/blog/linux/centos6,内核升级为3.10/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

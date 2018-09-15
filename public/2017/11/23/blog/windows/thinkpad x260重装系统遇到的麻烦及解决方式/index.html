@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>thinkpad x260重装系统遇到的麻烦及解决方式 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="审计部的小伙伴电脑出现了问题，用尽了各种方法： ###u盘启动 u盘是好的，里面也有pe。但电脑就是识别不了，按照网上的参数设置bios还是不行。索性就放弃了，用光盘噶事。 ###外置光驱启动 x260本身没有光驱，幸好老王拿来了外置光驱，我马上拿来用。  能看到dvd的启动项，但是进不去光盘，选了还是进入硬盘的系统。  思来想去，既然保险的方法，都不能用。那我就本地硬盘安装，速度快还高效。  就">
+<meta name="keywords" content="windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="thinkpad x260重装系统遇到的麻烦及解决方式">
+<meta property="og:url" content="https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="审计部的小伙伴电脑出现了问题，用尽了各种方法： ###u盘启动 u盘是好的，里面也有pe。但电脑就是识别不了，按照网上的参数设置bios还是不行。索性就放弃了，用光盘噶事。 ###外置光驱启动 x260本身没有光驱，幸好老王拿来了外置光驱，我马上拿来用。  能看到dvd的启动项，但是进不去光盘，选了还是进入硬盘的系统。  思来想去，既然保险的方法，都不能用。那我就本地硬盘安装，速度快还高效。  就">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="thinkpad x260重装系统遇到的麻烦及解决方式">
+<meta name="twitter:description" content="审计部的小伙伴电脑出现了问题，用尽了各种方法： ###u盘启动 u盘是好的，里面也有pe。但电脑就是识别不了，按照网上的参数设置bios还是不行。索性就放弃了，用光盘噶事。 ###外置光驱启动 x260本身没有光驱，幸好老王拿来了外置光驱，我马上拿来用。  能看到dvd的启动项，但是进不去光盘，选了还是进入硬盘的系统。  思来想去，既然保险的方法，都不能用。那我就本地硬盘安装，速度快还高效。  就">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>thinkpad x260重装系统遇到的麻烦及解决方式</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/11/23</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/" class="article-date">
+  <time datetime="2017-11-22T16:00:00.000Z" itemprop="datePublished">2017-11-23</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/windows/">windows</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      thinkpad x260重装系统遇到的麻烦及解决方式
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#windows" class='tag'>windows</a>
-
-
-            
-          </div>
-          <p>审计部的小伙伴电脑出现了问题，用尽了各种方法：</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>审计部的小伙伴电脑出现了问题，用尽了各种方法：</p>
 <p>###u盘启动</p>
 <pre><code>u盘是好的，里面也有pe。但电脑就是识别不了，按照网上的参数设置bios还是不行。索性就放弃了，用光盘噶事。
 </code></pre><p>###外置光驱启动</p>
@@ -103,137 +119,94 @@
 
 本地硬盘安装，也是非常不错的。但前提是现在用的系统能够进入系统执行onekey。
 </code></pre>
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
-  </div>
-  <aside>
-    
-  </aside>
-</main>
-
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/";
-  var disqus_url = "https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
-
-
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+      
     </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/" data-id="cjm39c2tt0020jkuc9hgt6xym" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/30/blog/linux/lamp构架下的网站环境搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          lamp构架下的网站环境搭建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/29/blog/linux/利用ngrok远程内网机器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">利用ngrok远程内网机器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2017/11/23/blog/windows/thinkpad x260重装系统遇到的麻烦及解决方式/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

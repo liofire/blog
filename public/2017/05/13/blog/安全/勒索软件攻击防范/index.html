@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>勒索软件攻击防范 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2017年5月12日起，在国内外网络中发现爆发基于Windows网络共享协议进行攻击传播的蠕虫恶意代码，这是不法分子通过改造之前泄露的NSA黑客武器库中“永恒之蓝”攻击程序发起的网络攻击事件。目前发现的蠕虫会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入执行勒索程序、远程控制木马、虚拟货币挖矿机等恶意程序。此蠕虫目前在没有对445端">
+<meta name="keywords" content="安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="勒索软件攻击防范">
+<meta property="og:url" content="https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="2017年5月12日起，在国内外网络中发现爆发基于Windows网络共享协议进行攻击传播的蠕虫恶意代码，这是不法分子通过改造之前泄露的NSA黑客武器库中“永恒之蓝”攻击程序发起的网络攻击事件。目前发现的蠕虫会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入执行勒索程序、远程控制木马、虚拟货币挖矿机等恶意程序。此蠕虫目前在没有对445端">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="勒索软件攻击防范">
+<meta name="twitter:description" content="2017年5月12日起，在国内外网络中发现爆发基于Windows网络共享协议进行攻击传播的蠕虫恶意代码，这是不法分子通过改造之前泄露的NSA黑客武器库中“永恒之蓝”攻击程序发起的网络攻击事件。目前发现的蠕虫会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入执行勒索程序、远程控制木马、虚拟货币挖矿机等恶意程序。此蠕虫目前在没有对445端">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>勒索软件攻击防范</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/05/13</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/安全/勒索软件攻击防范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/13/blog/安全/勒索软件攻击防范/" class="article-date">
+  <time datetime="2017-05-12T16:00:00.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/安全/">安全</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      勒索软件攻击防范
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#安全" class='tag'>安全</a>
-
-
-            
-          </div>
-          <p>2017年5月12日起，在国内外网络中发现爆发基于Windows网络共享协议<br>进行攻击传播的蠕虫恶意代码，这是不法分子通过改造之前泄露的NSA黑客武<br>器库中“永恒之蓝”攻击程序发起的网络攻击事件。<br>目前发现的蠕虫会扫描开放445文件共享端口的Windows机器，无需用户任<br>何操作，只要开机上网，不法分子就能在电脑和服务器中植入执行勒索程序、远<br>程控制木马、虚拟货币挖矿机等恶意程序。<br>此蠕虫目前在没有对445端口进行严格访问控制的教育网及企业内网大量传<br>播，呈现爆发的态势，受感染系统会被勒索高额金钱，不能按时支付赎金的系统<br>会被销毁数据造成严重损失。该蠕虫攻击事件已经造成非常严重的现实危害，各<br>类规模的企业内网也已经面临此类威胁。<br>360安全监测与响应中心也将持续关注该事件的进展，并第一时间为您更新<br>该事件信息。<br>前情提要：北京时间2017年4月14日晚，一大批新的NSA相关网络攻击工<br>具及文档被Shadow        Brokers组织公布，其中包含了涉及多个Windows系统服务<br>（SMB、RDP、IIS）的远程命令执行工具。</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017年5月12日起，在国内外网络中发现爆发基于Windows网络共享协议<br>进行攻击传播的蠕虫恶意代码，这是不法分子通过改造之前泄露的NSA黑客武<br>器库中“永恒之蓝”攻击程序发起的网络攻击事件。<br>目前发现的蠕虫会扫描开放445文件共享端口的Windows机器，无需用户任<br>何操作，只要开机上网，不法分子就能在电脑和服务器中植入执行勒索程序、远<br>程控制木马、虚拟货币挖矿机等恶意程序。<br>此蠕虫目前在没有对445端口进行严格访问控制的教育网及企业内网大量传<br>播，呈现爆发的态势，受感染系统会被勒索高额金钱，不能按时支付赎金的系统<br>会被销毁数据造成严重损失。该蠕虫攻击事件已经造成非常严重的现实危害，各<br>类规模的企业内网也已经面临此类威胁。<br>360安全监测与响应中心也将持续关注该事件的进展，并第一时间为您更新<br>该事件信息。<br>前情提要：北京时间2017年4月14日晚，一大批新的NSA相关网络攻击工<br>具及文档被Shadow        Brokers组织公布，其中包含了涉及多个Windows系统服务<br>（SMB、RDP、IIS）的远程命令执行工具。</p>
 <hr>
 <h2 id="预防感染办法"><a href="#预防感染办法" class="headerlink" title="预防感染办法:"></a>预防感染办法:</h2><pre><code>①控制面板-&gt;系统与安全-&gt;启用Windows防火墙-&gt;点击”高级设置”-&gt;点击“入站规则”-&gt;选择”新建规则”-&gt;规则类型选择“端口”-&gt;应用于“TCP”协议 特定本地端口并输入“445”-&gt;“操作”选择“阻止连接”-&gt;“配置文件”中“规则应用”全部勾选-&gt;规则名称任意输入并点击完成
 
@@ -100,144 +116,94 @@ win10 : https://mirror.sdu.edu.cn/ms17-010/win10/）
 <p>再附上一个最新解决已感染文件找回办法：<br>到卡巴斯基下载文件解锁工具<a href="https://ransom.kaspersky.com/（据说是攻破了黑客的密钥库，利用已有密钥研究出了反向破解的黑科技），有一定概率能够恢复文件" target="_blank" rel="noopener">https://ransom.kaspersky.com/（据说是攻破了黑客的密钥库，利用已有密钥研究出了反向破解的黑科技），有一定概率能够恢复文件</a><br>（此方法来自网络具体结果可以自己在已经感染的电脑上尝试恢复）</p>
 <p>大部分内容来自吾爱论坛</p>
 
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/" data-id="cjm39c2u5002ijkucxl0s3m56" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/">安全</a></li></ul>
+
+    </footer>
   </div>
-  <aside>
+  
     
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#预防感染办法"><span class="toc-number">1.</span> <span class="toc-text">预防感染办法:</span></a></li></ol>
-        </div>
-    </div>
-    
-  </aside>
-</main>
+<nav id="article-nav">
+  
+    <a href="/2017/05/21/blog/python/用atom打造python IDE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          用atom打造python IDE
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/03/blog/linux/fedora安装和必备软件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">fedora安装和必备软件</div>
+    </a>
+  
+</nav>
 
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/";
-  var disqus_url = "https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
+  
+</article>
 
 
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2017/05/13/blog/安全/勒索软件攻击防范/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

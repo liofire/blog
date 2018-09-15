@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>windows磁盘管理复习笔记 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###一、磁盘概述 #####1、磁盘硬件了解 1）扇区：磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取和写入数据时，要以扇区为单位 2）簇：是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概">
+<meta name="keywords" content="windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows磁盘管理复习笔记">
+<meta property="og:url" content="https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="###一、磁盘概述 #####1、磁盘硬件了解 1）扇区：磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取和写入数据时，要以扇区为单位 2）簇：是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows磁盘管理复习笔记">
+<meta name="twitter:description" content="###一、磁盘概述 #####1、磁盘硬件了解 1）扇区：磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取和写入数据时，要以扇区为单位 2）簇：是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>windows磁盘管理复习笔记</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017/12/19</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/windows/windows磁盘管理复习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/19/blog/windows/windows磁盘管理复习笔记/" class="article-date">
+  <time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/windows/">windows</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows磁盘管理复习笔记
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#windows" class='tag'>windows</a>
-
-
-            
-          </div>
-          <p>###一、磁盘概述</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###一、磁盘概述</p>
 <p>#####1、磁盘硬件了解</p>
 <p>1）扇区：<br>磁盘上的每个磁盘被等分为若干个孤段，这些孤段便是磁盘的扇区，扇区磁盘上最小的<br>物理磁盘单元，每个扇区可以存放512个字节（Byte）的信息，磁盘驱动器在向磁盘读取<br>和写入数据时，要以扇区为单位</p>
 <p>2）簇：<br>是DOS进行分配的最小单位，当创建一个很小的文件时，如是一个字节，则它在磁盘上并<br>不是只占一个字节的空间，而是占有整个簇。簇是操作系统使用的逻辑概念，是最小的<br>存储单元。</p>
@@ -112,144 +128,94 @@
 <p>###四、移动磁盘<br>    1、将基本磁盘移动到另外一台计算机内<br>        1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，如果有<br>            冲突，则选用下一个可用的盘符<br>        2）如果原来没有盘符，则移动后也没有<br>    2、将动态磁盘移动到另外一台计算机<br>        1）因为被移动的磁盘移动到目的服务器后会被识为“外部磁盘”，因此先“导入外部磁盘”<br>        2）1）在移动时，目标机器会自动检测硬盘，自动分配盘符，优先考虑保持原来的盘符，<br>            如果有冲突，则选用下一个可用的盘符</p>
 <p>###五、存储空间<br>    1、虚拟磁盘与卷(池-虚拟磁盘-卷)<br>        1）虚拟磁盘配置类型<br>    a.simple:<br>    a)数据跨越各硬盘，主要功能是扩大磁盘容量<br>    b)会降低数据访问的可靠性<br>    c)存储池内至少需要有1块磁盘才可以实现这种功能<br>    b.2-Way Mirror<br>    a)同一份数据会存储2份，且是跨越各个磁盘（并非仅存储在2个磁盘内）<br>    b)两份相同的数据可以提高数据访问的可靠性，但也因此占用两倍的磁盘空间、降低<br>        磁盘实际可存储的数据量<br>    c)存储池内至少需要2块磁盘<br>    d)只容忍有2块磁盘出现故障<br>    c.3-Way Mirror<br>    a)同一份数据会存储3份，因此数据的可靠性更高，但会占用更多的磁盘空间<br>    b)存储池内至少需要5块磁盘才可以使用<br>    c)可以容忍两块磁盘损坏<br>    d.Parity:<br>    a)数据跨越各硬盘，可以提高数据访问的可靠性，便也会因为同位数据功能占用硬盘<br>        空间而降低磁盘实际可存储数据的容量<br>    b)存储池内至少需要3块硬盘才可以实现<br>    c)只容忍1块磁盘损坏</p>
 
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/" data-id="cjm39c2u7002njkucs58zkyo9" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
   </div>
-  <aside>
+  
     
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2、MBR磁盘与GPT磁盘"><span class="toc-number">1.</span> <span class="toc-text">2、MBR磁盘与GPT磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#引导代码"><span class="toc-number">1.1.</span> <span class="toc-text">引导代码</span></a></li></ol></li></ol>
-        </div>
-    </div>
-    
-  </aside>
-</main>
+<nav id="article-nav">
+  
+    <a href="/2018/01/16/blog/linux/局域网搭建dns/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          局域网搭建dns
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/30/blog/linux/lamp构架下的网站环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">lamp构架下的网站环境搭建</div>
+    </a>
+  
+</nav>
 
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/";
-  var disqus_url = "https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
+  
+</article>
 
 
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2017/12/19/blog/windows/windows磁盘管理复习笔记/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

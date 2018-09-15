@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>mysql基础操作 | QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、初识SQL语言SQL（Structured Query Language 即结构化查询语言）SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTERDML语句      数据库操纵语言：     插入数据INSERT">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql基础操作">
+<meta property="og:url" content="https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="一、初识SQL语言SQL（Structured Query Language 即结构化查询语言）SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTERDML语句      数据库操纵语言：     插入数据INSERT">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T09:52:03.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql基础操作">
+<meta name="twitter:description" content="一、初识SQL语言SQL（Structured Query Language 即结构化查询语言）SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTERDML语句      数据库操纵语言：     插入数据INSERT">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='post'>
-  <div class="content">
-    <article>
-        <section class="content markdown-body">
-          <h1>mysql基础操作</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2016/09/25</time>
-            
-              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+      <div class="outer">
+        <section id="main"><article id="post-blog/linux/mysql基础操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/25/blog/linux/mysql基础操作/" class="article-date">
+  <time datetime="2016-09-24T16:00:00.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/GitBlog/">GitBlog</a>
   </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql基础操作
+    </h1>
+  
 
-
-            
-            
-              | 
-                  <i class="fa fa-tag" aria-hidden="true"></i>
-                
-               
-  <a href="/tags/#linux" class='tag'>linux</a>
-
-
-            
-          </div>
-          <h3 id="一、初识SQL语言"><a href="#一、初识SQL语言" class="headerlink" title="一、初识SQL语言"></a>一、初识SQL语言</h3><p>SQL（Structured Query Language 即结构化查询语言）<br>SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：<br>DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTER<br>DML语句      数据库操纵语言：     插入数据INSERT、删除数据DELETE、更新数据UPDATE、查询数据SELECT<br>DCL语句      数据库控制语言：     例如控制用户的访问权限GRANT、REVOKE</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、初识SQL语言"><a href="#一、初识SQL语言" class="headerlink" title="一、初识SQL语言"></a>一、初识SQL语言</h3><p>SQL（Structured Query Language 即结构化查询语言）<br>SQL语言主要用于存取数据、查询数据、更新数据和管理关系数据库系统，SQL语言由IBM开发。SQL语言分为3种类型：<br>DDL语句      数据库定义语言：     数据库、表、视图、索引、存储过程，例如CREATE DROP ALTER<br>DML语句      数据库操纵语言：     插入数据INSERT、删除数据DELETE、更新数据UPDATE、查询数据SELECT<br>DCL语句      数据库控制语言：     例如控制用户的访问权限GRANT、REVOKE</p>
 <h3 id="二、系统数据库"><a href="#二、系统数据库" class="headerlink" title="二、系统数据库"></a>二、系统数据库</h3><pre><code>information_schema：    虚拟库，主要存储了系统中的一些数据库对象的信息，例如用户表信息、列信息、权限信息、字符信息等
 performance_schema：    主要存储数据库服务器的性能参数
 mysql：                        授权库，主要存储系统用户的权限信息
@@ -153,144 +169,94 @@ mysql&gt; select * from dept;
 Default options are read from the following files in the given order:
 /etc/mysql/my.cnf /etc/my.cnf ~/.my.cnf 
 </code></pre>
-        </section>
-    </article>
-    
-        <!-- disqus 评论框 start -->
-        <div class="comment">
-            <div id="disqus_thread" class="disqus-thread">
-              <i>Loading comments box needs to over the wall</i>
-            </div>
-        </div>
-        <!-- disqus 评论框 end -->
-    
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/" data-id="cjm39c2ta0010jkucjpo4pseu" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
   </div>
-  <aside>
+  
     
-    <div class="toc-container">
-        <h1>目录</h1>
-        <div class="content">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、初识SQL语言"><span class="toc-number">1.</span> <span class="toc-text">一、初识SQL语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、系统数据库"><span class="toc-number">2.</span> <span class="toc-text">二、系统数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、忘记MySQL密码"><span class="toc-number">3.</span> <span class="toc-text">三、忘记MySQL密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建业务数据库"><span class="toc-number">3.1.</span> <span class="toc-text">创建业务数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库命名规则："><span class="toc-number">3.2.</span> <span class="toc-text">数据库命名规则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看数据库"><span class="toc-number">3.3.</span> <span class="toc-text">查看数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择数据库"><span class="toc-number">3.4.</span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除数据库"><span class="toc-number">3.5.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建表-字段名称-类型-值"><span class="toc-number">3.6.</span> <span class="toc-text">创建表(字段名称 类型 值)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入数据库"><span class="toc-number">3.7.</span> <span class="toc-text">插入数据库</span></a></li></ol></li></ol>
-        </div>
-    </div>
-    
-  </aside>
-</main>
+<nav id="article-nav">
+  
+    <a href="/2016/09/29/blog/mysql/MySql主从备份/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySql主从备份
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/13/blog/linux/Rsync+inotify/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">rsync+inotify(触发式同步)</div>
+    </a>
+  
+</nav>
 
-<!-- disqus 公共JS代码 -->
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = "QwerseBlog";
-  var disqus_identifier = "https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/";
-  var disqus_url = "https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/";
-
-  isAgent(getDisqus)
-
-  // determine user agent in China
-  function isAgent(cb) {
-    var url = '//graph.facebook.com/feed?callback=h';
-    var xhr = new XMLHttpRequest();
-    var called = false;
-    xhr.open('GET', url);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      called = true;
-      cb(true);
-      }
-    };
-    xhr.send();
-    // timeout 1s, this facebook API is very fast.
-    setTimeout(function() {
-      if (!called) {
-      xhr.abort();
-      cb(false)
-      }
-    }, 1000);
-  }
-
-  function getDisqus(isAgent) {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; 
-    dsq.async = true
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-  }
-</script>
-<!-- disqus 公共JS代码 end -->
+  
+</article>
 
 
-
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/lib/in-view.min.js"></script>
-<script src="/lib/lodash.min.js"></script>
-<script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
-
-  document.body.addEventListener('touchstart', function(){});
+    </div>
+    <nav id="mobile-nav">
   
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
-  });
-
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
-
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
-  })
-
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
-    })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  var disqus_url = 'https://www.qwerse.com/2016/09/25/blog/linux/mysql基础操作/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
-<script src="/lib/jquery.fancybox.min.js"></script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

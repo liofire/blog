@@ -1,533 +1,730 @@
 <!DOCTYPE html>
-<html lang=>
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="QwerSe-一击致命，一点就透
-">
-  <meta name="keywords" content="Markdown,linux,网络,构架">
+<html>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="icon" href="">
-  
-    
   <title>QwerSe</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QwerSe-一击致命，一点就透">
+<meta name="keywords" content="Markdown,linux,网络,构架">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QwerSe">
+<meta property="og:url" content="https://www.qwerse.com/index.html">
+<meta property="og:site_name" content="QwerSe">
+<meta property="og:description" content="QwerSe-一击致命，一点就透">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QwerSe">
+<meta name="twitter:description" content="QwerSe-一击致命，一点就透">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>QwerSe</span>
-    </a>
-    <ul class="right-header">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QwerSe</a>
+      </h1>
       
-        <li class="nav-item">
-          
-            <a href="/" class="item-link active">首页</a>
-          
-        </li>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个方向，来回走动</a>
+        </h2>
       
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.qwerse.com"></form>
+      </div>
+    </div>
   </div>
 </header>
-
-  <main id='index'>
-  <div class="posts-list">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-blog/c/原码-反码-补码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/12/blog/c/原码-反码-补码/" class="article-date">
+  <time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time>
+</a>
     
-      <section>
-        <a href="/2018/08/24/blog/life/迷茫/">
-          <h3 class='post-head'>
-            迷茫
-          </h3>
-        </a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/c/">c</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>真的好迷茫啊。工作已经快1年半了，虽然技能能够胜任工作，但是感觉还是依靠团队比较多一点，一些大型的事故发生，自己感觉还是不能够胜任。</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/08/24</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/blog/c/原码-反码-补码/">原码-反码-补码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>16位，计算机默认以补码储存</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    c=<span class="number">0xe5</span>;</span><br><span class="line">    </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"this %d\n"</span>,c);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果为 -27</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://attachments-cdn.shimo.im/gpMd69LZsscsnGPx/sam.c" target="_blank" rel="noopener">sam.c</a></p>
+<hr>
+<p>e5 是16位，计算机默认以补码储存，char占8bit<br>e5的二进制为：‭1110 0101‬  ⬅ 形式为补码<br>反码为            :1001 1010   ⬅ 开头1，标识正负数，不做变换<br>原码为            :1001 1011 ⬅结尾加1，结果为-27</p>
+<hr>
+<p>10位，计算机默认以原码储存<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    c=<span class="number">-123</span>;</span><br><span class="line">    </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"this %x\n"</span>,c);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果为 ffffff85</span></span><br></pre></td></tr></table></figure></p>
+<p>123 是10位，计算机默认以原码储存,int占32bit<br>123的原码为: ：1000 0000 0000 0000 0000 0000 0111 1011‬<br>反码为          ：  1111 1111 1111 1111 1111 1111 1000 0100<br>补码              ： 1111 1111 1111 1111 11111 1111 1000 0101    ⬅结果为ffffff85</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/09/12/blog/c/原码-反码-补码/" data-id="cjm39c2sb0003jkucjlqsuirz" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/09/12/blog/c/原码-反码-补码/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/life/迷茫" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/24/blog/life/迷茫/" class="article-date">
+  <time datetime="2018-08-23T16:00:00.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/life/">life</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#life" class='tag'>life</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/08/06/blog/python/python爬取厨房故事并导出json数据/">
-          <h3 class='post-head'>
-            python爬取厨房故事并导出json数据
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>[TOC]</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/08/06</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/24/blog/life/迷茫/">迷茫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>真的好迷茫啊。工作已经快1年半了，虽然技能能够胜任工作，但是感觉还是依靠团队比较多一点，一些大型的事故发生，自己感觉还是不能够胜任。</p>
+<p>早前学习过linux和python，也一直以这两个为目标在前行。但是没有具体的实施，每日都是东一枪，西一枪。</p>
+<p>现在还想学习学习c,但是现在是为找到好的工作为目标，不能凭自己的兴趣啊！！！</p>
+<p>给自己定一个长目标</p>
+<hr>
+<p>Web服务器：apache、tomcat、nginx、lighttpd</p>
+<p>监控：nagios、ganglia、cacti、zabbix</p>
+<p>自动部署：ansible、sshpt、salt</p>
+<p>配置管理：puppet、cfengine</p>
+<p>负载均衡：lvs、haproxy、nginx</p>
+<p>传输工具：scribe、flume</p>
+<p>备份工具：rsync、wget</p>
+<p>数据库：mysql、oracle、sqlserver</p>
+<p>分布式平台：hdfs、mapreduce、spark、storm、hive</p>
+<p>分布式数据库：hbase、cassandra、redis、MongoDB</p>
+<p>容器：lxc、docker</p>
+<p>虚拟化：openstack、xen、kvm</p>
+<p>安全：kerberos、selinux、acl、iptables</p>
+<p>问题追查：netstat、top、tcpdump、last</p>
+<hr>
+<p>自动化运维（Ansible，Puppet，Saltstack等</p>
+<p>DevopsDocker，K8s，Jenkins，Jira等</p>
+<p>云服务技术虚拟化、OpenStack、AWS及阿里云各种产品服务架构等</p>
+<p>python</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/08/24/blog/life/迷茫/" data-id="cjm39c2sv000djkuc3syor1ql" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/08/24/blog/life/迷茫/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/python爬取厨房故事并导出json数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/06/blog/python/python爬取厨房故事并导出json数据/" class="article-date">
+  <time datetime="2018-08-05T16:00:00.000Z" itemprop="datePublished">2018-08-06</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/Python/">Python</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#spider" class='tag'>spider</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/08/02/blog/life/生活照片/">
-          <h3 class='post-head'>
-            2018-7月照片
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-          <div class="post-img">
-            <img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg" alt="">
-          </div>
-        
-        <div class="post-content">
-          
-            
-              
-                <p>This is a image test post.</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/08/02</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/blog/python/python爬取厨房故事并导出json数据/">python爬取厨房故事并导出json数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<p>朋友叫我帮他爬取<a href="http://www.chufanggushi.com这个网站的数据要合成json，估计他是想利用这些资源建立个小网站。" target="_blank" rel="noopener">www.chufanggushi.com这个网站的数据要合成json，估计他是想利用这些资源建立个小网站。</a></p>
+<h4 id="分析网站"><a href="#分析网站" class="headerlink" title="分析网站"></a>分析网站</h4><p>看了下，网站</p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftztfso1isj20wy0du7a7.jpg" alt=""></p>
+<p>看到了api，当然是利用api来获取数据了。<br>把api的内容复制到本地，分析结构</p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftztg93bz7j20in0bv3zr.jpg" alt=""></p>
+<p>“like_count”是热度<br>“title”是菜谱名等等…</p>
+<h4 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h4><p>分析完了，就是获取数据了，获取5个数据。用代码进行解释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSONObject</span>:</span></span><br><span class="line">    <span class="string">'''使json数据能用属性的方式访问'''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d)</span>:</span></span><br><span class="line">        self.__dict__=d</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建mongodb的连接</span></span><br><span class="line">client = MongoClient(<span class="string">'mongodb://10.10.12.115:27017/'</span>)</span><br><span class="line">db = client.pc</span><br><span class="line">data = db.data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#开始数据的循环爬取，只爬取前19页</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    </span><br><span class="line">    url = <span class="string">"https://www.chufanggushi.com/api/recipes/?page_size=24&amp;page=&#123;&#125;&amp;type=recipe"</span>.format(str(x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    head=&#123; <span class="string">"accept"</span>:<span class="string">"application/json, text/plain, */*"</span>,</span><br><span class="line">    <span class="string">"accept-language"</span>:<span class="string">"zh"</span>,</span><br><span class="line">    <span class="string">"cookie"</span>:<span class="string">"_omappvp=e4wgfkyiwCHvob2yYtjt8tRPUmhji3bW1DC9McBdzp03f6vShqfTpuHVE4I2ih0V0dpzDfaZR7ZddaTcicvEj9pX6ZrXnGTX; _ga=GA1.2.894983333.1533443961; _gid=GA1.2.1955174767.1533443961; amplitude_id_132c72b21efcc3b4fd03ac4374be22f1chufanggushi.com=eyJkZXZpY2VJZCI6IjI3OWM0N2JjLWE4NzAtNGUzYS05YzA3LWQ5NzVhMGRiOGYzNVIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTUzMzQ0Mzk2MTAyNywibGFzdEV2ZW50VGltZSI6MTUzMzQ0NzcxMDI1MSwiZXZlbnRJZCI6MjcsImlkZW50aWZ5SWQiOjAsInNlcXVlbmNlTnVtYmVyIjoyN30="</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>:<span class="string">'http://www.sse.com.cn/assortment/stock/list/share/'</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    api_txt= requests.get(url, headers=head).text</span><br><span class="line"></span><br><span class="line">    api_json = json.loads(api_txt,object_hook=JSONObject)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">        <span class="string">'''获取json的数据'''</span></span><br><span class="line">        cid =  count</span><br><span class="line">        url = api_json.data[i].url <span class="comment">#提取网址，下面方式相同</span></span><br><span class="line">        like_count = api_json.data[i].like_count</span><br><span class="line">        name = api_json.data[i].title</span><br><span class="line">        img = api_json.data[i].cell_image.url</span><br><span class="line">        min = (api_json.data[i].preparation_time + api_json.data[i].baking_time)/<span class="number">60</span></span><br><span class="line">        </span><br><span class="line">        data_data = &#123;<span class="string">"name"</span>:name,<span class="string">"cid"</span>:cid,<span class="string">"img"</span>:img,<span class="string">"like"</span>:like_count,<span class="string">"min"</span>:min&#125;</span><br><span class="line">        data.insert(data_data)</span><br><span class="line">        <span class="keyword">print</span> (count)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h4><p> 使用mongodb，导出json<br> <code>./mongoexport -d pc -c data chufang.json</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/08/06/blog/python/python爬取厨房故事并导出json数据/" data-id="cjm39c2ts001yjkucq2a09t5w" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/08/06/blog/python/python爬取厨房故事并导出json数据/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/">spider</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/life/生活照片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/blog/life/生活照片/" class="article-date">
+  <time datetime="2018-08-01T16:00:00.000Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/life/">life</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#照片" class='tag'>照片</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/07/20/blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误/">
-          <h3 class='post-head'>
-            出现PAGE_FAULT_IN_NONPAGED_AREA错误
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftg6ekwd9gj20cw0h8q49.jpg" alt=""></p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/07/20</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/02/blog/life/生活照片/">2018-7月照片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is a image test post.</p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg" alt="小侄子"></p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6qjv6pj22bs3401kx.jpg" alt="电脑出问题了"></p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6vwajkj22bs340qrf.jpg" alt="光谷夕阳"></p>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl73lcwfj22bs340kj6.jpg" alt="运维中"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/08/02/blog/life/生活照片/" data-id="cjm39c2sp0007jkuco1okkurq" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/08/02/blog/life/生活照片/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/照片/">照片</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误/" class="article-date">
+  <time datetime="2018-07-19T16:00:00.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/windows/">windows</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#windows" class='tag'>windows</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/07/06/blog/linux/cobbler配置的安装和坑/">
-          <h3 class='post-head'>
-            cobbler配置的安装和坑
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <h5 id="先说一下坑"><a href="#先说一下坑" class="headerlink" title="先说一下坑"></a>先说一下坑</h5><ul>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/07/06</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误/">出现PAGE_FAULT_IN_NONPAGED_AREA错误</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftg6ekwd9gj20cw0h8q49.jpg" alt=""></p>
+<p>连续4台电脑出现这个问题往上面找了，说是内存的原因，感觉不对。</p>
+<p>怎么感觉都是系统的原因，同事老王说是windows打补丁的结果，-_-||。</p>
+<p>最后还是老王 在pe下使用<code>chkdsk c: /f /r</code> 进行了修复，重启果然就好了。。</p>
+<p>！！！注意c是系统盘</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/07/20/blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误/" data-id="cjm39c2u4002gjkuc1t8wx90e" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/07/20/blog/windows/出现PAGE_FAULT_IN_NONPAGED_AREA错误/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/linux/cobbler配置的安装和坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/06/blog/linux/cobbler配置的安装和坑/" class="article-date">
+  <time datetime="2018-07-05T16:00:00.000Z" itemprop="datePublished">2018-07-06</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#cobbler" class='tag'>cobbler</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/06/27/blog/linux/zabbix的安装和坑/">
-          <h3 class='post-head'>
-            zabbix的安装和坑
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>好久没写博客了，自己还是太懒惰啊<br>系统:centos7<br>安装版本:4.0alpha8<br>zabbix最好使用yum安装，这是主流安装。</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/06/27</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/06/blog/linux/cobbler配置的安装和坑/">cobbler配置的安装和坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="先说一下坑"><a href="#先说一下坑" class="headerlink" title="先说一下坑"></a>先说一下坑</h5><ul>
+<li><p>url –url=”<a href="http://127.0.0.1/cobbler/ks_mirror/Centos-7.4mini-x86_64/&quot;" target="_blank" rel="noopener">http://127.0.0.1/cobbler/ks_mirror/Centos-7.4mini-x86_64/&quot;</a> </p>
+<p>ks文件里一定要指定<code>url --url</code>,127.0.0.1一定要替换局域网里面的ip</p>
+</li>
+<li><p>能进安装界面，但是卡死不动，是ks文件没有配置好。怎么获取好的配置文件呢？最简单的方式就是用光盘安装一遍。进入root主目录有个ana开头的文件，把里面的内容复制下来就行了。我一般喜欢用图形安装方式，比较不容易出现问题。</p>
+</li>
+</ul>
+<h4 id="安装配置步骤"><a href="#安装配置步骤" class="headerlink" title="安装配置步骤"></a>安装配置步骤</h4><p>网上教程太多，重复的造轮子也没有什么意义</p>
+<p>选择一篇我自己实践过的文章，写的非常的好。</p>
+<p><a href="https://www.jianguoyun.com/p/DROpJUgQqeD4BhighWE" target="_blank" rel="noopener">文章（点击下载）</a></p>
+<p>附一下<br>我的ks文件，是centos7的图形安装<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#version=DEVEL</span></span><br><span class="line"><span class="comment"># System authorization information</span></span><br><span class="line">auth <span class="params">--enableshadow</span> <span class="params">--passalgo=sha512</span></span><br><span class="line"><span class="comment"># Use CDROM installation media</span></span><br><span class="line">install</span><br><span class="line"><span class="comment"># Use graphical install</span></span><br><span class="line">graphical</span><br><span class="line"><span class="comment"># Run the Setup Agent on first boot</span></span><br><span class="line">firstboot <span class="params">--enable</span></span><br><span class="line">ignoredisk <span class="params">--only-use=sda</span></span><br><span class="line"><span class="comment"># Keyboard layouts</span></span><br><span class="line">keyboard <span class="params">--vckeymap=us</span> <span class="params">--xlayouts=</span>'us'</span><br><span class="line"><span class="comment"># System language</span></span><br><span class="line">lang en_US.UTF-8</span><br><span class="line"></span><br><span class="line"><span class="comment"># Network information</span></span><br><span class="line">network  <span class="params">--bootproto=dhcp</span> <span class="params">--device=eth0</span> <span class="params">--onboot=off</span> <span class="params">--ipv6=auto</span> <span class="params">--no-activate</span></span><br><span class="line">network  <span class="params">--hostname=localhost</span>.localdomain</span><br><span class="line"></span><br><span class="line"><span class="comment"># Root password</span></span><br><span class="line">rootpw <span class="params">--iscrypted</span> $6$KISrAVI4.I92wl5M$Q4vAA3tqkoXOq0otYYUBEwtHdb1SB9YttiEBzOkcHhALakx/1sUoh1y83bSB2zUFvtTd6Zgb9Xq4lxhJ.hE.y/</span><br><span class="line"><span class="comment"># System services</span></span><br><span class="line">services <span class="params">--enabled=</span><span class="string">"chronyd"</span></span><br><span class="line"><span class="comment"># System timezone</span></span><br><span class="line">timezone America/New_York <span class="params">--isUtc</span></span><br><span class="line"><span class="comment"># System bootloader configuration</span></span><br><span class="line">bootloader <span class="params">--append=</span><span class="string">" crashkernel=auto"</span> <span class="params">--location=mbr</span> <span class="params">--boot-drive=sda</span></span><br><span class="line">autopart <span class="params">--type=lvm</span></span><br><span class="line"><span class="comment"># Partition clearing information</span></span><br><span class="line">clearpart <span class="params">--none</span> <span class="params">--initlabel</span></span><br><span class="line"></span><br><span class="line">%packages</span><br><span class="line">@minimal</span><br><span class="line">@core</span><br><span class="line">chrony</span><br><span class="line">kexec-tools</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line">%addon com_redhat_kdump <span class="params">--enable</span> <span class="params">--reserve-mb=</span>'auto'</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line">%anaconda</span><br><span class="line">pwpolicy root <span class="params">--minlen=6</span> <span class="params">--minquality=1</span> <span class="params">--notstrict</span> <span class="params">--nochanges</span> <span class="params">--notempty</span></span><br><span class="line">pwpolicy user <span class="params">--minlen=6</span> <span class="params">--minquality=1</span> <span class="params">--notstrict</span> <span class="params">--nochanges</span> <span class="params">--emptyok</span></span><br><span class="line">pwpolicy luks <span class="params">--minlen=6</span> <span class="params">--minquality=1</span> <span class="params">--notstrict</span> <span class="params">--nochanges</span> <span class="params">--notempty</span></span><br><span class="line">%end</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/07/06/blog/linux/cobbler配置的安装和坑/" data-id="cjm39c2t5000rjkuclg1wvyai" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/07/06/blog/linux/cobbler配置的安装和坑/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cobbler/">cobbler</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/linux/zabbix的安装和坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/blog/linux/zabbix的安装和坑/" class="article-date">
+  <time datetime="2018-06-26T16:00:00.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#zabbix" class='tag'>zabbix</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/05/30/blog/life/5月小结/">
-          <h3 class='post-head'>
-            5月小结
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>五月前半时间还是挺热的，后半月气温就还好。<br>五月前1/3，还在好好的自学，中间10天就比较浮躁了，因为要去市场实习。<br>说实话我是非常反感市场实习的，因为我感觉好的能力有所欠缺，特别是在沟通方面。<br>去了20-25共6天，期间市场体验非常的糟糕，失败的程度非常大。一度很沮丧。<br>期间收获了友谊和个人的成长，越是害怕的事，如果能克服的话，也是非常nb的。</p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/05/30</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/blog/linux/zabbix的安装和坑/">zabbix的安装和坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好久没写博客了，自己还是太懒惰啊<br>系统:centos7<br>安装版本:4.0alpha8<br>zabbix最好使用yum安装，这是主流安装。</p>
+<h3 id="zabbix需要lamp或者lnmp环境架构"><a href="#zabbix需要lamp或者lnmp环境架构" class="headerlink" title="zabbix需要lamp或者lnmp环境架构"></a>zabbix需要lamp或者lnmp环境架构</h3><p>php安装：<br>appnode官网：<a href="https://www.appnode.com/" target="_blank" rel="noopener">https://www.appnode.com/</a><br>使用appnode只需要搭建php，mysql和httpd用yum安装，这样zabbix才不会安装出现问题。</p>
+<p>mysql安装：<br><code>yum install mysql-server mysql</code></p>
+<p>apache安装:<br><code>yum install httpd</code><br>zabbix安装:<br>没必要重复造轮子了网址：<a href="https://www.zabbix.com/download" target="_blank" rel="noopener">https://www.zabbix.com/download</a><br>配置好yun源后安装<br>    <code>yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent</code></p>
+<hr>
+<p>也不说安装的步骤了，网上太多了，我就讲一些坑就行了。</p>
+<ol>
+<li><p>使用yum安装比使用源码安装好，简单和方便</p>
+</li>
+<li><p>时区问题要警惕，不然安装过后进不了web界面<br><code>/etc/httpd/conf.d/zabbix.conf文件中的timezone取消注释改成php_value date.timezone Asia/Shanghai</code><br><code>修改PHP.ini找到date.timezone这行，去掉前面的分号，改成：date.timezone = Asia/Shanghai重启php</code></p>
+</li>
+<li><p>/etc/zabbix/zabbix_server.conf 和 /etc/zabbix/web/zabbix.conf.php 里面的数据库账号密码要一致</p>
+</li>
+<li>localhost:80/zabbix  ，账号Admin 密码 zabbix 默认的</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/06/27/blog/linux/zabbix的安装和坑/" data-id="cjm39c2t8000xjkucdy0mhf3r" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/06/27/blog/linux/zabbix的安装和坑/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/life/5月小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/blog/life/5月小结/" class="article-date">
+  <time datetime="2018-05-29T16:00:00.000Z" itemprop="datePublished">2018-05-30</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/life/">life</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#life" class='tag'>life</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/04/27/blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名/">
-          <h3 class='post-head'>
-            爬取appnode的登陆log，并分析常见的暴力攻击用户名
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <p>学习了很多东西，不用的话，那就是不会。<br>前天想把appnode的登陆失败的记录趴下来，并且把攻击者用的账户名和ip用pandas给分析出来<br><img src="http://ww1.sinaimg.cn/large/ab318c02gy1fr56xd6ti2j20rh0j1gmg.jpg" alt=""></p>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/27</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/blog/life/5月小结/">5月小结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>五月前半时间还是挺热的，后半月气温就还好。<br>五月前1/3，还在好好的自学，中间10天就比较浮躁了，因为要去市场实习。<br>说实话我是非常反感市场实习的，因为我感觉好的能力有所欠缺，特别是在沟通方面。<br>去了20-25共6天，期间市场体验非常的糟糕，失败的程度非常大。一度很沮丧。<br>期间收获了友谊和个人的成长，越是害怕的事，如果能克服的话，也是非常nb的。</p>
+<p>放一张我们泰州小组的照片，这次出差每个人都非常不容易。<br><img src="https://ws1.sinaimg.cn/large/ab318c02gy1frt8tb57c4j23282aohdu.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/05/30/blog/life/5月小结/" data-id="cjm39c2sq0008jkuc25bpmjrf" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/05/30/blog/life/5月小结/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/numpy函数split的用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/27/blog/python/numpy函数split的用法/" class="article-date">
+  <time datetime="2018-04-26T16:00:00.000Z" itemprop="datePublished">2018-04-27</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/coding/">coding</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/04/27/blog/python/numpy函数split的用法/">
-          <h3 class='post-head'>
-            numpy函数split的用法
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/27</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/blog/python/numpy函数split的用法/">numpy函数split的用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<h3 id="建立一个2维数组"><a href="#建立一个2维数组" class="headerlink" title="建立一个2维数组"></a>建立一个2维数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">1</span>,<span class="number">101</span>).reshape((<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  1,   2,   3,   4,   5,   6,   7,   8,   9,  10],
+       [ 11,  12,  13,  14,  15,  16,  17,  18,  19,  20],
+       [ 21,  22,  23,  24,  25,  26,  27,  28,  29,  30],
+       [ 31,  32,  33,  34,  35,  36,  37,  38,  39,  40],
+       [ 41,  42,  43,  44,  45,  46,  47,  48,  49,  50],
+       [ 51,  52,  53,  54,  55,  56,  57,  58,  59,  60],
+       [ 61,  62,  63,  64,  65,  66,  67,  68,  69,  70],
+       [ 71,  72,  73,  74,  75,  76,  77,  78,  79,  80],
+       [ 81,  82,  83,  84,  85,  86,  87,  88,  89,  90],
+       [ 91,  92,  93,  94,  95,  96,  97,  98,  99, 100]])
+</code></pre><h3 id="split-的普通用法"><a href="#split-的普通用法" class="headerlink" title="split 的普通用法"></a>split 的普通用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.split(a,<span class="number">10</span>) <span class="comment">#把a这个ndarray,放在第一位，把要分割的次数放在第二位.!第二位数字一定是能被元素和整除。</span></span><br></pre></td></tr></table></figure>
+<pre><code>[array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10]]),
+ array([[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]),
+ array([[21, 22, 23, 24, 25, 26, 27, 28, 29, 30]]),
+ array([[31, 32, 33, 34, 35, 36, 37, 38, 39, 40]]),
+ array([[41, 42, 43, 44, 45, 46, 47, 48, 49, 50]]),
+ array([[51, 52, 53, 54, 55, 56, 57, 58, 59, 60]]),
+ array([[61, 62, 63, 64, 65, 66, 67, 68, 69, 70]]),
+ array([[71, 72, 73, 74, 75, 76, 77, 78, 79, 80]]),
+ array([[81, 82, 83, 84, 85, 86, 87, 88, 89, 90]]),
+ array([[ 91,  92,  93,  94,  95,  96,  97,  98,  99, 100]])]
+</code></pre><h3 id="犀利一点的语法"><a href="#犀利一点的语法" class="headerlink" title="犀利一点的语法"></a>犀利一点的语法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.split(a,<span class="number">2</span>,axis=<span class="number">1</span>)  <span class="comment">#axis为0按行分割，为1按列分割</span></span><br></pre></td></tr></table></figure>
+<pre><code>[array([[ 1,  2,  3,  4,  5],
+        [11, 12, 13, 14, 15],
+        [21, 22, 23, 24, 25],
+        [31, 32, 33, 34, 35],
+        [41, 42, 43, 44, 45],
+        [51, 52, 53, 54, 55],
+        [61, 62, 63, 64, 65],
+        [71, 72, 73, 74, 75],
+        [81, 82, 83, 84, 85],
+        [91, 92, 93, 94, 95]]), array([[  6,   7,   8,   9,  10],
+        [ 16,  17,  18,  19,  20],
+        [ 26,  27,  28,  29,  30],
+        [ 36,  37,  38,  39,  40],
+        [ 46,  47,  48,  49,  50],
+        [ 56,  57,  58,  59,  60],
+        [ 66,  67,  68,  69,  70],
+        [ 76,  77,  78,  79,  80],
+        [ 86,  87,  88,  89,  90],
+        [ 96,  97,  98,  99, 100]])]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.split(a,<span class="number">2</span>,axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
+        [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+        [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+        [41, 42, 43, 44, 45, 46, 47, 48, 49, 50]]),
+ array([[ 51,  52,  53,  54,  55,  56,  57,  58,  59,  60],
+        [ 61,  62,  63,  64,  65,  66,  67,  68,  69,  70],
+        [ 71,  72,  73,  74,  75,  76,  77,  78,  79,  80],
+        [ 81,  82,  83,  84,  85,  86,  87,  88,  89,  90],
+        [ 91,  92,  93,  94,  95,  96,  97,  98,  99, 100]])]
+</code></pre><h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">np.split(a,[<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">10</span>])</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">分割值按照列表的形式存在</span></span><br><span class="line"><span class="string">它是这样分割的</span></span><br><span class="line"><span class="string">a的shape是10，10。</span></span><br><span class="line"><span class="string">轴是10</span></span><br><span class="line"><span class="string">列表中第一个2，代表分割前2行，还剩下3-10，共7行。</span></span><br><span class="line"><span class="string">列表中第二个5，分割剩下的行直到5，还剩下6-10，共4行。</span></span><br><span class="line"><span class="string">列表中第三个8，分割剩下的行直到8，还剩下9-10，共2行。</span></span><br><span class="line"><span class="string">列表中第四个10，分割剩下的行直到10，还剩下0，共0行。</span></span><br><span class="line"><span class="string">这样的方法会使得还会多余一个空的array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<pre><code>[array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
+        [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]),
+ array([[21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+        [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+        [41, 42, 43, 44, 45, 46, 47, 48, 49, 50]]),
+ array([[51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+        [61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
+        [71, 72, 73, 74, 75, 76, 77, 78, 79, 80]]),
+ array([[ 81,  82,  83,  84,  85,  86,  87,  88,  89,  90],
+        [ 91,  92,  93,  94,  95,  96,  97,  98,  99, 100]]),
+ array([], shape=(0, 10), dtype=int64)]
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/04/27/blog/python/numpy函数split的用法/" data-id="cjm39c2tm001mjkucx9slyf4o" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/04/27/blog/python/numpy函数split的用法/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/27/blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名/" class="article-date">
+  <time datetime="2018-04-26T16:00:00.000Z" itemprop="datePublished">2018-04-27</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/coding/">coding</a>
   </div>
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#python" class='tag'>python</a>
-
-
-          
-        </div>
-      </section>
+  </div>
+  <div class="article-inner">
     
-      <section>
-        <a href="/2018/04/23/blog/python/搭建jupyter-notebook服务器/">
-          <h3 class='post-head'>
-            搭建jupyter-notebook服务器
-          </h3>
-        </a>
+    
+      <header class="article-header">
         
-        <div class="post-content">
-          
-            
-              
-                <h3 id="安装notebook"><a href="#安装notebook" class="headerlink" title="安装notebook"></a>安装notebook</h3><ul>
-              
-          
-        </div>
-        <div class='post-meta'>
-          <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/04/23</time>
-          
-            | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名/">爬取appnode的登陆log，并分析常见的暴力攻击用户名</a>
+    </h1>
+  
 
-
-
-          
-          
-            <span class="seperator">|</span>
-             
-                <i class="fa fa-tag" aria-hidden="true"></i>
-              
-             
-  <a href="/tags/#服务" class='tag'>服务</a>
-
-
-          
-        </div>
-      </section>
+      </header>
     
-  </div>
-  <aside>
-    
-    <div class="search">
-      <div class="content">
-        <form action="//www.google.com/search" target="_blank" class="search-form">
-          <input type="text" name="q" maxlength="20" placeholder=Search>
-          <input type="hidden" name='sitesearch' value="https://www.qwerse.com">
-        </form>
-      </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习了很多东西，不用的话，那就是不会。<br>前天想把appnode的登陆失败的记录趴下来，并且把攻击者用的账户名和ip用pandas给分析出来<br><img src="http://ww1.sinaimg.cn/large/ab318c02gy1fr56xd6ti2j20rh0j1gmg.jpg" alt=""></p>
+<p>用普通的网页分析那是不可能分析出来的，用fiddler，扛扛的<br>51cto 这个fiddler视屏讲的非常不错，<a href="http://edu.51cto.com/center/course/lesson/index?id=210299" target="_blank" rel="noopener">http://edu.51cto.com/center/course/lesson/index?id=210299</a><br>爬的时候被CSRF码，困扰过，不过已解决。</p>
+<h3 id="爬虫代码"><a href="#爬虫代码" class="headerlink" title="#爬虫代码"></a>#爬虫代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient <span class="keyword">as</span> mongo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://10.10.12.115:7788/api'</span></span><br><span class="line">d = &#123;<span class="string">'Username'</span>:<span class="string">'qwerse'</span>,</span><br><span class="line">     <span class="string">'Password'</span>:<span class="string">'esrewq'</span>,</span><br><span class="line">     <span class="string">'api_action'</span>:<span class="string">'User.Login'</span>,</span><br><span class="line">     <span class="string">'_r'</span>:<span class="string">'1525767430025'</span>&#125;</span><br><span class="line"></span><br><span class="line">head =&#123;</span><br><span class="line"><span class="string">'Accept'</span>: <span class="string">'application/json, text/plain, */*'</span>,</span><br><span class="line"><span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span>,</span><br><span class="line"><span class="string">'X-CSRF-TOKEN'</span>: <span class="string">'nbZvu5q9XCGwYZ7F'</span>,</span><br><span class="line"><span class="string">'Referer'</span>: <span class="string">'http://10.10.12.115:7788'</span>,</span><br><span class="line"><span class="string">'Accept-Language'</span>: <span class="string">'zh-CN'</span>,</span><br><span class="line"><span class="string">'Accept-Encoding'</span>:<span class="string">'gzip, deflate'</span>,</span><br><span class="line"><span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'</span>,</span><br><span class="line"><span class="string">'Host'</span>: <span class="string">'10.10.12.115:7788'</span>,</span><br><span class="line"><span class="string">'Content-Length'</span>: <span class="string">'70'</span>,</span><br><span class="line"><span class="string">'DNT'</span>: <span class="string">'1'</span>,</span><br><span class="line"><span class="string">'Connection'</span>: <span class="string">'Keep-Alive'</span>,</span><br><span class="line"><span class="string">'Pragma'</span>: <span class="string">'no-cache'</span>,</span><br><span class="line"><span class="string">'Cookie'</span>: <span class="string">'username-10-10-12-115-6082="2|1:0|10:1524637290|26:username-10-10-12-115-6082|44:YTVjZTA4MWRkN2Q2NDI2M2E2YTM5OTVjN2ZlZDMyYmQ=|09b0d8ec2a17aeb3ba2b4a6578f893551f52608c4126c2ec7ba330351f87a96d"; CSRF-TOKEN=nbZvu5q9XCGwYZ7F; login-params=%7B%22Username%22%3A%22qwerse%22%7D; table_page_size=20'</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#保持cookice不掉        </span></span><br><span class="line">s = requests.Session()</span><br><span class="line"><span class="comment">#登录</span></span><br><span class="line">a = s.post(url,data = d,headers=head)</span><br><span class="line"><span class="comment">#获取CSRF码</span></span><br><span class="line">x = re.search(<span class="string">'CSRFToken":"(\w+)",'</span>,a.text).group(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#填录CSRF码</span></span><br><span class="line">head2 = &#123;<span class="string">'X-CSRF-TOKEN'</span>:x,</span><br><span class="line">         <span class="string">'Accept'</span>:<span class="string">'application/json, text/plain, */*'</span>,</span><br><span class="line">         <span class="string">'Referer'</span>:<span class="string">'http://10.10.12.115:7788/#/ccenter/nodemgr'</span>,</span><br><span class="line">         <span class="string">'Accept-Encoding'</span>:<span class="string">'gzip, deflate'</span>,</span><br><span class="line">         <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'</span>,</span><br><span class="line">         <span class="string">'Host'</span>:<span class="string">'10.10.12.115:7788'</span>,</span><br><span class="line">         <span class="string">'Connection'</span>:<span class="string">'Keep-Alive'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#得到攻击页面，并加以分析</span></span><br><span class="line">c = s.get(<span class="string">'http://10.10.12.115:7788/api?api_action=Login.ErrorList&amp;_pageSize=1000&amp;LoginTime=%5B1525104000%2C1525762289%5D&amp;_pageNumber=1&amp;_r=1525762289662&amp;api_agent_app=usermgr&amp;api_nodeid=5'</span>,headers=head2)</span><br><span class="line"><span class="comment">#使用正则获取需要的信息</span></span><br><span class="line">count = re.search(<span class="string">'"PageCount":(\d+),'</span>,c.text).group(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#把需要的结果循环插录mongodb</span></span><br><span class="line">client = MongoClient(<span class="string">'10.10.12.115'</span>,<span class="number">27017</span>)</span><br><span class="line">db = client.ip</span><br><span class="line">data = db.data</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,int(count)+<span class="number">1</span>):</span><br><span class="line">    c = s.get(<span class="string">'http://10.10.12.115:7788/api?api_action=Login.ErrorList&amp;_pageSize=1000&amp;LoginTime=%5B1525104000%2C1525762289%5D&amp;_pageNumber=&#123;&#125;&amp;_r=1525762289662&amp;api_agent_app=usermgr&amp;api_nodeid=5'</span>.format(i),headers=head2)</span><br><span class="line">    d = re.findall(<span class="string">'&#123;"Id":(\d+),"Username":"(\w+)","Pty":"ssh:notty","Ip":"(.*?)",'</span>,c.text)</span><br><span class="line">    <span class="keyword">for</span> ii <span class="keyword">in</span> d:</span><br><span class="line">        id_ = ii[<span class="number">0</span>]</span><br><span class="line">        user = ii[<span class="number">1</span>]</span><br><span class="line">        ip = ii[<span class="number">2</span>]</span><br><span class="line">        </span><br><span class="line">        data.insert(&#123;<span class="string">'id'</span>:id_,<span class="string">'user'</span>:user,<span class="string">'ip'</span>:ip&#125;)</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'ok'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="分析爬下来的数据"><a href="#分析爬下来的数据" class="headerlink" title="分析爬下来的数据"></a>分析爬下来的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient <span class="keyword">as</span> mongo</span><br><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Pie</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client = mongo(<span class="string">'10.10.12.115'</span>,<span class="number">27017</span>)</span><br><span class="line">db = client.ip</span><br><span class="line">data = db.data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wind = pd.DataFrame(list(data.find()))</span><br><span class="line"><span class="keyword">del</span> wind[<span class="string">'_id'</span>]</span><br><span class="line"><span class="keyword">del</span> wind[<span class="string">'id'</span>]</span><br><span class="line">wind</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>ip</th><br>      <th>user</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>28</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>29</th><br>      <td>218.65.30.53</td><br>      <td>root</td><br>    </tr><br>    <tr><br>      <th>…</th><br>      <td>…</td><br>      <td>…</td><br>    </tr><br>    <tr><br>      <th>81378</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81379</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81380</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81381</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81382</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81383</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81384</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81385</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81386</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81387</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81388</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81389</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81390</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81391</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81392</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81393</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81394</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81395</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81396</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81397</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81398</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81399</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81400</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81401</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81402</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81403</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81404</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81405</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81406</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>    <tr><br>      <th>81407</th><br>      <td>118.193.185.235</td><br>      <td>test</td><br>    </tr><br>  </tbody><br></table><br><p>81408 rows × 2 columns</p><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sss =[]</span><br><span class="line"><span class="keyword">for</span> i,ii <span class="keyword">in</span> wind[<span class="string">'ip'</span>].groupby(wind[<span class="string">'user'</span>]):</span><br><span class="line">    ip = list(set(ii.values))</span><br><span class="line">    cishu = len(ii)</span><br><span class="line">    yi_ci = pd.DataFrame(&#123;<span class="string">'cishu'</span>:cishu,<span class="string">'ip'</span>:str(ip)&#125;,index=[i])</span><br><span class="line">    </span><br><span class="line">    sss.append(yi_ci)</span><br><span class="line">    </span><br><span class="line">bb = pd.concat(sss)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bb.sort_values(by=<span class="string">'cishu'</span>,ascending=<span class="keyword">False</span>).head(<span class="number">10</span>)<span class="comment">#前10名记录</span></span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>cishu</th><br>      <th>ip</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>root</th><br>      <td>75542</td><br>      <td>[‘167.99.87.138’, ‘61.177.172.31’, ‘122.114.16…</td><br>    </tr><br>    <tr><br>      <th>guest</th><br>      <td>1947</td><br>      <td>[‘118.193.185.235’, ‘132.148.19.140’, ‘167.99….</td><br>    </tr><br>    <tr><br>      <th>admin</th><br>      <td>675</td><br>      <td>[‘123.20.46.198’, ‘167.99.87.138’, ‘188.165.20…</td><br>    </tr><br>    <tr><br>      <th>test</th><br>      <td>627</td><br>      <td>[‘116.48.130.162’, ‘124.202.158.199’, ‘167.99….</td><br>    </tr><br>    <tr><br>      <th>user</th><br>      <td>123</td><br>      <td>[‘167.99.87.138’, ‘54.37.16.51’, ‘45.58.115.38…</td><br>    </tr><br>    <tr><br>      <th>pi</th><br>      <td>90</td><br>      <td>[‘54.37.16.51’, ‘186.149.55.139’, ‘110.175.168…</td><br>    </tr><br>    <tr><br>      <th>support</th><br>      <td>88</td><br>      <td>[‘193.204.5.40’, ‘54.37.16.51’, ‘185.143.222.7…</td><br>    </tr><br>    <tr><br>      <th>ubuntu</th><br>      <td>85</td><br>      <td>[‘194.78.59.98’, ‘182.23.83.29’, ‘112.29.245.2…</td><br>    </tr><br>    <tr><br>      <th>oracle</th><br>      <td>80</td><br>      <td>[‘119.28.43.188’, ‘182.245.124.114’, ‘222.87.2…</td><br>    </tr><br>    <tr><br>      <th>service</th><br>      <td>73</td><br>      <td>[‘51.15.233.107’, ‘185.143.222.7’, ‘185.143.22…</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">attr = bb.index</span><br><span class="line">v1 = bb[<span class="string">'cishu'</span>]</span><br><span class="line">pie = Pie(<span class="string">"饼图示例"</span>)</span><br><span class="line">pie.add(<span class="string">""</span>, attr, v1,radius=[<span class="number">30</span>, <span class="number">75</span>],is_legend_show=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/ab318c02gy1fr574ww0l9j20p00cijs7.jpg" alt=""></p>
+
+      
     </div>
-    
-    
-      <div class="avatar">
-        <img src="http://ww1.sinaimg.cn/large/ab318c02gy1ftvl6iu0ubj22o03k0kdg.jpg" alt="avatar">
-          
-            <div class="content">
-                <span>Qwerse</span>
-            </div>
-          
-      </div>
-    
-    
-      <div class="categories">
-        <h1>
-          Categories
-        </h1>
-        <div class="content">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GitBlog/">GitBlog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全/">安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li></ul>
-        </div>
-      </div>
-    
-    
-      <div class="links">
-        <h1>
-          Blogroll
-        </h1>
-        <div class="content">
-          
-            <a href="https://www.baidu.com/" target="_blank">百度</a>
-          
-            <a href="https://www.google.com/" target="_blank">谷歌</a>
-          
-            <a href="https://www.zhihu.com/" target="_blank">知乎</a>
-          
-        </div>
-      </div>
-    
-  </aside>
-</main>
+    <footer class="article-footer">
+      <a data-url="https://www.qwerse.com/2018/04/27/blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名/" data-id="cjm39c2w3004qjkucz0n3zhfv" class="article-share-link">Share</a>
+      
+        <a href="https://www.qwerse.com/2018/04/27/blog/python/爬取appnode的登陆log，并分析常见的暴力攻击用户名/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
-  <div class="paging">
-  <div class="paging-container">
-    
-    <div></div>    
-    
-    
-    <div class='page-next'>
-      <a href="/page/2/">Next</a>
-    </div>
-    
+    </footer>
   </div>
-</div>
+  
+</article>
 
 
+  
 
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'QwerseBlog';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
 
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>
